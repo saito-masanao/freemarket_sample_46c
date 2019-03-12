@@ -1,4 +1,34 @@
 class UsersController < ApplicationController
   def index
   end
+
+  def top
+  end
+
+  def mypage
+  end
+
+  def profile
+  end
+
+  def userconfirm
+  end
+
+  def userlogout
+  end
+
+  def credit
+  end
+
+  def creditregistration
+  end
+
+  def itemsell
+  end
+
+  def itemdetaile
+  end
+
+  def itemconfirm
+  end
 end
