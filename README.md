@@ -144,6 +144,8 @@
 - has_many :categories
 - has_many :category_items
 - belongs_to :size
+- belongs_to :parent, class_name: :Category
+- has_many :children, class_name: :Category, foreign_key: :parent_id
 
 ## category_itemsテーブル
 |Column|Type|Options|
