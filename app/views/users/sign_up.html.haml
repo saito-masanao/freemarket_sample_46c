@@ -1,0 +1,18 @@
+= render "devise/shared/login-header"
+.us-content
+  %main.us-main
+    %section.us-main-section
+      %h2.us.us-main-section__head 新規会員登録
+      .us-main-inner
+        .us-sup
+          .us-sup__btn-mail
+            %a.us-sup__btn-default{href:"#"} メールアドレスで登録
+            .us-sup__btn-mail--icon
+              = fa_icon("envelope 2x")
+          %button#us-sup__fb.us-sup__btn-default.us-sup__btn-sns.us-sup__btn-sns-fb
+            .us-sup__btn-sns-fb--icon
+              = fa_icon("facebook-square 2x")
+            Facebookで登録
+          %button#us-sup__gg.us-sup__btn-default.us-sup__btn-sns.us-sup__btn-sns-gg
+            Googleでログイン
+= render "devise/shared/login-footer"

@@ -1,42 +1,24 @@
+= render "devise/shared/login-header"
 .ul-contener
-  %header.ul-header
-    %h1.ul-header__logo
-      = link_to "https://www.mercari.com/jp/",class: "ul-header__logo--link" do
-        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2845599746", alt: "mercari" , class: "ul-header__logo--img"
   %main.ul-main
     .ul-login
       .ul-new
+        %p.ul-new__no-acount アカウントをお持ちでない方はこちら
+        %a.ul-new__regist{href:"#"} 新規会員登録
       .ul-sns
+        %button#ul-sns__fblogin.ul-sns__btn-default.ul-sns__btn-sns.ul-sns__btn-sns-fb
+          .ul-sns__btn-sns-fb--icon
+            = fa_icon("facebook-square 2x")
+          Facebookでログイン
+        %button#ul-sns__gglogin.ul-sns__btn-default.ul-sns__btn-sns.ul-sns__btn-sns-gg
+          Googleでログイン
       .ul-form
-  %footer.ul-footer
-    %nav.ul-ftnv
-      %ul.ul-ftnv__ul
-        %li.ul-ftnv__ul--list
-          %a{href:"https://www.mercari.com/jp/privacy/"}プライバシーポシシー
-        %li.ul-ftnv__ul--list
-          %a{href:"https://www.mercari.com/jp/privacy/"}メルカリ利用規約
-        %li.ul-ftnv__ul--list
-          %a{href:"https://www.mercari.com/jp/privacy/"}特定商取引に関する表記
-    %a{href:"https://www.mercari.com/jp/",class: "ul-ftlink"}
-      %img{src:"//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2845599746",class: "ul-ftlink__img",alt:"mercari",width:"80",height:"65"}
-    %p.ul-ftmsg
-      %small © 2019 Mercari
-
-
-/ %h2 Log in
-/ = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-/   .field
-/     = f.label :email
-/     %br/
-/     = f.email_field :email, autofocus: true, autocomplete: "email"
-/   .field
-/     = f.label :password
-/     %br/
-/     = f.password_field :password, autocomplete: "current-password"
-/   - if devise_mapping.rememberable?
-/     .field
-/       = f.check_box :remember_me
-/       = f.label :remember_me
-/   .actions
-/     = f.submit "Log in"
-/ = render "devise/shared/links"
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .ul-form__field
+            = f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス",class: "ul-form__field--input-text ul-form__field--input-default"
+          .ul-form__field
+            = f.password_field :password, autocomplete: "current-password",placeholder: "パスワード",class: "ul-form__field--input-text ul-form__field--input-default"
+          .ul-form__btn
+            = f.submit "ログイン",class: "ul-form__btn--submit ul-form__btn--default ul-form__btn--red"
+          %a.ul-form__passwordforget{href:"#"} パスワードをお忘れの方
+= render "devise/shared/login-footer"

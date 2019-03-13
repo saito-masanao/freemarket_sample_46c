@@ -31,4 +31,7 @@ class UsersController < ApplicationController
 
   def itemconfirm
   end
+
+  def sign_up
+  end
 end
