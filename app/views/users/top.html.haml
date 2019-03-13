@@ -1,0 +1,48 @@
+%header.top-header
+  .top-header-inner
+    .top-inner
+      %h1.top-logo
+        = link_to image_tag('mercari_logo.svg', alt: 'mercari', width: '134', height: '36'), root_path
+      %form.top-header-form{:action => "https://www.mercari.com/jp/search/"}
+        %input.top-input{:name => "keyword", :placeholder => "キーワードから探す", :type => "search", :value => ""}
+        %i.top-icon-search
+          = fa_icon("search")
+
+    .top-nav-box.clearfix
+      %nav.top-left
+        %ul.top-left-nav
+          %li.top-left-nav-list
+            %h2
+              %a.top-left-nav-root{:href => "https://www.mercari.com/jp/category/"} カテゴリーから探す
+          %li.top-left-nave-list2
+            %h2
+              %a.top-left-nav-root{:href => "https://www.mercari.com/jp/brand/"} ブランドから探す
+
+      %nav.top-right
+        %ul.top-right-nav
+          %li.top-right-nav-list1
+            %a.top-header-user-icon{:href => "https://www.mercari.com/jp/mypage/"}
+              %figure
+                .top-img-content
+                  %img{:alt => "", :src => "//static.mercdn.net/thumb/members/757346469.jpg?1500033502", :width => "32"}
+              %p.top-mypage マイページ
+          %li.top-right-nav-list2
+            %a.top-right-nav-root{:href => "https://www.mercari.com/jp/mypage/notification/"}
+              %i.fas.fa-search
+
+              %span お知らせ
+          %li.top-right-nav-list3
+            %a.top-right-nav-root{:href => "https://www.mercari.com/jp/mypage/todo/"}
+              %i.top-icon-check
+              = fa_icon("search")
+              %span やることリスト
+
+
+
+
+
+
+
+
+
+
