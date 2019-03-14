@@ -9,13 +9,13 @@
   z-index: 1001;
   background: white;
   height: 90px;
-  .top-header-inner {
+  &__inner {
     width: 1020px;
     margin: 0 auto;
     padding: 8px 0 0;
-    .top-inner{
+    &__top {
       height:36px;
-      .top-logo {
+    &__logo {
         float: left;
       }
       .top-header-form {
@@ -23,7 +23,7 @@
         width: calc(100% - (134px + 16px));
         height: 36px;
         float: right;
-        .top-input {
+        &__input {
           border-radius: 4px;
           border: 1px solid #ccc;
           line-height: 1.5;
@@ -53,20 +53,20 @@
       }
     }
   }
-  .top-nav-box {
+  .top-nav {
     margin: 8px 0 0;
     height: 32px;
-    .top-left {
+    &__left {
       float: left;
-      .top-left-nav {
+      &__nav {
         font-size: 0;
-        .top-left-nav-list{
+        &__list{
           position: relative;
           display: inline-block;
-          h2 {
+          &__select{
             font-size: 14px;
             font-weight: 400;
-            .top-left-nav-root {
+            &__root{
               display: block;
               color: #333;
               position: relative;
@@ -76,14 +76,14 @@
             }
           }
         }
-        .top-left-nave-list2 {
+        .top-nav__left__nav__list2 {
           position: relative;
           display: inline-block;
           padding: 0 0 0 16px;
-          h2 {
+          &__select {
             font-size: 14px;
             font-weight: 400;
-            .top-left-nav-root {
+            &__root {
               display: block;
               color: #333;
               position: relative;
@@ -98,14 +98,14 @@
     }
     .top-right {
       float: right;
-      .top-right-nav {
+      &__nav {
         font-size: 0px;
         margin: 2px 0 0 0;
-        .top-right-nav-list1 {
+        &__list1 {
           position: relative;
           display: inline-block;
           vertical-align: middle;
-          .top-header-user-icon {
+          &__icon {
             display: inline-block;
             font-size: 14px;
             color: #333;
@@ -125,12 +125,12 @@
             }
           }
         }
-        .top-right-nav-list2 {
+        .top-right__nav__list2 {
           position: relative;
           display: inline-block;
           padding: 0 0 0 16px;
           vertical-align: middle;
-            .top-bell{
+            &__bell{
               display: inline-block;
               font-family: 'icon-font';
               speak: none;
@@ -146,7 +146,7 @@
               font-size: 14px;
               color: #333;
             }
-            span {
+            .top-bell {
               font-size: 14px;
               margin: 0 0 0 8px;
               display: inline-block;
@@ -157,12 +157,12 @@
           }
         }
 
-        .top-right-nav-list3 {
+        .top-right__nav__list3{
           position: relative;
           display: inline-block;
           padding: 0 0 0 16px;
           vertical-align: middle;
-          .top-check {
+          &__check {
             display: inline-block;
             font-family: 'icon-font';
             speak: none;
@@ -178,9 +178,9 @@
             font-size: 14px;
             color: #333;
             }
-          span {
+          .top-check {
             font-size: 14px;
-            margin: 0 0 0 14px;
+            margin: 0 0 0 10px;
             display: inline-block;
             vertical-align: middle;
             color: #333;
