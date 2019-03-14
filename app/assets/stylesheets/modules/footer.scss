@@ -1,47 +1,105 @@
-.content {
-  height: 2000px;
-  width: 100%;
-  background-color: pink;
+@mixin flex-tandem{
+  display: flex;
+  flex-direction:column;
+
 }
 
-.top-footer {
-  width: 100%;
-  height:603px;
-  background-color: black;
-  color:white;
-  .footer-nav {
-    width: 1020px;
-    height:338px;
-    margin: 0 auto;
-    text-align: center;
-    .footer-nav-content {
-      width: 1020px;
-      height:338px;
-      margin: 0 auto;
-      .footer-cell {
-        display: inline-block;
-        width: 23%;
-        margin: 0 2% 0 0;
-        vertical-align: top;
-        .footer-head {
-          color: #fff;
-          font-size: 16px;
-          .left-list {
-            list-style: none;
-            .common {
-            list-style: none;
-              .common-content {
-                text-decoration: none;
-                color: white;
-              }
+@mixin flex-row{
+  display: flex;
+  flex-direction:row;
+}
 
-            }
-          }
-        }
+@mixin flex-between{
+  display: flex;
+  justify-content:space-between;
+}
+
+h4 {
+  font-weight: bold;
+}
+
+
+
+.app-baner{
+  color: white;
+  height:260px;
+  width: 100vw;
+  background-image: url("https://www.mercari.com/jp/assets/img/common/jp/top/download_bg_pc.jpg?78405350");
+  &__content{
+    height: 260px;
+    width: 750px;
+    margin:0 auto;
+    @include flex-between;
+    &__inner{
+      width: 420px;
+      align-self: center;
+      &__text {
+        font-size:24px;
       }
+      p{
+        font-size: 35px;
+      }
+      ul{
+        padding-top: 20px;
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+      }
+    }
+    &__spimg{
+      height: 260px;
     }
   }
 }
 
+.footer__under{
+  color: white;
+  background-color:#212121;
+  width: 100vw;
+  padding: 60px 0;
+  height: 470px;
+  &__map{
+    width: 1026px;
+    height: 276;
+    margin: 0 auto;
+    text-align: center;
+    ul{
+      @include flex-between;
+    }
+    &--list{
+      @include flex-tandem;
+      li{
+        margin-top:12px;
+        font-size: 13px;
+        color: white;
+        text-decoration: none;
 
+        a {
+          color: white;
+          text-decoration: none;
+        }
+        img {
+          vertical-align: middle;
+          float: left;
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+  &__copyright{
+    display: flex;
+    flex-direction:column;
+    &--logo{
+      width: 124px;
+      margin: 30px auto 0;
+
+    }
+    &--text{
+      text-align: center;
+      small {
+        font-size:12px;
+      }
+    }
+  }
+}
 
