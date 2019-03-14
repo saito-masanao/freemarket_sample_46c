@@ -21,21 +21,21 @@
       %nav.top-right
         %ul.top-right-nav
           %li.top-right-nav-list1
-            %a.top-header-user-icon{:href => "https://www.mercari.com/jp/mypage/"}
-              %figure
-                .top-img-content
-                  %img{:alt => "", :src => "//static.mercdn.net/thumb/members/757346469.jpg?1500033502", :width => "32"}
-              %p.top-mypage マイページ
-          %li.top-right-nav-list2
-            %a.top-right-nav-root{:href => "https://www.mercari.com/jp/mypage/notification/"}
-              %i.fas.fa-search
+            = link_to '/testpage' do
+              = image_tag("sample.jpg",class: "top-header-user-icon",width: '32',height: '32')
+              .top-mypage マイページ
 
-              %span お知らせ
+          %li.top-right-nav-list2
+            = link_to '/testpage' do
+              %i.top-bell
+                = fa_icon("bell")
+              %span.top-bell お知らせ
+
           %li.top-right-nav-list3
-            %a.top-right-nav-root{:href => "https://www.mercari.com/jp/mypage/todo/"}
-              %i.top-icon-check
-              = fa_icon("search")
-              %span やることリスト
+            = link_to '/testpage' do
+              %i.top-check
+                = fa_icon("check")
+                %span やることリスト
 
 
 
