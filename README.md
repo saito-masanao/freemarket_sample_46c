@@ -5,16 +5,6 @@
 |nickname|string|null: false|
 |mail_adress|string|null: false, unique:true|
 |password|string|null: false|
-|first_name|string|null: false|
-|last_name|string|null: false|
-|birth_year|integer|null: false|
-|birth_month|integer|null: false|
-|birth_year|integer|null: false|
-|profile|text| |
-|avatar|string| |
-|tel|integer|null: false|
-|adress_id|integer|null: false, foreign_key: true|
-|credit_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :comments
@@ -24,6 +14,27 @@
 - has_many :order_comments
 - has_many :credits, depend::destory
 - has_one :sns_credentials
+
+## profilesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name(kana)|string|null: false|
+|last_name(kana)|string|null: false|
+|birth_year|integer|null: false|
+|birth_month|integer|null: false|
+|birth_year|integer|null: false|
+|profile|text| |
+|avatar|string| |
+|tel|integer|null: false|
+|adress_id|integer|null: false, foreign_key: true|
+|credit_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
 
 ## commentsテーブル
 |Column|Type|Options|
