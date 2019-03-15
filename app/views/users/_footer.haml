@@ -1,24 +1,24 @@
-.app-baner.clearfix
-  .app-baner__content
-    .app-baner__content__inner
-      %h2.bold.app-baner__content__inner__text スマホでかんたんフリマアプリ
-      %p.app-baner__content__inner__text 今すぐ無料ダウンロード！
-      %ul.middle
+.top-app-baner.clearfix
+  .top-app-baner__content
+    .top-app-baner__content__inner
+      %h2.bold.top-app-baner__content__inner__introduction スマホでかんたんフリマアプリ
+      %p.top-app-baner__content__inner__introduction 今すぐ無料ダウンロード！
+      %ul
         %li
           %img{alt: "", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/mercari_icon.png?206587138", width: "68"}/
         %li
-          %a{href:"https://itunes.apple.com/jp/app/id667861049?l=ja&amp;mt=8",target:"_blank"}
+          %a{href:"https://itunes.top-apple.com/jp/top-app/id667861049?l=ja&amp;mt=8",target:"_blank"}
           %img{alt: "", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?206587138", width: "133",height:"40"}
         %li
-          %a{href:"https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja",target: "_blank"}
+          %a{href:"https://play.google.com/store/top-apps/details?id=com.kouzoh.mercari&hl=ja",target: "_blank"}
           %img{alt: "", height: "40",src: "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?206587138", width:"133"}/
-    .app-baner__content__spimg
+    .top-app-baner__content__iPhone
       %img{alt: "",src: "//www-mercari-jp.akamaized.net/assets/img/common/jp/download_content_pc.png?206587138",id:"sp",height: "260px"}/
 .footer__under
   .footer__under__map
     %ul
       %li
-        %h4.bold メルカリについて
+        %h4 メルカリについて
         %ul.footer__under__map--list
           %li
             =link_to "会社概要(運営会社)" , root_path
@@ -85,13 +85,13 @@
       %li
         %h4.bold 国
         %ul.footer__under__map--list
-          %li
+          %li.opacity
             =link_to "United States" , root_path
             %img{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/flag_us.png?3703848211", :width => "22"}
-          %li
+          %li.opacity
             =link_to "United Kingdom" , root_path
             %img{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/flag_uk.png?3703848211", :width => "22"}
-          %li
+          %li.auto
             =link_to "日本" , root_path
             %img{:alt => "", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/flag_jp.png?3703848211", :width => "22"}
 
