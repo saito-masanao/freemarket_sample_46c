@@ -1,4 +1,4 @@
-## usersテーブル（DB設計のレビューお願いします）
+## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -267,6 +267,7 @@
 ### Association
 - belongs_to :order
 - belongs_to :user
+
 
 
 
