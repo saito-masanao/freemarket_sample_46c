@@ -1,4 +1,4 @@
-## usersテーブル
+## usersテーブル（DB設計のレビューお願いします）
 
 |Column|Type|Options|
 |------|----|-------|
