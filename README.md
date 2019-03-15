@@ -52,24 +52,15 @@
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|integer|null: false|
-|prefectures_id|integer|null: false, foreign_key: true|
 |city|string|null: false|
 |street_number|string|null: false|
 |building_name|string| |
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :prefecture
+- belongs_to :user
 
-## prefecturesテーブル
 
-|Column|Type|Options|
-|------|----|-------|
-|prefecture|string|null: false|
-
-### Association
-- has_many :adresses
-- has_many :items
 
 
 ## itemsテーブル
@@ -82,7 +73,6 @@
 |brand_id|integer|null: false, foreign_key: true|
 |status_id|integer|null: false, foreign_key: true|
 |delivery_fee_id|integer|null: false, foreign_key: true|
-|prefectures_id|integer|null: false, foreign_key: true|
 |delivery_date_id|integer|null: false, foreign_key: true|
 |price|integer|null: false|
 |avatar|string| |
@@ -105,7 +95,6 @@
 - belongs_to :profit
 - belongs_to :delivery_fee
 - belongs_to :user
-- belongs_to :prefecture
 
 ## imagesテーブル
 |Column|Type|Options|
