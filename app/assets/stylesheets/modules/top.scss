@@ -78,6 +78,53 @@
     background: url(https://www.mercari.com/jp/assets/img/common/jp/top/banner-new-life.jpg);
   }
 
+  .slide-dots {
+  margin: -30px auto ;
+  text-align: center;
+  position: relative;
+    li {
+      display: inline-block;
+      margin: 0 15px 0 0;
+        button {
+          position: relative;
+          text-indent: -9999px;
+          cursor: pointer;
+          border-radius: 50%;
+          display: inline-block;
+          padding: 0;
+          height: 12px;
+          width: 12px;
+          overflow: hidden;
+          border: none;
+          background-color: #fff;
+          opacity: .4;
+          pointer-events: none;
+          outline: 0;
+        }
+    }
+    .slick-active {
+      button {
+        cursor: default;
+        opacity: 0.9;
+        background-color: rgba(0,0,0,0.5);
+          }
+        }
+      }
+    .prev-arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 45%;
+      left: 60px;
+      z-index: 1;
+    }
+    .next-arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 45%;
+      right: 60px;
+      z-index: 1;
+    }
+
   .pickup-contents {
     padding: 35px 0;
     background-color: #f5f5f5;
