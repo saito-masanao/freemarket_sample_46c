@@ -21,11 +21,11 @@
                 = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?4136293187"
           = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?4136293187",class: "iphone-picture"
       .top-banner__slides--newlife
-        = link_to "",root_path,class: "top-banner banner-new-life"
+        = link_to "",root_path,class: "top-banner banner-newlife"
       .top-banner__slides--heisei
-        = link_to "",root_path,class: "top-banner banner-bokurano-heisei"
+        = link_to "",root_path,class: "top-banner banner-advertisement"
 
-  %section.pickup-contents
+  %section.top-pickup-contents
     %h2.pickup-head ピックアップカテゴリー
     %section.items-box-container.clearfix
       %h3.items-box-container__title
@@ -92,8 +92,6 @@
           = render 'users/item'
       .view-all
         = link_to "すべての商品を見る", "/test/", class:"all-items"
-
-
 
 
 = render 'users/top-footer'

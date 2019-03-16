@@ -4,7 +4,7 @@
   background-color:#f5f5f5;
   .top-banner {
     height: 390px;
-    width: 1450px;
+    width: 100vw;
     overflow: hidden;
     position: relative;
     font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
@@ -65,13 +65,13 @@
               }
             }
 
-  .banner-bokurano-heisei {
+  .banner-advertisement {
     width: 100%;
     display: block;
     height: 390px;
     background: url(https://www.mercari.com/jp/assets/img/common/jp/top/banner-bokurano-heisei.jpg);
   }
-  .banner-new-life {
+  .banner-newlife {
     width: 100%;
     display: block;
     height: 390px;
@@ -125,7 +125,7 @@
       z-index: 1;
     }
 
-  .pickup-contents {
+  .top-pickup-contents {
     padding: 35px 0;
     background-color: #f5f5f5;
     .pickup-head {
