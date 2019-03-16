@@ -21,7 +21,7 @@ a {
       height: 90px;
       background: #fff;
       margin-top: -6px;
-      .items-box-body-name{
+      &__name{
         overflow: hidden;
         position: relative;
         font-weight: 400;
@@ -52,7 +52,7 @@ a {
             border-width: 0;
             font-size: 1.1em
           }
-          .heart-count {
+          &__count {
             display: inline-block;
             margin: -1px 0 0;
             vertical-align: middle;

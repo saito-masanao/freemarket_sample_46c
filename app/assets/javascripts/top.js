@@ -2,7 +2,7 @@ $(function() {
   $(".top-banner").slick({
     accessibility: true,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     speed: 400,
     arrows: true,
     dots: true,
