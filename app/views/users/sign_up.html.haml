@@ -15,4 +15,7 @@
             Facebookで登録
           %button#us-sup__gg.us-sup__btn-default.us-sup__btn-sns.us-sup__btn-sns-gg
             Googleでログイン
+
+      = link_to "ログアウト",destroy_user_session_path,method: :delete
+
 = render "devise/shared/login-footer"
