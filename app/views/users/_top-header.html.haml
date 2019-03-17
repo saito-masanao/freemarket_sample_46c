@@ -3,7 +3,7 @@
     .top-main-header__wrapper__top
       .top-main-header__wrapper__top__left
         %a{:href => root_path}
-          = image_tag("mercari_logo.svg", class: "mercari-image",width:"134",height:"36")
+          = image_tag("mercari_logo.svg", class: "mercari-image")
       = form_with url: root_path,local: true ,html: {class: "top-main-header__wrapper__top__form"} do |f|
         .top-main-header__wrapper__top__form__search-field.back-silver
           = f.text_field :keyword, class: 'top-main-header__wrapper__top__form__search-field__text-field', placeholder: 'キーワードから探す'
@@ -20,7 +20,7 @@
 
       .top-main-header__wrapper__nav-box__right
         %ul.right
-          - if false
+          - if user_signed_in?
 
             %li
               = link_to 'mypage' do

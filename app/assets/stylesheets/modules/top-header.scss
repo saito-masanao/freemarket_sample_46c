@@ -7,8 +7,14 @@
     padding: 8px 0 0 0;
     width: 1020px;
     &__top {
-     display: flex;
-     flex-direction:row;
+      display: flex;
+      flex-direction:row;
+      &__left {
+      }
+      .mercari-image {
+        height: 36px;
+        width: 134px;
+      }
       &__form {
         margin: 2px 0 0 10px;
         width: 100%;
@@ -119,4 +125,5 @@
   height: 160px;
   font-size: 22px;
 }
+
 
