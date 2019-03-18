@@ -81,7 +81,7 @@
             }
           }
         }
-        &__expiration{
+        &__expiration-month{
           margin-top: 40px;
           .expiration-title {
             font-weight: bold;
@@ -108,6 +108,35 @@
           line-height: 1.5;
           font-size: 16px;
           padding-left: 15px;
+          font-size: 14px;
+          margin-bottom:10px;
+        }
+        span {
+          font-size: 14px;
+          margin: 0 4px;
+        }
+        .credit-right-content__wrapper__box__form__security {
+          margin-top: 30px;
+        }
+        .credit-right-content__wrapper__box__form__caution {
+          text-align: right;
+        }
+        .question {
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #0099e8;
+          color: #fff;
+          line-height: 14px;
+          font-size: 12px;
+          text-align: center;
+        }
+        .credit-question-number {
+          text-align: right;
+          color: #0099e8;
+          font-size: 14px;
+          display: inline;
         }
       }
     }
