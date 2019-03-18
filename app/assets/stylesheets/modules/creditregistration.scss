@@ -1,0 +1,115 @@
+.credit-right-content {
+  height: 666px;
+  width: 700px;
+  background-color: pink;
+  margin: 50px auto;
+  &__wrapper {
+    .credit-title{
+      font-weight: bold;
+      font-size: 24px;
+      text-align: center;
+      height: 50px;
+      border-bottom: 1px solid #f5f5f5;
+      line-height: 50px;
+    }
+  }
+  .credit-right-content__wrapper__box{
+    padding: 64px;
+    height: 616px;
+    &__form {
+      &__center {
+        max-width: 320px;
+        margin: 0 auto;
+        background-color: #FFFFCC;
+        height: 487px;
+        &__number {
+          .number-title {
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: top;
+          }
+          .form-require {
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+            background: #ea352d;
+          }
+        }
+        .number-form {
+          height: 46px;
+          width: 305px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+          padding-left: 15px;
+        }
+        .card-all {
+          display: flex;
+          height: 20px;
+          li {
+            img {
+              height: 20px;
+              vertical-align: middle;
+              margin-right: 5px;
+            }
+            .visa {
+              width: 49px;
+            }
+            .master{
+              width:34px;
+            }
+            .saison{
+              width:30px;
+            }
+            .jcb {
+              width:32px;
+            }
+            .american{
+              width:21px;
+            }
+            .dinners {
+              width:32px;
+            }
+            .discover {
+              width:32px;
+            }
+          }
+        }
+        &__expiration{
+          margin-top: 40px;
+          .expiration-title {
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: top;
+          }
+          .form-require {
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+            background: #ea352d;
+          }
+        }
+        .form-month {
+          height: 46px;
+          width: 112px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+          padding-left: 15px;
+        }
+      }
+    }
+  }
+}
