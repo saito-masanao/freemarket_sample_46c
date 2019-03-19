@@ -1,0 +1,20 @@
+= render 'users/top-header'
+
+.confirm-right-content
+  .confirm-right-content__wrapper
+    %h2.confirm-title 本人情報の登録
+  .confirm-right-content__wrapper__box
+    = form_with url: root_path,local: true , class: "confirm-right-content__wrapper__box__form"do |f|
+      %p.confirm-message
+        お客さまの本人情報をご登録ください。
+        %br
+        登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+
+      / .confirm-right-content__wrapper__box__form__center
+      /   .confirm-right-content__wrapper__box__form__center__number
+      /     .h4.number-title カード番号
+      /     %span.form-require 必須
+      /   = f.text_field :keyword, class: 'number-form', placeholder: '半角数字のみ'
+
+= render 'users/camera-btn'
+= render 'users/top-footer'
