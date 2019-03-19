@@ -5,16 +5,6 @@
 |nickname|string|null: false|
 |mail_adress|string|null: false, unique:true|
 |password|string|null: false|
-|first_name|string|null: false|
-|last_name|string|null: false|
-|birth_year|integer|null: false|
-|birth_month|integer|null: false|
-|birth_year|integer|null: false|
-|profile|text| |
-|avatar|string| |
-|tel|integer|null: false|
-|adress_id|integer|null: false, foreign_key: true|
-|credit_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :comments
@@ -24,6 +14,27 @@
 - has_many :order_comments
 - has_many :credits, depend::destory
 - has_one :sns_credentials
+
+## profilesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name(kana)|string|null: false|
+|last_name(kana)|string|null: false|
+|birth_year|integer|null: false|
+|birth_month|integer|null: false|
+|birth_year|integer|null: false|
+|profile|text| |
+|avatar|string| |
+|tel|integer|null: false|
+|adress_id|integer|null: false, foreign_key: true|
+|credit_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -41,24 +52,15 @@
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|integer|null: false|
-|prefectures_id|integer|null: false, foreign_key: true|
 |city|string|null: false|
 |street_number|string|null: false|
 |building_name|string| |
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :prefecture
+- belongs_to :user
 
-## prefecturesテーブル
 
-|Column|Type|Options|
-|------|----|-------|
-|prefecture|string|null: false|
-
-### Association
-- has_many :adresses
-- has_many :items
 
 
 ## itemsテーブル
@@ -71,7 +73,6 @@
 |brand_id|integer|null: false, foreign_key: true|
 |status_id|integer|null: false, foreign_key: true|
 |delivery_fee_id|integer|null: false, foreign_key: true|
-|prefectures_id|integer|null: false, foreign_key: true|
 |delivery_date_id|integer|null: false, foreign_key: true|
 |price|integer|null: false|
 |avatar|string| |
@@ -94,7 +95,6 @@
 - belongs_to :profit
 - belongs_to :delivery_fee
 - belongs_to :user
-- belongs_to :prefecture
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -267,6 +267,7 @@
 ### Association
 - belongs_to :order
 - belongs_to :user
+
 
 
 

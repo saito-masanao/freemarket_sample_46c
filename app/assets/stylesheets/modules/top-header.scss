@@ -1,0 +1,129 @@
+.top-main-header{
+  text-align: center;
+  background-color: #FFF;
+  height: 90px;
+  &__wrapper {
+    display: inline-block;
+    padding: 8px 0 0 0;
+    width: 1020px;
+    &__top {
+      display: flex;
+      flex-direction:row;
+      &__left {
+      }
+      .mercari-image {
+        height: 36px;
+        width: 134px;
+      }
+      &__form {
+        margin: 2px 0 0 10px;
+        width: 100%;
+        &__search-field {
+          display: flex;
+          flex-direction:row;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          height: 35px;
+          &__text-field {
+            outline: 0;
+            border-style: none;
+            background-color: rgba(0,0,0,0);
+            position: relative;
+            left: 5px;
+            width: 96%;
+            font-size: 16px;
+          }
+          &__search-btn {
+            border:none;
+            background-color: transparent;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+    &__nav-box {
+     padding: 2px 0 0 0;
+     line-height: 35px;
+     display: flex;
+     justify-content:space-between;
+      &__left{
+        ul.category {
+          list-style: none;
+          display: flex;
+          position: relative;
+          padding-left: 0;
+          li.category__list {
+            .category-black{
+              color: black;
+              font-size: 13px;
+            }
+          }
+          li {
+            padding: 0 0 0 16px;
+          }
+        }
+      }
+      &__right {
+        ul.right {
+          display: flex;
+          flex-direction: row;
+          li {
+            padding: 0 0 0 16px;
+            position: relative;
+            ul.mypage-box {
+              display: none;
+              width: 320px;
+              background-color: #FFF;
+              z-index: 50;
+              position: absolute;
+              top: 35px;
+            }
+            i {
+              display: inline-block;
+              color: black;
+            }
+            span {
+              vertical-align:top;
+              font-size: 14px;
+              color: black;
+            }
+            .avater-image {
+              border-radius: 20px;
+              vertical-align: top;
+              width: 32px;
+              height: 32px;
+            }
+            .login-link {
+             background-color:#ea352d;
+             color: white;
+             border-radius: 5px;
+             padding: 10px 15px;
+             font-size: 12px;
+            }
+            .registration-link {
+              border:solid 1px;
+              padding: 8px 10px;
+              color: #0099e8;
+              border-radius: 4px;
+              font-size: 14px;
+              &:hover{
+                background-color: #0099e8;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer-sell-btn {
+  bottom: 32px;
+  right: 32px;
+  width: 160px;
+  height: 160px;
+  font-size: 22px;
+}
+
+
