@@ -1,7 +1,6 @@
 .credit-right-content {
   height: 666px;
   width: 700px;
-  background-color: pink;
   margin: 50px auto;
   &__wrapper {
     .credit-title{
@@ -20,7 +19,6 @@
       &__center {
         max-width: 320px;
         margin: 0 auto;
-        background-color: #FFFFCC;
         height: 487px;
         &__number {
           .number-title {
@@ -137,6 +135,21 @@
           color: #0099e8;
           font-size: 14px;
           display: inline;
+        }
+        .submit-button {
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          border: 1px solid transparent;
+          -webkit-transition: all ease-out .3s;
+          transition: all ease-out .3s;
+          cursor: pointer;
+          text-align: center;
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          color: #fff;
+          margin-top: 40px;
         }
       }
     }
