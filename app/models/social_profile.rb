@@ -1,4 +1,5 @@
 class SocialProfile < ApplicationRecord
+<<<<<<< HEAD
   belongs_to :user
   store :other
   validates_uniqueness_of :uid, scope: :provider

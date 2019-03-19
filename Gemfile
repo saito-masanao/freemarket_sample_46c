@@ -54,8 +54,11 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
+<<<<<<< HEAD
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+=======
+>>>>>>> cb49bec... 🖥FacebookとGoogleログインの実装
 end
 
 group :development do
