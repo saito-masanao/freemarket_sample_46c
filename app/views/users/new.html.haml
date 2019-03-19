@@ -15,8 +15,7 @@
       %h2.ur-m-header 会員情報入力
       .ur-form
         .ur-form-content
-          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-            = devise_error_messages!
+          = form_with url: users_create_path do |f|
             .ur-form-group
               = f.label :ニックネーム , class: "ur-form-group__label"
               %span.ur-form-group__span 必須
@@ -25,17 +24,8 @@
               = f.label :メールアドレス , class: "ur-form-group__label"
               %span.ur-form-group__span 必須
               = f.email_field :email, autofocus: true, autocomplete: "email" ,value: @email, placeholder:"PC・携帯どちらでも可", class: "ur-form-group__field"
-            .ur-form-group
-              = f.label :パスワード, class: "ur-form-group__label"
-              %span.ur-form-group__span 必須
-              - if @minimum_password_length
-                / %em
-                /   (#{@minimum_password_length} characters minimum)
-              = f.password_field :password, autocomplete: "new-password",placeholder:"6文字以上",class: "ur-form-group__field"
-            .ur-form-group
-              = f.label :"パスワード (確認)",class: "ur-form-group__label"
-              %span.ur-form-group__span 必須
-              = f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"6文字以上",class: "ur-form-group__field"
+              = f.hidden_field :password, autocomplete: "new-password",placeholder:"6文字以上",value: @password,class: "ur-form-group__field"
+              = f.hidden_field :password_confirmation, autocomplete: "new-password",placeholder:"6文字以上",value: @password,class: "ur-form-group__field"
             .ur-form-group
               %h3.ur-form-group__confirm 本人確認
               %p.ur-form-group__text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
