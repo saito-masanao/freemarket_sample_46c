@@ -5,6 +5,12 @@
 |nickname|string|null: false|
 |mail_adress|string|null: false, unique:true|
 |password|string|null: false|
+|first_name|string||
+|last_name|string||
+|first_name(kana)|string||
+|last_name(kana)|string||
+|birthday|integer||
+
 
 ### Association
 - has_many :comments
@@ -14,18 +20,36 @@
 - has_many :order_comments
 - has_many :credits, depend::destory
 - has_one :sns_credentials
+- has_many :social_profiles
+
+
+## social_profilesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|bigint|foreign_key: true|
+|provider|varchara|unique:true|
+|uid|varchara|unique:true|
+|name|varchara||
+|nickname|varchara||
+|emaile|varchara||
+|url|varchara||
+|imege_url|varchara||
+|description|varchara||
+|other|text||
+|credentials|text||
+|raw_info|text||
+
+### Association
+
+- belongs_to :user
+
+
 
 ## profilesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|first_name|string|null: false|
-|last_name|string|null: false|
-|first_name(kana)|string|null: false|
-|last_name(kana)|string|null: false|
-|birth_year|integer|null: false|
-|birth_month|integer|null: false|
-|birth_year|integer|null: false|
 |profile|text| |
 |avatar|string| |
 |tel|integer|null: false|
