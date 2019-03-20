@@ -3,9 +3,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    @nickname = session[:nickname]
-    @email = session[:email]
-    @password = session[:password]
   end
 
   def create

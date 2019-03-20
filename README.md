@@ -32,7 +32,7 @@
 |uid|varchara|unique:true|
 |name|varchara||
 |nickname|varchara||
-|emaile|varchara||
+|email|varchara||
 |url|varchara||
 |imege_url|varchara||
 |description|varchara||
