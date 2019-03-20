@@ -19,13 +19,13 @@
             .ur-form-group
               = f.label :ニックネーム , class: "ur-form-group__label"
               %span.ur-form-group__span 必須
-              = f.text_field :nickname, autofocus: true, autocomplete: "nickname" ,value: @nickname, placeholder:"例) メルカリ太郎", class: "ur-form-group__field"
+              = f.text_field :nickname, autofocus: true, autocomplete: "nickname" ,value: session[:nickname], placeholder:"例) メルカリ太郎", class: "ur-form-group__field"
             .ur-form-group
               = f.label :メールアドレス , class: "ur-form-group__label"
               %span.ur-form-group__span 必須
-              = f.email_field :email, autofocus: true, autocomplete: "email" ,value: @email, placeholder:"PC・携帯どちらでも可", class: "ur-form-group__field"
-              = f.hidden_field :password, autocomplete: "new-password",placeholder:"6文字以上",value: @password,class: "ur-form-group__field"
-              = f.hidden_field :password_confirmation, autocomplete: "new-password",placeholder:"6文字以上",value: @password,class: "ur-form-group__field"
+              = f.email_field :email, autofocus: true, autocomplete: "email" ,value: session[:email], placeholder:"PC・携帯どちらでも可", class: "ur-form-group__field"
+              = f.hidden_field :password, autocomplete: "new-password",placeholder:"6文字以上",value: session[:password],class: "ur-form-group__field"
+              = f.hidden_field :password_confirmation, autocomplete: "new-password",placeholder:"6文字以上",value: session[:passwoed],class: "ur-form-group__field"
             .ur-form-group
               %h3.ur-form-group__confirm 本人確認
               %p.ur-form-group__text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
