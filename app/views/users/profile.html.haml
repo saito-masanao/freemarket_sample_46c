@@ -9,15 +9,13 @@
     .up-content
       %section
         %h2.up-chapter-head プロフィール
-        = form_tag('/mypage', class: 'up-form-profile', method: :post) do
-          = hidden_field_tag :__cdrf_value, value: '25ab7ab69e50a9fcb64e0940dbc8571df15a2f7beb3676fb35f2d0e5e746c9eb012885ced171e42e90a3ddcd1b0ea8f1681e3e94132e706ede3a3aca7750299d6'
+        = form_for "@users" do |f|   #モデル作成後に""外す
           .up-setting-profile-icon
             %figure.up-circle-photo-box
-              %img{ alt:"写真1", src: "//static.mercdn.net/images/member_photo_noimage_thumb.png", class: "up-circle-image"}
-            = text_field_tag :nickname, '',  placeholder: '例)AYA☆セール中', class: 'up-input-default'
+              = image_tag 'member_photo_noimage_thumb.png', class: "up-circle-image"
+            = f.text_field :nickname, class: 'up-input-default', placeholder: '例)AYA☆セール中'
           .up-setting-profile-content
-            = text_area_tag :introduction, '', placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪', class: 'up-textarea-default'
-            = hidden_field_tag :after_save_callback, value: 'https://www.mercari.com/jp/mypage/profile/'
-            = submit_tag '変更する', class: 'up-btn-default btn-red'
+            = f.text_area :introduction, class: 'up-textarea-default', placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+            = f.submit '変更する', class: 'up-btn-default btn-red'
     = render 'devise/shared/side_bar'
 = render 'users/top-footer'
