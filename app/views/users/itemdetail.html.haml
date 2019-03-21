@@ -8,17 +8,31 @@
     %h1.is-item__name ワンピース全巻
     .is-item__main.clearfix
       .is-item__photos
-        .is-item__photos__main
-          = image_tag("onepiece1.jpg",class: "")
-        .is-item__photos__list
-          .is-item__photos__list--one
-            = image_tag("onepiece1.jpg",class: "")
-          .is-item__photos__list--one
-            = image_tag("onepiece2.jpg",class: "")
-          .is-item__photos__list--one
-            = image_tag("onepiece3.jpg",class: "")
-          .is-item__photos__list--one
-            = image_tag("onepiece4.jpg",class: "")
+        .is-slider
+          .is-slider__item
+            = image_tag("onepiece1.jpg")
+          .is-slider__item
+            = image_tag("onepiece2.jpg")
+          .is-slider__item
+            = image_tag("onepiece3.jpg")
+          .is-slider__item
+            = image_tag("onepiece4.jpg")
+
+
+
+        .is-thumbnails
+          .is-thumbnails__item.current
+            = link_to '' do
+              = image_tag("onepiece1.jpg")
+          .is-thumbnails__item
+            = link_to '' do
+              = image_tag("onepiece2.jpg")
+          .is-thumbnails__item
+            = link_to '' do
+              = image_tag("onepiece3.jpg")
+          .is-thumbnails__item
+            = link_to '' do
+              = image_tag("onepiece4.jpg")
       %table.is-item__detail
         %tr
           %th 出品者
