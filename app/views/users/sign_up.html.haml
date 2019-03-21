@@ -6,16 +6,14 @@
       .us-main-inner
         .us-sup
           .us-sup__btn-mail
-            %a.us-sup__btn-default{href:"#"} メールアドレスで登録
+            %a.us-sup__btn-default{href:"/users/sign_up"} メールアドレスで登録
             .us-sup__btn-mail--icon
               = fa_icon("envelope 2x")
-          %button#us-sup__fb.us-sup__btn-default.us-sup__btn-sns.us-sup__btn-sns-fb
+          = link_to  user_facebook_omniauth_authorize_path,class: "us-sup__btn-default us-sup__btn-sns us-sup__btn-sns-fb",id: "us-sup__fb" do
+            Facebookで登録
             .us-sup__btn-sns-fb--icon
               = fa_icon("facebook-square 2x")
-            Facebookで登録
-          %button#us-sup__gg.us-sup__btn-default.us-sup__btn-sns.us-sup__btn-sns-gg
-            Googleでログイン
-
+          = link_to "Googleで登録",user_google_omniauth_authorize_path,id: "us-sup__gg",class: "us-sup__btn-default us-sup__btn-sns us-sup__btn-sns-gg"
       = link_to "ログアウト",destroy_user_session_path,method: :delete
 
 = render "devise/shared/login-footer"
