@@ -1,0 +1,130 @@
+body {
+  background-color:rgb(245, 245, 245);
+}
+
+@mixin ib_change-link() {
+  font-size: 14px;
+  text-align: right;
+  &-link {
+    color: #0099e8;
+    .fa-angle-right {
+      font-size:24px;
+    }
+  }
+  &-link:hover {
+    text-decoration: underline;
+    opacity: 0.5;
+  }
+}
+
+.ib-content {
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  width: 700px;
+  margin: 0 auto;
+  background-color: white;
+  &__title {
+    text-align: center;
+    line-height: 96px;
+    font-size: 22px;
+    color: #333;
+    border-bottom: 1.5px solid rgb(245, 245, 245);
+  }
+  &__item {
+    border-bottom: 1.5px solid rgb(245, 245, 245);
+    text-align: center;
+    padding-bottom: 40px;
+    &-inner{
+      padding-top: 24px;
+
+      &-image {
+      }
+      &-name {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__form {
+        &-pay {
+          margin-top: 8px;
+          font-size: 28px;
+          font-weight: bold;
+          span{
+            font-size: 14px;
+          }
+        }
+        &-accordion {
+          margin: 16px auto 0;
+          border: 1px solid #CCC;
+          font-size: 14px;
+          height:48px;
+          width: 320px;
+          line-height: 50px;
+          cursor:pointer;
+          .fa-angle-down {
+            font-size: 25px;
+            font-weight: bold;
+          }
+        }
+        &-payment {
+          margin: 0 auto;
+          padding: 16px 0;
+          display:flex;
+          width: 320px;
+          justify-content: space-between;
+          align-items: baseline;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        &-submit {
+          margin: 0 auto;
+          width: 320px;
+          height: 50px;
+          background-color: #ea352d;
+          border-width: 0;
+          color: white;
+          line-height: 30px;
+          font-size: 14px;
+          cursor: pointer;
+          text-align: center;
+          display: block;
+        }
+      }
+    }
+  }
+  &__address {
+    border-bottom: 1.5px solid rgb(245, 245, 245);
+    &-inner{
+      margin: 0 auto;
+      width: 320px;
+      padding: 40px 87px;
+      h3 {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      address, &__text {
+        margin-top: 8px;
+        font-size: 14px;
+      }
+      &__change {
+        @include ib_change-link();
+      }
+    }
+  }
+  &__payment {
+    &-inner{
+      margin: 0 auto;
+      width: 320px;
+      padding: 40px 87px;
+      h3 {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__info {
+        margin-top: 8px;
+        font-size: 14px;
+      }
+      &__change{
+        @include ib_change-link();
+      }
+    }
+  }
+}
