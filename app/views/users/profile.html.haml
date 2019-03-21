@@ -1,0 +1,21 @@
+= render 'users/top-header'
+= render 'users/camera-btn'
+.um-default
+  %nav.bread-crumbs
+    %ul
+      %li
+        = link_to 'メルカリ > マイページ(パンくずリスト仮置き)'
+  .um-container
+    .up-content
+      %section
+        %h2.up-content__head プロフィール
+        = form_for "@users" do |f|   #モデル作成後に""外して実装
+          .up-setting-profile
+            %figure.up-setting-profile__box
+              = image_tag 'member_photo_noimage_thumb.png', class: "up-circle-image"
+            = f.text_field :nickname, class: 'up-setting-profile__input', placeholder: '例)AYA☆セール中'
+          .up-setting-introduction
+            = f.text_area :introduction, class: 'up-setting-introduction__input', placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！テラかわいいものやきれいめオフィスカジュアル中心に出品しています。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+            = f.submit '変更する', class: 'up-btn-default btn-red'
+    = render 'devise/shared/side_bar'
+= render 'users/top-footer'
