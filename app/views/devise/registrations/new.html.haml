@@ -20,11 +20,11 @@
             .ur-form-group
               = f.label :ニックネーム , class: "ur-form-group__label"
               %span.ur-form-group__span 必須
-              = f.text_field :nickname, autofocus: true, autocomplete: "nickname" ,value: @nickname, placeholder:"例) メルカリ太郎", class: "ur-form-group__field"
+              = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder:"例) メルカリ太郎", class: "ur-form-group__field"
             .ur-form-group
               = f.label :メールアドレス , class: "ur-form-group__label"
               %span.ur-form-group__span 必須
-              = f.email_field :email, autofocus: true, autocomplete: "email" ,value: @email, placeholder:"PC・携帯どちらでも可", class: "ur-form-group__field"
+              = f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"PC・携帯どちらでも可", class: "ur-form-group__field"
             .ur-form-group
               = f.label :パスワード, class: "ur-form-group__label"
               %span.ur-form-group__span 必須
