@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def itemsell
   end
 
-  def itemdetaile
+  def itemdetail
   end
 
   def itemconfirm
