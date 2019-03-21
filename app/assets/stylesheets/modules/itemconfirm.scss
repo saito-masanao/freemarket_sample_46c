@@ -1,41 +1,41 @@
-body {
-  background-color:rgb(245, 245, 245);
-}
-
-@mixin ib_change-link() {
-  font-size: 14px;
-  text-align: right;
-  &-link {
-    color: #0099e8;
-    .fa-angle-right {
-      font-size:24px;
+.ib-content {
+  @mixin ib_change-link() {
+    font-size: 14px;
+    text-align: right;
+    &-link {
+      color: #0099e8;
+      .fa-angle-right {
+        font-size:24px;
+      }
+    }
+    &-link:hover {
+      text-decoration: underline;
+      opacity: 0.5;
     }
   }
-  &-link:hover {
-    text-decoration: underline;
-    opacity: 0.5;
+  @mixin ib_box-config() {
+    background-color: white;
+    width: 700px;
+    margin: 0 auto;
+    border-bottom: 1.5px solid rgb(245, 245, 245);
   }
-}
 
-.ib-content {
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-  width: 700px;
-  margin: 0 auto;
-  background-color: white;
+  width: 100%;
+  background-color:rgb(245, 245, 245);
   &__title {
+    @include ib_box-config();
     text-align: center;
     line-height: 96px;
     font-size: 22px;
     color: #333;
-    border-bottom: 1.5px solid rgb(245, 245, 245);
   }
   &__item {
-    border-bottom: 1.5px solid rgb(245, 245, 245);
+    @include ib_box-config();
     text-align: center;
     padding-bottom: 40px;
     &-inner{
       padding-top: 24px;
-
       &-image {
       }
       &-name {
@@ -91,7 +91,7 @@ body {
     }
   }
   &__address {
-    border-bottom: 1.5px solid rgb(245, 245, 245);
+    @include ib_box-config();
     &-inner{
       margin: 0 auto;
       width: 320px;
@@ -110,6 +110,7 @@ body {
     }
   }
   &__payment {
+    @include ib_box-config();
     &-inner{
       margin: 0 auto;
       width: 320px;
