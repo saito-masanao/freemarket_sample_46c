@@ -68,12 +68,12 @@ float: right;
     color: #333;
     border-top: 2px solid #ea352d;
   }
-    .tab_pages {
+    .um-tab_pages {
     display: none;
     padding: 3%;
     clear: both;
     overflow: hidden;
-    .none-content{
+    .um-none-content{
       padding: 160px 0 60px;
       background: url(/assets/logo-gray-icon.png);
       background-repeat: no-repeat;
@@ -92,7 +92,7 @@ float: right;
   }
 }
 
-.content-buy-items{
+.um-content-buy-items{
   $btn_class: '.tab_btn2';
   $btn_name: 'tab_btn2';
   margin: 0 auto;
@@ -133,12 +133,12 @@ float: right;
     color: #333;
     border-top: 2px solid #ea352d;
   }
-    .tab_pages {
+    .um-tab_pages {
     display: none;
     padding: 3%;
     clear: both;
     overflow: hidden;
-    .none-content{
+    .um-none-content{
       padding: 160px 0 60px;
       background: url(/assets/logo-gray-icon.png);
       background-repeat: no-repeat;
