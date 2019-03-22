@@ -1,0 +1,9 @@
+= render 'users/top-header'
+= render 'users/bread-crumbs'
+.uo-container.clearfix
+  = render 'devise/shared/side_bar'
+  .uo-right
+    .uo-logout
+      %input{type:'submit', class: 'uo-btn', value: 'ログアウト'}
+= render 'users/camera-btn'
+= render 'users/top-footer'
