@@ -17,7 +17,7 @@
   .up-setting-profile{
     padding: 72px 16px 24px;
     text-align: center;
-    background: url(user-bg.jpg);
+    background-image: image-url("user-bg.jpg");
     display:block;
       &__box{
         display: inline-block;
