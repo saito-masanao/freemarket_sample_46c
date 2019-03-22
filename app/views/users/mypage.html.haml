@@ -1,0 +1,12 @@
+= render 'users/top-header'
+.um-default
+  %nav.bread-crumbs
+    %ul
+      %li
+        = link_to 'メルカリ > マイページ(パンくずリスト仮置き)'
+  .um-container
+    = render 'devise/shared/side_bar'
+    = render 'devise/shared/um-content'
+= render 'users/camera-btn'
+= render 'users/top-footer'
+

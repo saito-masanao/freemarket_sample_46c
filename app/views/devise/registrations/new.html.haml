@@ -1,8 +1,8 @@
 .ur-content
   %header.ur-header
     %h1.ur-header__icon
-      %a.ur-header__icon--link{href:"#"}
-        %img.ur-header__icon--link-img{src:"//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2405105395",alt:"mercari"}
+      = link_to root_path ,class: "ur-header__icon--link" do
+        = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2405105395" ,alt: "mercari",class: "ur-header__icon--link-img"
     %nav.ur-hd-nav
       %ol.ur-hd-nav__ol
         %li.ur-hd-nav__list.ur-hd-nav__list--active 会員情報
@@ -20,11 +20,11 @@
             .ur-form-group
               = f.label :ニックネーム , class: "ur-form-group__label"
               %span.ur-form-group__span 必須
-              = f.text_field :nickname, autofocus: true, autocomplete: "nickname" ,placeholder:"例) メルカリ太郎", class: "ur-form-group__field"
+              = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder:"例) メルカリ太郎", class: "ur-form-group__field"
             .ur-form-group
               = f.label :メールアドレス , class: "ur-form-group__label"
               %span.ur-form-group__span 必須
-              = f.email_field :email, autofocus: true, autocomplete: "email" ,placeholder:"PC・携帯どちらでも可", class: "ur-form-group__field"
+              = f.email_field :email, autofocus: true, autocomplete: "email" , placeholder:"PC・携帯どちらでも可", class: "ur-form-group__field"
             .ur-form-group
               = f.label :パスワード, class: "ur-form-group__label"
               %span.ur-form-group__span 必須
