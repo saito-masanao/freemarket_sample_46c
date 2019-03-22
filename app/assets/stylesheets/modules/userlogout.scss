@@ -1,0 +1,28 @@
+.uo-container{
+  margin: 40px auto 0;
+  width: 1020px;
+  padding: 0 0 40px;
+  display: block;
+}
+.uo-right{
+  float: right;
+  box-sizing: border-box;
+  width: 700px;
+  background: #fff;
+  padding: 64px;
+  border-top: 1px solid #f5f5f5;
+}
+.uo-logout{
+  max-width: 320px;
+  margin: 0 auto;
+}
+.uo-btn{
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+}
