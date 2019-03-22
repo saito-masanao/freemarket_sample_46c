@@ -11,7 +11,7 @@ float: right;
   width: 100%;
   &__header{
     padding: 7%;
-    background-image: url(/assets/user-bg.jpg);
+    background-image: image-url("user-bg.jpg");
     background-size: cover;
     &__icons {
       text-align: center;
@@ -75,7 +75,7 @@ float: right;
     overflow: hidden;
     .um-none-content{
       padding: 160px 0 60px;
-      background: url(/assets/logo-gray-icon.png);
+      background-image: image-url("logo-gray-icon.png");
       background-repeat: no-repeat;
       background-position: center 40px;
       background-size: 78px 85px;
@@ -140,7 +140,7 @@ float: right;
     overflow: hidden;
     .um-none-content{
       padding: 160px 0 60px;
-      background: url(/assets/logo-gray-icon.png);
+      background-image: image-url("logo-gray-icon.png");
       background-repeat: no-repeat;
       background-position: center 40px;
       background-size: 78px 85px;
