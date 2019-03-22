@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: "omniauth_callbacks",
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   root 'users#sign_up'
+  get 'users/new'
+  post 'users/create'
   get 'top', to: 'users#top'
   get 'mypage', to: 'users#mypage'
   get 'profile', to: 'users#profile'
@@ -10,7 +15,7 @@ Rails.application.routes.draw do
   get 'credit', to: 'users#credit'
   get 'creditregistration', to: 'users#creditregistration'
   get 'itemsell', to: 'users#itemsell'
-  get 'itemdetaile', to: 'users#itemdetaile'
+  get 'itemdetail', to: 'users#itemdetail'
   get 'itemconfirm', to: 'users#itemconfirm'
   get 'sign_up', to: 'users#sign_up'
 end

@@ -4,14 +4,13 @@
     .ul-login
       .ul-new
         %p.ul-new__no-acount アカウントをお持ちでない方はこちら
-        %a.ul-new__regist{href:"#"} 新規会員登録
+        = link_to "新規会員登録", sign_up_path,class: "ul-new__regist"
       .ul-sns
-        %button#ul-sns__fblogin.ul-sns__btn-default.ul-sns__btn-sns.ul-sns__btn-sns-fb
+        = link_to  user_facebook_omniauth_authorize_path,class: "btn ul-sns__btn-default ul-sns__btn-sns ul-sns__btn-sns-fb",id: "ul-sns__fblogin" do
+          Facebookでログイン
           .ul-sns__btn-sns-fb--icon
             = fa_icon("facebook-square 2x")
-          Facebookでログイン
-        %button#ul-sns__gglogin.ul-sns__btn-default.ul-sns__btn-sns.ul-sns__btn-sns-gg
-          Googleでログイン
+        = link_to "Googleでログイン",user_google_omniauth_authorize_path,id: "ul-sns__gglogin",class: "ul-sns__btn-default ul-sns__btn-sns ul-sns__btn-sns-gg"
       .ul-form
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .ul-form__field
