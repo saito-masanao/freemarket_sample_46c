@@ -1,0 +1,31 @@
+ja:
+  enums:
+    items:
+      delivery_method:
+        undecided:            未定
+        easy_mercari_mail:    らくらくメルカリ便
+        yu_yu_mercari_mail:   ゆうゆうメルカリ便
+        large_mericari_mail:  大型らくらくメルカリ便
+        postal_mail:          ゆうメール
+        letter_pack:          レターパック
+        regular_mail:         普通郵便
+        kuroneko_yamato:      クロネコヤマト
+        yu_pack:              ゆうパック
+        click_post:           クリックポスト
+        yu_packet:            ゆうパケット
+    status:
+       very_good:             新品、未使用
+       good:                  未使用に近い
+       normal:                目立った傷や汚れなし
+       bad:                   やや傷や汚れあり
+       so_bad:                傷や汚れあり
+       very_bad:              全体的に状態悪い
+    derivery_date:
+        OneToTwo:             1~2日で発送
+        TwoToThree:           2~3日で発送
+        FourToSeven:          4~7日で発送
+    derivery_fee:
+        Include:              送料込み(出品者負担)
+        Exclude:              着払い(購入者負担)
+
+
