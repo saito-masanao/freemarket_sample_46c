@@ -11,14 +11,13 @@
 |last_name(kana)|string||
 |birthday|integer||
 
-
 ### Association
 - has_many :comments
-- has_many :items, depend::destory
+- has_many :items, dependent::destory
 - has_many :orders
 - has_many :reviews
 - has_many :order_comments
-- has_many :credits, depend::destory
+- has_many :credits, dependent::destory
 - has_one :sns_credentials
 - has_many :social_profiles
 
@@ -60,6 +59,7 @@
 ### Association
 - belongs_to :user
 
+
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -70,6 +70,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+
 
 ## adressesテーブル
 
@@ -85,8 +86,6 @@
 - belongs_to :user
 
 
-
-
 ## itemsテーブル
 
 |Column|Type|Options|
@@ -95,30 +94,25 @@
 |description|text|null: false|
 |category_id|integer|null: false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
-|status_id|integer|null: false, foreign_key: true|
-|delivery_fee_id|integer|null: false, foreign_key: true|
-|delivery_date_id|integer|null: false, foreign_key: true|
+|status|integer|null: false|
+|delivery_fee|integer|null: false|
+|delivery_date|integer|null: false|
+|delivery_method|integer|null: false|
 |price|integer|null: false|
 |avatar|string| |
 |user_id|integer|null: false, foreign_key: true|
-|size_id|integer|null: false, foreign_key: true|
+|size|integer||
 
 ### Association
-- has_many :images, depend::destory
-- has_many :categories
-- has_many :category_items
-- has_many :sizes
-- has_many :likes, depend::destory
-- has_many :orders, depend::destory
-- has_many :comments, depend::destory
-- belongs_to :delivery_date
-- belongs_to :item_status
-- belongs_to :delivery_method
-- belongs_to :size
+- has_many :images, dependent::destory
+- has_many :likes, dependent::destory
+- has_many :orders, dependent::destory
+- has_many :comments, dependent::destory
 - belongs_to :brand
 - belongs_to :profit
-- belongs_to :delivery_fee
 - belongs_to :user
+- belongs_to :category
+
 
 ## imagesテーブル
 |Column|Type|Options|
@@ -129,57 +123,15 @@
 ### Association
 - belongs_to :item
 
-## delivery_datesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|delivery_date|string|null: false|
-
-
-### Association
-- has_many :items
-
-## item_statusesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|status|string|null: false|
-
-
-### Association
-- has_many :items
-
-
-## sizesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|size|string|null: false|
-
-
-### Association
-- has_many :items
-- has_many :cateforys
 
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|parent_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :categories
-- has_many :category_items
-- belongs_to :size
-- belongs_to :parent, class_name: :Category
-- has_many :children, class_name: :Category, foreign_key: :parent_id
+- has_many :items
 
-## category_itemsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|item_id|integer|null: false , foreign_key: true|
-|category_id|integer|null: false, foreign_key: true|
-
-### Association
-- belongs_to :item
-- belongs_to :category
 
 ## brandsテーブル
 |Column|Type|Options|
@@ -188,31 +140,13 @@
 
 ### Association
 - has_many :items
-- has_many :categories
+
 
 ## profitsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item_id|integer|null: false , foreign_key: true|
-|delivery_cost|string|null: false|
 |profit|string|null: false|
-
-### Association
-- has_many :items
-
-## delivery_feesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|deliver_fee|string|null: false|
-
-### Association
-- has_many :items
-
-## category_sizesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|category_id|integer|null: false, foreign_key: true|
-|size_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :items
@@ -227,16 +161,8 @@
 ### Association
 - belongs_to :item
 - belongs_to :user
-- belongs_to :order_status
 - has_one :review
 
-## order_statusesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|status|string|null: false|
-
-### Association
-- has_many :orders
 
 ## likesテーブル
 |Column|Type|Options|
@@ -247,6 +173,7 @@
 ### Association
 - belongs_to :item
 - belongs_to :user
+
 
 ## reviewsテーブル
 |Column|Type|Options|
@@ -260,6 +187,7 @@
 - belongs_to :users
 - belongs_to :order
 
+
 ## creditsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -271,6 +199,7 @@
 ### Association
 - belongs_to :user
 
+
 ## sns_credentialsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -279,7 +208,8 @@
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :sns_credential
+- belongs_to :user
+
 
 ## order_commentsテーブル
 |Column|Type|Options|
@@ -291,10 +221,3 @@
 ### Association
 - belongs_to :order
 - belongs_to :user
-
-
-
-
-
-
-
