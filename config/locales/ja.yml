@@ -27,5 +27,15 @@ ja:
     derivery_fee:
         Include:              送料込み(出品者負担)
         Exclude:              着払い(購入者負担)
-
+    size:
+        underXXS:             XXS以下
+        XS:                   XS(SS)
+        S:                    S
+        M:                    M
+        L:                    L
+        XL:                   XL(LL)
+        two_XL:               2XL(3L)
+        three_XL:             3XL(4L)
+        four_XL:              4XL(5L)以上
+        FREE_SIZE:            FREE SIZE
 
