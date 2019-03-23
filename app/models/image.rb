@@ -1,3 +1,3 @@
 class Image < ApplicationRecord
-  belomgs_to :image
+  belomgs_to :item
 end
