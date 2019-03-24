@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
 Brand.create!([
  { id: 1, name:'シャネル'},
  { id: 2, name: 'ナイキ' },
@@ -29,3 +32,25 @@ Category.create!([
  { id: 12, name: '自動車・オートバイ' },
  { id: 13, name: 'その他' },
 ])
+
+10.times do |num|
+  USER_ID_MAX = 0
+  dumy_data = {
+    name:             Faker::Book.title,
+    description:      "古本_#{num}",
+    category_id:      Random.new.rand(1..13),
+    brand_id:         Random.new.rand(1..6),
+    prefecture_id:    Random.new.rand(1..47),
+    price:            999,
+    user_id:          Random.new.rand(0..USER_ID_MAX),
+
+    #列挙型で定義したカラム
+    status:           Random.new.rand(Item.statuses.size),
+    delivery_fee:     Random.new.rand(Item.dfees.size),
+    delivery_date:    Random.new.rand(Item.ddates.size),
+    delivery_method:  Random.new.rand(Item.demethods.size),
+    size:             Random.new.rand(Item.sizes.size),
+  }
+  puts dumy_data
+  Item.create!(dumy_data)
+end
