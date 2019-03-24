@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
-  belongs_to_active_hash :prefecture
+  # belongs_to_active_hash :prefecture
   belongs_to :category
   belongs_to :brand
-  has_many :images, dependent: :destory
+  has_many :images, dependent: :destroy
 
   enum status: {
                   very_good: 0,
@@ -12,9 +12,16 @@ class Item < ApplicationRecord
                   so_bad:    4,
                   very_bad:  5
   }
-  enum derivery_fee: {Included:0,Exculude:1}
-  enum derivery_date: { OneToTwo: 0, TwoToThree: 1,FourToSeven: 2}
-  enum delivery_method: {
+  enum dfee: {
+                  include:  0,
+                  exclude:  1
+  }
+  enum ddate: {
+                        one_to_two:    0,
+                        two_to_three:  1,
+                        four_to_seven: 2
+  }
+  enum demethod: {
                           undecided:           0,
                           easy_mercari_mail:   1,
                           yu_yu_mercari_mail:  2,
