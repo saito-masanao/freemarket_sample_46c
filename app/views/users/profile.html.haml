@@ -1,10 +1,8 @@
 = render 'users/top-header'
 = render 'users/camera-btn'
 .um-default
-  %nav.bread-crumbs
-    %ul
-      %li
-        = link_to 'メルカリ > マイページ(パンくずリスト仮置き)'
+  - breadcrumb :profile
+  = render 'users/bread-crumbs'
   .um-container
     .up-content
       %section
