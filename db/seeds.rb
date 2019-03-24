@@ -32,29 +32,33 @@ Category.create!([
  { id: 13, name: 'その他' },
 ])
 
-100.times do |n|
+#作成するテーブルのレコード数を指定
+USER_TABLE_MAX = 100
+ITEM_TABLE_MAX = 200
+
+USER_TABLE_MAX.times do |n|
  name = Faker::Pokemon.name
  email = Faker::Internet.email
  password = "password"
  birthday =Faker::Time.between(40.years.ago, 18.years.ago, :all).to_s[0, 10]
- User.create!(nickname: name,
+ User.create!(id: n+1,
+              nickname: name,
               email: email,
               password: password,
               birthday: birthday
              )
 end
 
-10.times do |num|
-  USER_ID_MAX = 0
+ITEM_TABLE_MAX.times do |n|
   dumy_data = {
-    name:             Faker::Book.title,
-    description:      "古本_#{num}",
+    id:               n+1,
+    name:             Faker::Pokemon.move,
+    description:      "技マシーン_#{n}",
     category_id:      Random.new.rand(1..13),
     brand_id:         Random.new.rand(1..6),
     prefecture_id:    Random.new.rand(1..47),
-    price:            999,
-    user_id:          Random.new.rand(0..USER_ID_MAX),
-
+    price:            123456789,
+    user_id:          Random.new.rand(1..USER_TABLE_MAX),
     #列挙型で定義したカラム
     status:           Random.new.rand(Item.statuses.size),
     delivery_fee:     Random.new.rand(Item.dfees.size),
@@ -62,6 +66,5 @@ end
     delivery_method:  Random.new.rand(Item.demethods.size),
     size:             Random.new.rand(Item.sizes.size),
   }
-  puts dumy_data
   Item.create!(dumy_data)
 end
