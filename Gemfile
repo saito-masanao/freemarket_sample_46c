@@ -45,6 +45,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'active_hash'
 gem 'enum_help'
+gem 'rails-i18n', '~> 5.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
