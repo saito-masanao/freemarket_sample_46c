@@ -45,6 +45,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'active_hash'
 gem 'enum_help'
+gem 'faker'
 gem 'rails-i18n', '~> 5.1'
 
 group :development, :test do
@@ -79,7 +80,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
 Brand.create!([
  { id: 1, name:'シャネル'},
  { id: 2, name: 'ナイキ' },
@@ -29,3 +31,15 @@ Category.create!([
  { id: 12, name: '自動車・オートバイ' },
  { id: 13, name: 'その他' },
 ])
+
+100.times do |n|
+ name = Faker::Pokemon.name
+ email = Faker::Internet.email
+ password = "password"
+ birthday =Faker::Time.between(40.years.ago, 18.years.ago, :all).to_s[0, 10]
+ User.create!(nickname: name,
+              email: email,
+              password: password,
+              birthday: birthday
+             )
+end
