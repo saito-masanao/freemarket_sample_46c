@@ -61,9 +61,9 @@ ITEM_TABLE_MAX.times do |n|
     user_id:          Random.new.rand(1..USER_TABLE_MAX),
     #列挙型で定義したカラム
     status:           Random.new.rand(Item.statuses.size),
-    delivery_fee:     Random.new.rand(Item.dfees.size),
-    delivery_date:    Random.new.rand(Item.ddates.size),
-    delivery_method:  Random.new.rand(Item.demethods.size),
+    delivery_fee:     Random.new.rand(Item.delivery_fees.size),
+    delivery_date:    Random.new.rand(Item.delivery_dates.size),
+    delivery_method:  Random.new.rand(Item.delivery_methods.size),
     size:             Random.new.rand(Item.sizes.size),
   }
   Item.create!(dumy_data)
