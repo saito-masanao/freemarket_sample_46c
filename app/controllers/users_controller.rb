@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   end
 
   def itemdetail
+    @item = Item.find(1)
   end
 
   def itemconfirm

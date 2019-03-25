@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   # belongs_to_active_hash :prefecture
   belongs_to :category
   belongs_to :brand
+  belongs_to :user
   has_many :images, dependent: :destroy
 
   enum status: {
