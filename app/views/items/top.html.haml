@@ -59,13 +59,10 @@
           / = render 'items/items_top/item', item: @item
       .view-all
         = link_to "すべての商品を見る", "/test/", class:"all-items"
+
     %h2.pickup-head ピックアップブランド
     %section.items-box-container.clearfix
-      %h3.items-box-container__title
-        = link_to "シャネル 新着アイテム", "/test/", class:"items-box-container__title__topic"
-      .items-box-content.clearfix
-        - 4.times do
-          / = render 'items/items_top/item', item: @item
+      = render 'items/items_top/chanels', collection: @chanels
       .view-all
         = link_to "すべての商品を見る", "/test/", class:"all-items"
 
