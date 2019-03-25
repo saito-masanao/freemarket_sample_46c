@@ -50,25 +50,27 @@
           %td
             %ul
               %li
-                = link_to '漫画'
+                = link_to '' do
+                  #{@item.category.name}
               %li
                 = link_to '' do
                   = fa_icon 'angle-right'
-                  %span ゴム類
+                  %span #{@item.brand.name}
               %li
                 = link_to '' do
                   = fa_icon 'angle-right'
-                  %span ワンピース
+                  %span #{@item.name}
         %tr
           %th ブランド
           %td
-            = link_to '集英社'
+            = link_to '' do
+              #{@item.brand.name}
         %tr
           %th 商品の状態
-          %td やや傷や汚れあり
+          %td #{@item.status_i18n}
         %tr
           %th 配送料の負担
-          %td 送料込み(出品者負担)
+          %td
         %tr
           %th 配送の方法
           %td らくらくメルカリ便
