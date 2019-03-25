@@ -3,7 +3,11 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :brand
   belongs_to :user
+  belongs_to :prefecture
   has_many :images, dependent: :destroy
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 
   enum status: {
                   very_good: 0,
