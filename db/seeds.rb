@@ -57,7 +57,7 @@ ITEM_TABLE_MAX.times do |n|
     category_id:      Random.new.rand(1..13),
     brand_id:         Random.new.rand(1..6),
     prefecture_id:    Random.new.rand(1..47),
-    price:            123456789,
+    price:            9999999,
     user_id:          Random.new.rand(1..USER_TABLE_MAX),
     #列挙型で定義したカラム
     status:           Random.new.rand(Item.statuses.size),
