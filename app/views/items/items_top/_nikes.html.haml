@@ -1,7 +1,5 @@
-/ - if @nikes.name.nil?
-/ - else
 %h3.items-box-container__title
   = link_to "ナイキ 新着アイテム", "/test/", class:"items-box-container__title__topic"
 .items-box-content.clearfix
   = render partial: "/items/items_top/nike", collection: @nikes
-.view-all
+
