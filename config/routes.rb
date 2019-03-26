@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get 'itemdetail', to: 'users#itemdetail'
   get 'itemconfirm', to: 'users#itemconfirm'
   get 'sign_up', to: 'users#sign_up'
+  get 'itemsell', to: 'users#itemsell'
 end
