@@ -28,13 +28,10 @@
   %section.top-pickup-contents
     %h2.pickup-head ピックアップカテゴリー
     %section.items-box-container.clearfix
-      %h3.items-box-container__title
-        = link_to "レディース 新着アイテム", "/test/", class:"items-box-container__title__topic"
-      .items-box-content.clearfix
-        - 4.times do
-          / = render partial: "/items/items_top/item", item: @item
+      = render 'items/items_top/ladies',collection: @ladies
       .view-all
         = link_to "すべての商品を見る", "/test/", class:"all-items"
+
     %section.items-box-container.clearfix
       %h3.items-box-container__title
         = link_to "メンズ 新着アイテム", "/test/", class:"items-box-container__title__topic"
