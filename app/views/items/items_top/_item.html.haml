@@ -4,9 +4,9 @@
       = image_tag("sample1.jpg",class: "lazyloaded is-higher-width")
     .items-box-body
       %h3.items-box-body__name
-        =vuitton.name
+        =item.name
       .items-box-num.clearfix
-        .items-box-price ¥#{vuitton.price}
+        .items-box-price ¥#{item.price}
         .items-box-likes
           %i.fa.fa-heart
           %span.items-box-likes__count 1
