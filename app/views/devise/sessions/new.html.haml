@@ -1,0 +1,23 @@
+= render "devise/shared/login-header"
+.ul-contener
+  %main.ul-main
+    .ul-login
+      .ul-new
+        %p.ul-new__no-acount アカウントをお持ちでない方はこちら
+        = link_to "新規会員登録", sign_up_path,class: "ul-new__regist"
+      .ul-sns
+        = link_to  user_facebook_omniauth_authorize_path,class: "btn ul-sns__btn-default ul-sns__btn-sns ul-sns__btn-sns-fb",id: "ul-sns__fblogin" do
+          Facebookでログイン
+          .ul-sns__btn-sns-fb--icon
+            = fa_icon("facebook-square 2x")
+        = link_to "Googleでログイン",user_google_omniauth_authorize_path,id: "ul-sns__gglogin",class: "ul-sns__btn-default ul-sns__btn-sns ul-sns__btn-sns-gg"
+      .ul-form
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .ul-form__field
+            = f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス",class: "ul-form__field--input-text ul-form__field--input-default"
+          .ul-form__field
+            = f.password_field :password, autocomplete: "current-password",placeholder: "パスワード",class: "ul-form__field--input-text ul-form__field--input-default"
+          .ul-form__btn
+            = f.submit "ログイン",class: "ul-form__btn--submit ul-form__btn--default ul-form__btn--red"
+          %a.ul-form__passwordforget{href:"#"} パスワードをお忘れの方
+= render "devise/shared/login-footer"

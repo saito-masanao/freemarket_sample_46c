@@ -1,0 +1,19 @@
+= render "devise/shared/login-header"
+.us-content
+  %main.us-main
+    %section.us-main-section
+      %h2.us.us-main-section__head 新規会員登録
+      .us-main-inner
+        .us-sup
+          .us-sup__btn-mail
+            %a.us-sup__btn-default{href:"/users/sign_up"} メールアドレスで登録
+            .us-sup__btn-mail--icon
+              = fa_icon("envelope 2x")
+          = link_to  user_facebook_omniauth_authorize_path,class: "us-sup__btn-default us-sup__btn-sns us-sup__btn-sns-fb",id: "us-sup__fb" do
+            Facebookで登録
+            .us-sup__btn-sns-fb--icon
+              = fa_icon("facebook-square 2x")
+          = link_to "Googleで登録",user_google_omniauth_authorize_path,id: "us-sup__gg",class: "us-sup__btn-default us-sup__btn-sns us-sup__btn-sns-gg"
+      = link_to "ログアウト",destroy_user_session_path,method: :delete
+
+= render "devise/shared/login-footer"

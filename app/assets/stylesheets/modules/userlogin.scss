@@ -1,0 +1,113 @@
+@import "./mixin/login-default";
+.ul-contener{
+  @include login-default();
+  .ul-main{
+    display: block;
+    .ul-login{
+      max-width: none;
+      width: 456px;
+      height:731px;
+      margin: 0 auto;
+      background: white;
+      .ul-new{
+        padding: 40px 64px;
+        text-align: center;
+        &__no-acount{
+          font-size: 14px;
+        }
+        &__regist{
+          display: block;
+          margin: 8px 0 0;
+          border: 1px solid #0099e8;
+          background: #0099e8;
+          color: #fff;
+          line-height: 40px;
+          text-decoration: none;
+          }
+      }
+      .ul-sns{
+        padding: 32px 64px;
+        border-top: 1px solid #eee;
+        &__btn-default{
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          border: 1px solid transparent;
+          -webkit-transition: all ease-out .3s;
+          transition: all ease-out .3s;
+          cursor: pointer;
+          text-align: center;
+        }
+        &__btn-sns{
+          position: relative;
+        }
+        &__btn-sns-fb{
+          margin: 16px 0 0;
+          background: #385185;
+          color: #fff;
+          &--icon{
+          position: absolute;
+          left:16px;
+          top:6px;
+          }
+        }
+        &__btn-sns-gg{
+          margin: 16px 0 0;
+          background: #fff url("g-logo.png")  16px 12px/ 24px 24px no-repeat;
+          border: #979797 solid 1px;
+          color: #333;
+
+        }
+      }
+      .ul-form{
+        padding: 24px 64px 32px;
+        &__field{
+          margin: 24px 0 0;
+          &--input-default{
+            box-sizing:border-box;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+            width: 100%;
+            text-decoration: none;
+          }
+        }
+        &__field:first-child {
+          margin: 0;
+          }
+        &__btn{
+          &--submit{
+            margin: 24px 0 0;
+          }
+          &--default{
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            border: 1px solid transparent;
+            -webkit-transition: all ease-out .3s;
+            transition: all ease-out .3s;
+            cursor: pointer;
+            text-align: center;
+          }
+          &--red{
+            background: #ea352d;
+            border: 1px solid #ea352d;
+            color: #fff;
+          }
+        }
+        &__passwordforget{
+          display: block;
+          margin: 40px 0 0;
+          color: #0099e8;
+          text-decoration: none;
+          }
+      }
+    }
+  }
+}
