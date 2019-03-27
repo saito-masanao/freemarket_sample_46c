@@ -70,9 +70,10 @@ $(function() {
         console.log(response.error.message);
       } else {
         console.log(response.id);
+        $('#card_token').attr('value', response.id);
       }
     });
-
+    $('.credit-right-content__wrapper__box__form').submit();
     // $(".submit-button").prop("disabled", false);
   });
 });

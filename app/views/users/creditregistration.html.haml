@@ -69,6 +69,7 @@
             .credit-right-content__wrapper__box__form__caution
               %span.question ?
               .credit-question-number カード裏面の番号とは？
+            = f.hidden_field :card_token
             %button.submit-button 追加する
     =render 'devise/shared/side_bar'
 = render 'users/camera-btn'
