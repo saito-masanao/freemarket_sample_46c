@@ -30,11 +30,12 @@ Category.create!([
  { id: 11, name: 'チケット' },
  { id: 12, name: '自動車・オートバイ' },
  { id: 13, name: 'その他' },
-])
+# ])
 
 #作成するテーブルのレコード数を指定
 USER_TABLE_MAX = 100
 ITEM_TABLE_MAX = 200
+LIKE_TABLE_MAX = 400
 
 USER_TABLE_MAX.times do |n|
  name = Faker::Pokemon.name
@@ -68,3 +69,11 @@ ITEM_TABLE_MAX.times do |n|
   }
   Item.create!(dumy_data)
 end
+
+# LIKE_TABLE_MAX.times do |n|
+#   dumy_data = {
+#     item_id:          Random.new.rand(1..ITEM_TABLE_MAX),
+#     user_id:          Random.new.rand(1..USER_TABLE_MAX)
+#   }
+#   Like.create!(dumy_data).unique
+# end

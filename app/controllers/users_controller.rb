@@ -36,9 +36,6 @@ class UsersController < ApplicationController
   def itemsell
   end
 
-  def itemdetail
-    @item = Item.find(1)
-  end
 
   def itemconfirm
   end

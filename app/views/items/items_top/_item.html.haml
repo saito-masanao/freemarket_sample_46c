@@ -1,0 +1,13 @@
+.items-box
+  = link_to root_path do
+    .top-photo
+      = image_tag('sample1.jpg',class: 'lazyloaded is-higher-width')
+    .items-box-body
+      %h3.items-box-body__name
+        =item.name
+      .items-box-num.clearfix
+        .items-box-price ¥#{item.price}
+        .items-box-likes
+          %i.fa.fa-heart
+          %span.items-box-likes__count #{item.likes.length}
+        %p.items-box-tax (税込)

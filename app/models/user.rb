@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,:omniauthable
   has_many :social_profiles, dependent: :destroy
   has_many :items
+  has_many :likes
+  has_many :like_items, through: :likes, source: :item
   validates :nickname, presence: true,length: { maximum: 20 }
 
   def social_profile(provider)

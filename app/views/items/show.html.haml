@@ -3,6 +3,7 @@
   = render 'users/top-header'
   = render 'users/bread-crumbs'
 
+
   %section.is-item
     %h1.is-item__name #{@item.name}
     .is-item__main.clearfix
@@ -70,40 +71,36 @@
           %td #{@item.status_i18n}
         %tr
           %th 配送料の負担
-          %td
+          %td #{@item.delivery_fee_i18n}
         %tr
           %th 配送の方法
-          %td らくらくメルカリ便
+          %td #{@item.delivery_method_i18n}
         %tr
           %th 配送元地域
           %td
-            = link_to '埼玉県'
+            = link_to '' do
+              #{@item.prefecture.name}
         %tr
           %th 発送日の目安
-          %td 1~2日で発送
+          %td #{@item.delivery_date_i18n}
     .is-item__price
-      %span.is-item__price--bold ¥ 99,999
+      %span.is-item__price--bold
+        = converting_to_jpy(@item.price)
       %span.is-item__price--tax (税込)
-      %span.is-item__price--shipping-fee 送料込み
+      %span.is-item__price--shipping-fee
+        = "#{@item.delivery_fee_i18n}".gsub(/\(.+\)/,"")
     = link_to "購入画面に進む", itemconfirm_path, class: "is-item__buy-btn"
     .is-item__description
       %p.is-item__description--inner
-        この世界に生を受ける前からワンピースが大好きです。
-        %br
-        でも読みすぎて内容を全て覚えてしまったので、
-        %br
-        格安でお譲りしようと思います。
+        #{@item.description}
     .is-item__btns.clearfix
       .is-item__btns--left
-        = button_tag type: "button", name: "like!", class: "is-item__btns--left--like btn" do
-          = fa_icon "heart", class: "is-item__btns--left--like__icon"
-          %span いいね!
-          %span 5
+        = render 'likes/like'
         = link_to "", class: "is-item__btns--left--report btn" do
           = fa_icon "flag", class: "is-item__btns--left--report__icon"
           %span.is-item__btns--left--report__text 不適切な商品の報告
       .is-item__btns--right
-        = link_to "", class: "is-item__btns--right--safe" do
+        = link_to "https://www.mercari.com/jp/safe/description/", class: "is-item__btns--right--safe" do
           = fa_icon "lock", class: "is-item__btns--right--safe__icon"
           %span.is-item__btns--right--safe__text あんしん・あんぜんへの取り組み
 
@@ -169,15 +166,15 @@
       .is-item__relation
         %section.is-item__relation__box
           %h2.is-item__ralation__box__title
-            = link_to "さいとーさんのその他の出品", "", class: "items-box-container__title__topic"
+            = link_to "#{@item.user.nickname}さんのその他の出品", "", class: "items-box-container__title__topic"
           .is-item__relation__box__contents.clearfix
-            - 6.times do
-              = render 'users/item'
+            - @user_items.each do |item|
+              = render 'items/items_top/item', item:item
         %section.is-item__relation__box
           %h2.is-item__ralation__box__title
-            = link_to "集英社の漫画 その他の出品", "", class: "items-box-container__title__topic"
+            = link_to "#{@item.category.name} その他の出品", "", class: "items-box-container__title__topic"
           .is-item__relation__box__contents.clearfix
-            - 6.times do
-              = render 'users/item'
+            - @category_items.each do |item|
+              = render 'items/items_top/item', item:item
 
   = render 'users/top-footer'
