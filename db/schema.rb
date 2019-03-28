@@ -68,8 +68,7 @@ ActiveRecord::Schema.define(version: 2019_03_27_063517) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id", "user_id"], name: "index_likes_on_item_id_and_user_id", unique: true
-    t.index ["item_id"], name: "index_likes_on_item_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index ["user_id"], name: "fk_rails_1e09b5dabf"
   end
 
   create_table "social_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
