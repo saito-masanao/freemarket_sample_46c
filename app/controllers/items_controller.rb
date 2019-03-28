@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    binding.pry
     @item_form = ItemForm.new(item_params)
     if @item_form.save
         redirect_to root_path

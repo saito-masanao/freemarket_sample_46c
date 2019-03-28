@@ -15,7 +15,6 @@ class ItemForm
                       :user_id
 
   def save
-    binding.pry
     return false if invalid?
     item = Item.new(name: name,description: description,category_id: category_id,brand_id: brand_id,status: status,delivery_fee: delivery_fee,delivery_method: delivery_method,prefecture_id: prefecture_id,delivery_date: delivery_date,price: price,user_id:user_id)
     image.each do |i|

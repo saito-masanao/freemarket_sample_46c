@@ -95,7 +95,6 @@ $(document).on('turbolinks:load', function(){
 // ファイルの初期化
      file = ""
 
-     isCount = 0
      imgCount = 0
 //
 // ラベルのforと同じIDのファイルアップローダーが開いた時に発火する///////////////////////
@@ -126,12 +125,10 @@ $(document).on('turbolinks:load', function(){
       appendInputField(isImgId);
 //viewの幅を変更させるクラスの追加
     if (imgCount < 9){
-      console.log("aaa");
       removeClass(imgCount)
       imgCount = imgCount + 1
       addClass(imgCount)
     } else {
-      console.log("bbb");
       imgCount = imgCount + 1
       $("#is-add").removeClass();
       $(".is-upload-box-container__box--text").text("");
@@ -140,8 +137,6 @@ $(document).on('turbolinks:load', function(){
       $("#is-add").attr("for",`is-img-${isImgId+1}`);
 //変更後のlabelのforを取得
        isLabelFor = $(".is-upload-box-container").find("#is-add").attr("for")
-       isCount = isCount + 1
-       console.log(imgCount)
   }
     reader.readAsDataURL(file);
   });
@@ -150,8 +145,6 @@ $(document).on('turbolinks:load', function(){
 ////削除ボタンの処理//////////////////////////////////////////////////////////////
   $(".is-upload-box-container").on("click",".is-image-li__under--e",function(e){
     e.preventDefault();
-    console.log(imgCount)
-    isCount = isCount -1
 //削除対象のliのIDを取得
     var imgId = $(this).parent().parent().attr("id");
 //liのidに紐づくinputタグのdata-idを取得
