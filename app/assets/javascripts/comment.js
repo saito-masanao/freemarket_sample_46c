@@ -3,7 +3,7 @@ $(function(){
     var html =`<li class='is-item__comment--self clearfix'>
                  <a href = "", class = "is-item__comment--self__user">
                    <figure>
-                     <img class = "", src = "http://localhost:3000/assets/ikkyu-1a82e9bbfc3f7cb61b6933f35c13a7f34e40445c8664d85e4092d65012e8f099.jpg">
+                     <img class = "", src = "https://blog-001.west.edge.storage-yahoo.jp/res/blog-61-58/hirodebu3913_0927/folder/1027331/71/37250371/img_0">
                      <figcaption>${comment.user_name}</figcaption>
                    </figure>
                  </a>
