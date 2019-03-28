@@ -1,18 +1,18 @@
 - if user_signed_in?
-  - unless @item.like?(current_user)
-    = button_tag type: "button", name: "like!", class: "is-item__btns--left--like btn", id: 'like-btn', onfocus:"this.blur();" do
-      %input{name: "", type: "hidden", value: @item.id, class: 'is-like-btn' }
-      = fa_icon "heart", class: "is-item__btns--left--like__icon"
-      %span いいね!
-      %span.is-likes-count #{@item.likes.length}
-  -else
+  - if @item.like?(current_user)
     = button_tag type: "button", name: "like!", class: "is-item__btns--left--liked btn", id: 'like-btn', onfocus:"this.blur();" do
       %input{name: "", type: "hidden", value: @item.id, class: 'is-like-btn' }
       = fa_icon "heart", class: "is-item__btns--left--like__icon"
       %span いいね!
       %span.is-likes-count #{@item.likes.length}
+  -else
+    = button_tag type: "button", name: "like!", class: "is-item__btns--left--like btn", id: 'like-btn', onfocus:"this.blur();" do
+      %input{name: "", type: "hidden", value: @item.id, class: 'is-like-btn' }
+      = fa_icon "heart", class: "is-item__btns--left--like__icon"
+      %span いいね!
+      %span.is-likes-count #{@item.likes.length}
 - else
-  = link_to '/users/sign_in' do
+  = link_to new_user_session_path do
     = button_tag type: "button", name: "like!", class: "is-item__btns--left--like btn", onfocus:"this.blur();" do
       = fa_icon "heart", class: "is-item__btns--left--like__icon"
       %span いいね!
