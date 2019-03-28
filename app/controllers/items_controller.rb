@@ -8,6 +8,14 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(item_params[:id])
 
+    near_items = Item.where(category_id: @item.category.id).reject{|i| i[:id] == item_params[:id]}
+    @prev_item = near_items[rand(near_items.length)]
+    more_near_items = near_items.reject{|i| i[:id] == @prev_item[:id] }
+    @next_item = more_near_items[rand(more_near_items.length)]
+
+    @comment = Comment.new
+    @comments = @item.comments
+
     max_i = Item.where(user_id: @item.user.id).length
     if max_i < 7
       @user_items = Item.where(user_id: @item.user.id)

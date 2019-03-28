@@ -89,7 +89,7 @@
       %span.is-item__price--tax (税込)
       %span.is-item__price--shipping-fee
         = "#{@item.delivery_fee_i18n}".gsub(/\(.+\)/,"")
-    = link_to "購入画面に進む", itemconfirm_path, class: "is-item__buy-btn"
+    = link_to "購入画面に進む", itemconfirm_path(@item), class: "is-item__buy-btn"
     .is-item__description
       %p.is-item__description--inner
         #{@item.description}
@@ -107,49 +107,21 @@
   .is-item__comment-block
     .is-item__comment__wrapper
       .is-item__comments
-        %ul
-          %li.is-item__comment.clearfix
-            = link_to "", class: "is-item__comment__user" do
-              %figure
-                = image_tag "kenchan.JPG", class: ""
-                %figcaption ハンバーグ
-            .is-item__comment__body
-              .is-item__comment__body__text
-                はじめまして！
-                %br
-                ハンバーグです！
-              .is-item__comment__body__icons.clearfix
-                %time
-                  = fa_icon "clock-o"
-                  %span 1日前
-                = fa_icon 'flag'
-          %li.is-item__comment.clearfix
-            = link_to "", class: "is-item__comment__user" do
-              %figure
-                = image_tag "ikkyu.jpg", class: ""
-                %figcaption ハンバーガー
-            .is-item__comment__body
-              .is-item__comment__body__text
-                はじめまして！
-                %br
-                ハンバーガーです！
-              .is-item__comment__body__icons.clearfix
-                %time
-                  = fa_icon "clock-o"
-                  %span 2日前
-                = fa_icon 'flag'
+        %ul.comments
+          = render partial: 'items/items_top/comment', collection: @comments
       .is-item__comments
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %textarea{type:'text', name:'body', class: 'is-item__comment-form__textarea'}
-        %input{type:'submit', class: 'is-item__comment-form__btn', value: 'コメントする'}
+        = form_for [@item, @comment], html:{id: 'comment-form'} do |f|
+          = f.text_area :comment, class: 'is-item__comment-form__textarea', placeholder: 'コメントを書いてください'
+          = f.submit 'コメントする', class: 'is-item__comment-form__btn'
       %ul.is-item__navi.clearfix
         %li.is-item__navi--prev
-          = link_to "" do
+          = link_to item_path(@prev_item) do
             = fa_icon "angle-left"
-            NARUTO
+            = @prev_item.name
         %li.is-item__navi--next
-          = link_to "" do
-            こち亀
+          = link_to item_path(@next_item) do
+            = @next_item.name
             = fa_icon "angle-right"
       .is-item__social-media-box
         .is-item__social-medias-text

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :items,only: [:new, :create, :show] do
     resources :likes, only: [:create]
+    resources :comments, only: [:create]
   end
   root 'users#sign_up'
   get 'users/new'

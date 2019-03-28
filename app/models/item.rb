@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
   has_many :images, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def like?(user)
     like_users.include?(user)

@@ -1,0 +1,27 @@
+- if comment.user != current_user
+  %li.is-item__comment.clearfix
+    = link_to "", class: "is-item__comment__user" do
+      %figure
+        = image_tag "kenchan.JPG", class: ""
+        %figcaption #{comment.user.nickname}
+    .is-item__comment__body.body
+      .is-item__comment__body__text
+        = comment.comment
+      .is-item__comment__body__icons.clearfix
+        %time
+          = fa_icon "clock-o"
+          %span #{time_ago_in_words(comment.created_at)}前
+        = fa_icon 'flag'
+- else
+  %li.is-item__comment--self.clearfix
+    = link_to "", class: "is-item__comment--self__user" do
+      %figure
+        = image_tag "ikkyu.jpg", class: ""
+        %figcaption #{comment.user.nickname}
+    .is-item__comment--self__body.body
+      .is-item__comment__body__text
+        = comment.comment
+      .is-item__comment__body__icons.clearfix
+        %time
+          = fa_icon "clock-o"
+          %span #{time_ago_in_words(comment.created_at)}前
