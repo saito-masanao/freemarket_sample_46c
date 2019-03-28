@@ -1,5 +1,5 @@
 .items-box
-  = link_to item_path(item) do
+  = link_to item_path(item), data: {"turbolinks"=>false} do
     .top-photo
       = image_tag('sample1.jpg',class: 'lazyloaded is-higher-width')
     .items-box-body

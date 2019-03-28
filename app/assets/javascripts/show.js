@@ -5,7 +5,7 @@ $(function() {
   var $thumbs = $('.is-thumbnails__item');
 
   $slider.slick({
-    arrows: false
+    arrows: false,
   });
 
   $thumbs.on('click', function(e){

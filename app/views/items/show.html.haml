@@ -116,11 +116,11 @@
           = f.submit 'コメントする', class: 'is-item__comment-form__btn'
       %ul.is-item__navi.clearfix
         %li.is-item__navi--prev
-          = link_to item_path(@prev_item) do
+          = link_to item_path(@prev_item), data: {"turbolinks"=>false}do
             = fa_icon "angle-left"
             = @prev_item.name
         %li.is-item__navi--next
-          = link_to item_path(@next_item) do
+          = link_to item_path(@next_item), data: {"turbolinks"=>false} do
             = @next_item.name
             = fa_icon "angle-right"
       .is-item__social-media-box
