@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_063528) do
+ActiveRecord::Schema.define(version: 2019_03_27_125305) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,20 @@ ActiveRecord::Schema.define(version: 2019_03_23_063528) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "lower_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "middle_category_id"
+  end
+
+  create_table "middle_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "category_id"
+  end
+
   create_table "social_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "provider"
@@ -79,12 +93,12 @@ ActiveRecord::Schema.define(version: 2019_03_23_063528) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "birth_day", null: false
     t.string "first_name"
     t.string "last_name"
     t.string "first_name_kana"
     t.string "last_name_kana"
     t.date "birthday"
+    t.string "nickname", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
