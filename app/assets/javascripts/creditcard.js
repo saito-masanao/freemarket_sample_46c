@@ -1,4 +1,5 @@
 $(function() {
+// $(document).on('turbolinks:load', function(){ /* [@kari] 開発時用 */
   const PAYJP_PUBLIC_KEY="pk_test_336046173393efb07571501f";
   const TEST_CARD = [
     {
@@ -50,30 +51,41 @@ $(function() {
       card_info["exp_month"] = $('#credit_month option:selected').val();
       card_info["exp_year"]  = "20" + $('#credit_year option:selected').val();
     }
+    console.log(card_info); /* [@kari] デバッグ用 */
     return card_info
   }
 
-  $('.credit-right-content__wrapper__box__form').on('submit', function(e) {
-    e.preventDefault();
-    console.log("クレジットカード制御用のjsファイル作成");
-    let card_info = get_card_info(true); /* [@kari]最終的にはfalseにする */
-    console.log(card_info);
+  /*
+  カード情報と紐付くトークンを取得する
+  [@kari] エラーだった時は「""」を返す
+  */
+  function get_token(card_info) {
+    return new Promise(resolve => {
+      let _response;
 
-    /* [@ToDo]jsではENVは使えない?? */
-    // Payjp.setPublicKey(ENV['PAYJP_PUBLIC_KEY']);
-    Payjp.setPublicKey(PAYJP_PUBLIC_KEY);
-    console.log(Payjp.getPublicKey(PAYJP_PUBLIC_KEY));
-
-    Payjp.createToken(card_info, function(status, response) {
-      /* トークン生成成功判定*/
-      if (response.error) {
-        console.log(response.error.message);
-      } else {
-        console.log(response.id);
-        $('#card_token').attr('value', response.id);
-      }
+      Payjp.setPublicKey(PAYJP_PUBLIC_KEY);
+      Payjp.createToken(card_info, function(status, response) {
+        /* トークン生成成功判定*/
+        if (response.error) {
+          console.log(response.error.message);
+          _response = "";
+        } else {
+          console.log('aa %s',response.id);
+          _response = response.id;
+        }
+        return resolve(_response);
+      });
     });
-    $('.credit-right-content__wrapper__box__form').submit();
-    // $(".submit-button").prop("disabled", false);
+  }
+
+  $('#submit-button').click(function() {
+    console.log("クレジットカード制御用のjsファイル作成");
+    (async()=> {
+      let card_token;
+      let card_info = get_card_info(true); /* [@kari]最終的にはfalseにする */
+      await get_token(card_info).then(function(v){card_token=v;});
+      $('#card_token').attr('value', card_token);
+      $('#credit_form').submit();
+    })();
   });
 });
