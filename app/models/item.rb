@@ -46,4 +46,6 @@ class Item < ApplicationRecord
                 four_XL: 8,
                 FREE_SIZE: 9
   }
+
+validates :name, presence: true
 end

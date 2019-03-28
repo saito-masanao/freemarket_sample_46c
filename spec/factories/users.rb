@@ -6,5 +6,4 @@ FactoryBot.define do
     password_confirmation {"00000000"}
     sequence(:email) {Faker::Internet.email}
   end
-
 end
