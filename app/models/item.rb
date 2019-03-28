@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  # belongs_to_active_hash :prefecture
   belongs_to :category
   belongs_to :brand
   has_many :images, dependent: :destroy
@@ -12,16 +11,16 @@ class Item < ApplicationRecord
                   so_bad:    4,
                   very_bad:  5
   }
-  enum dfee: {
+  enum delivery_fee: {
                   include:  0,
                   exclude:  1
   }
-  enum ddate: {
+  enum delivery_date: {
                         one_to_two:    0,
                         two_to_three:  1,
                         four_to_seven: 2
   }
-  enum demethod: {
+  enum delivery_method: {
                           undecided:           0,
                           easy_mercari_mail:   1,
                           yu_yu_mercari_mail:  2,
@@ -46,4 +45,5 @@ class Item < ApplicationRecord
                 four_XL: 8,
                 FREE_SIZE: 9
   }
+
 end
