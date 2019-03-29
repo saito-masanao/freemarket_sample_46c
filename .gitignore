@@ -27,3 +27,4 @@
 /config/master.key
 config/omniauth.yml
 /.env
+public/uploads/*
