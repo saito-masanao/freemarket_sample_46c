@@ -25,7 +25,7 @@ set :default_env, {
   AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
 }
 
-set :linked_files, %w{ config/omniauth.yml }
+# set :linked_files, %w{ config/omniauth.yml }
 set :linked_files, %w{ config/secrets.yml }
 
 
@@ -35,15 +35,15 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
-  desc 'upload omniauth.yml'
-  task :upload do
-    on roles(:app) do |host|
-      if test "[ ! -d #{shared_path}/config ]"
-        execute "mkdir -p #{shared_path}/config"
-      end
-      upload!('config/omniauth.yml', "#{shared_path}/config/omniauth.yml")
-    end
-  end
+  # desc 'upload omniauth.yml'
+  # task :upload do
+  #   on roles(:app) do |host|
+  #     if test "[ ! -d #{shared_path}/config ]"
+  #       execute "mkdir -p #{shared_path}/config"
+  #     end
+  #     upload!('config/omniauth.yml', "#{shared_path}/config/omniauth.yml")
+  #   end
+  # end
 
   desc 'upload secrets.yml'
   task :upload do
