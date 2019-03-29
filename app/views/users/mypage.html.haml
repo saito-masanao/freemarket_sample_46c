@@ -1,9 +1,7 @@
 = render 'users/top-header'
 .um-default
-  %nav.bread-crumbs
-    %ul
-      %li
-        = link_to 'メルカリ > マイページ(パンくずリスト仮置き)'
+  - breadcrumb :mypage
+  = render 'users/bread-crumbs'
   .um-container
     = render 'devise/shared/side_bar'
     = render 'devise/shared/um-content'

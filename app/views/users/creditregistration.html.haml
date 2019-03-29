@@ -1,9 +1,7 @@
 = render 'users/top-header'
 .um-default
-  %nav.bread-crumbs
-    %ul
-      %li
-        = link_to 'メルカリ > マイページ(パンくずリスト仮置きです)'
+  - breadcrumb :creditregistration
+  = render 'users/bread-crumbs'
   .um-container
     .credit-right-content
       .credit-right-content__wrapper

@@ -2,6 +2,8 @@
   margin: 0 40px 0 0;
   width: 280px;
   float: left;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-size: 14px;
   .um-mypage-nav {
   margin:0;
   padding:0;
@@ -21,8 +23,8 @@
     line-height:16px;
     border-bottom: 1px solid #eee;
     &:hover {
-    opacity: 0.95;
-    background-color: #eee;
+    opacity: 0.7;
+    background-color: #fdfdfd;
       .fa{
         transform: translate(50%,0);
         transition: all ease-out .2s;
@@ -35,7 +37,7 @@
       color: #ccc;
       margin-top: -5px;
       }
-      #active {
+    &.active{
       background: #eee;
       font-weight: 600;
       color:#333;

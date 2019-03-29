@@ -1,117 +1,64 @@
 = render 'users/top-header'
 .um-default
-  %nav.bread-crumbs
-    %ul
-      %li
-        = link_to 'メルカリ > マイページ(パンくずリスト仮置きです)'
-.confirm-main-content
-
-  .um-container
+  - breadcrumb :userconfirm
+  = render 'users/bread-crumbs'
+  .confirm-main-content
     = render 'devise/shared/side_bar'
+    .confirm-right-content
+      .confirm-right-content__wrapper
+        %h2.confirm-title 本人情報の登録
+      .confirm-right-content__wrapper__box
+        = form_with url: root_path,local: true , class: "confirm-right-content__wrapper__box__form"do |f|
+          %p.confirm-message
+            お客さまの本人情報をご登録ください。
+            %br
+            登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          %a.confirm-upload{:href => "test", :target => "_"} 本人確認書類のアップロードについて＞
+
+          .confirm-group-form
+            %label.group-label お名前
+            %p.confirm-content テスト太郎
+
+          .confirm-group-form
+            %label.group-label お名前カナ
+            %p.confirm-content テスト タロウ
+
+          .confirm-group-form
+            %label.group-label  生年月日
+            %p.confirm-content  2019/1/1
+
+          .confirm-group-form
+            .confirm-group-form__flex
+              %label.group-label 郵便番号
+              %span.form-option 任意
+            = f.text_field :keyword, class: 'confirm-resister-form', placeholder: '例）1234567'
+
+          .confirm-group-form
+            .confirm-group-form__flex
+              %label.group-label 都道府県
+              %span.form-option 任意
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "confirm-resister-form"}
 
 
-  .confirm-right-content
-    .confirm-right-content__wrapper
-      %h2.confirm-title 本人情報の登録
-    .confirm-right-content__wrapper__box
-      = form_with url: root_path,local: true , class: "confirm-right-content__wrapper__box__form"do |f|
-        %p.confirm-message
-          お客さまの本人情報をご登録ください。
-          %br
-          登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
-        %a.confirm-upload{:href => "test", :target => "_"} 本人確認書類のアップロードについて＞
+          .confirm-group-form
+            .confirm-group-form__flex
+              %label.group-label 市区町村
+              %span.form-option 任意
+            = f.text_field :keyword, class: 'confirm-resister-form', placeholder: '例）横浜市緑区'
 
-        .confirm-group-form
-          %label.group-label お名前
-          %p.confirm-content テスト太郎
+          .confirm-group-form
+            .confirm-group-form__flex
+              %label.group-label 番地
+              %span.form-option 任意
+            = f.text_field :keyword, class: 'confirm-resister-form', placeholder: '例）青山1-1-1'
 
-        .confirm-group-form
-          %label.group-label お名前カナ
-          %p.confirm-content テスト タロウ
-
-        .confirm-group-form
-          %label.group-label  生年月日
-          %p.confirm-content  2019/1/1
-
-        .confirm-group-form
-          .confirm-group-form__flex
-            %label.group-label 郵便番号
-            %span.form-option 任意
-          = f.text_field :keyword, class: 'confirm-resister-form', placeholder: '例）1234567'
-
-        .confirm-group-form
-          .confirm-group-form__flex
-            %label.group-label 都道府県
-            %span.form-option 任意
-          %select.confirm-resister-form
-            %option ーーー
-            %option 北海道
-            %option 青森県
-            %option 岩手県
-            %option 宮城県
-            %option 秋田県
-            %option 山形県
-            %option 福島県
-            %option 茨城県
-            %option 栃木県
-            %option 群馬県
-            %option 埼玉県
-            %option 千葉県
-            %option 東京都
-            %option 神奈川県
-            %option 新潟県
-            %option 富山県
-            %option 石川県
-            %option 福井県
-            %option 山梨県
-            %option 長野県
-            %option 岐阜県
-            %option 静岡県
-            %option 愛知県
-            %option 三重県
-            %option 滋賀県
-            %option 京都府
-            %option 大阪府
-            %option 兵庫県
-            %option 奈良県
-            %option 和歌山県
-            %option 鳥取県
-            %option 島根県
-            %option 岡山県
-            %option 広島県
-            %option 山口県
-            %option 徳島県
-            %option 香川県
-            %option 愛媛県
-            %option 高知県
-            %option 福岡県
-            %option 佐賀県
-            %option 長崎県
-            %option 熊本県
-            %option 大分県
-            %option 宮崎県
-            %option 鹿児島県
-            %option 沖縄県
-
-        .confirm-group-form
-          .confirm-group-form__flex
-            %label.group-label 市区町村
-            %span.form-option 任意
-          = f.text_field :keyword, class: 'confirm-resister-form', placeholder: '例）横浜市緑区'
-
-        .confirm-group-form
-          .confirm-group-form__flex
-            %label.group-label 番地
-            %span.form-option 任意
-          = f.text_field :keyword, class: 'confirm-resister-form', placeholder: '例）青山1-1-1'
-
-        .confirm-group-form
-          .confirm-group-form__flex
-            %label.group-label 建物名
-            %span.form-option 任意
-          = f.text_field :keyword, class: 'confirm-resister-form', placeholder: '例）柳ビル103'
-        %button.confirm-button 登録する
-        %a.confirm-registration{:href => "test", :target => "_"} 本人確認の登録について＞
+          .confirm-group-form
+            .confirm-group-form__flex
+              %label.group-label 建物名
+              %span.form-option 任意
+            = f.text_field :keyword, class: 'confirm-resister-form', placeholder: '例）柳ビル103'
+          %button.confirm-button 登録する
+          %a.confirm-registration{:href => "test", :target => "_"} 本人確認の登録について＞
 
 = render 'users/camera-btn'
 = render 'users/top-footer'
