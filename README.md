@@ -102,6 +102,8 @@
 |avatar|string| |
 |user_id|integer|null: false, foreign_key: true|
 |size|integer||
+|item_status|string|null: false|
+
 
 ### Association
 - has_many :images, dependent::destory
@@ -156,7 +158,6 @@
 |------|----|-------|
 |item_id|integer|null: false , foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
-|order_status|string|null: false|
 
 ### Association
 - belongs_to :item
