@@ -8,7 +8,7 @@ $(function() {
     arrows: false,
   });
 
-  $thumbs.on('click', function(e){
+  $thumbs.on('mouseover', function(e){
     e.preventDefault();
     var index = $thumbs.index(this);
     $slider.slick('slickGoTo', index, true);
