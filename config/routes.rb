@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'users#top'
   get 'users/new'
   post 'users/create'
-  get 'top', to: 'users#top'
+  get 'top', to: 'items#top'
   get 'mypage', to: 'users#mypage'
   get 'profile', to: 'users#profile'
   get 'userconfirm', to: 'users#userconfirm'

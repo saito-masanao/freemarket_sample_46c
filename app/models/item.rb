@@ -46,4 +46,6 @@ class Item < ApplicationRecord
                 FREE_SIZE: 9
   }
 
+
+validates :name, presence: true
 end
