@@ -159,7 +159,6 @@ $(document).on('turbolinks:load', function(){
       $(".is-upload-box-container__box--text").text("ドラッグアンドドロップまたはクリックしてファイルをアップロード");
     }
     $(this).parent().parent().remove();
-    // $("#is-add").addClass(`is-item-${imgCount}`).removeClass(`is-item-${imgCount+1}`);
     $(".is-add-up").find(`#${imgId}`).remove();
   })
 //////////////////////////////////////////////////////////////////////////////////
