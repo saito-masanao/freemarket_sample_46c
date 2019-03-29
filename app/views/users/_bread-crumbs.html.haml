@@ -1,8 +1,6 @@
 %nav.bread-crumbs
   %ul
     %li
-      = link_to 'メルカリ', '/top'
-      = fa_icon 'angle-right'
-    %li
-      ワンピース全巻
+      = breadcrumbs pretext: "", separator: " #{content_tag(:i, '', :class=>'fa fa-angle-right' )} "
+
 
