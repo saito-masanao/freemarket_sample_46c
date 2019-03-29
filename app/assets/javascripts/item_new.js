@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function(){
   }
 
   function appendInputField(isImgId){
-    var html =`<input id="is-img-${isImgId+1}" multiple="multiple"  data-id="${isImgId+1}" class="is-upload-box-container__box--file" type="file" name="item_form[image][]">`
+    var html =`<input id="is-img-${isImgId+1}" multiple="multiple"  data-id="${isImgId+1}" class="is-upload-box-container__box--file" type="file" name="item_form[images][]">`
   inputFieldList.append(html);
   }
 

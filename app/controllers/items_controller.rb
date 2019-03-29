@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
       :prefecture_id,
       :delivery_date,
       :price,
-       { :image => [] }
+       { :images => [] }
       ).merge(user_id:current_user.id)
   end
 end
