@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     resources :likes, only: [:create]
     resources :comments, only: [:create]
   end
-  root 'users#sign_up'
+  root 'items#top'
   get 'users/new'
   post 'users/create'
-  get 'top', to: 'users#top'
+  get 'top', to: 'items#top'
   get 'mypage', to: 'users#mypage'
   get 'profile', to: 'users#profile'
   get 'userconfirm', to: 'users#userconfirm'
@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get 'creditregistration', to: 'users#creditregistration'
   get 'itemconfirm', to: 'users#itemconfirm'
   get 'sign_up', to: 'users#sign_up'
+  get 'itemsell', to: 'users#itemsell'
 end

@@ -37,11 +37,11 @@
       color: #ccc;
       margin-top: -5px;
       }
-    }
-      #active{
+    &.active{
       background: #eee;
       font-weight: 600;
       color:#333;
         }
       }
     }
+  }
