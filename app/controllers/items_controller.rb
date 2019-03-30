@@ -24,28 +24,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  private
-
-  def item_params
-    params.require(:item_form).permit(
-      :name,
-      :description,
-      :category_id,
-      :brand_id,
-      :status,
-      :delivery_fee,
-      :delivery_method,
-      :prefecture_id,
-      :delivery_date,
-      :price,
-       { :images => [] }
-      ).merge(user_id:current_user.id)
-  end
-
   def show
-    @item = Item.find(item_params[:id])
+    @item = Item.find(params[:id])
 
-    near_items = Item.where(category_id: @item.category.id).reject{|i| i[:id] == item_params[:id]}
+    near_items = Item.where(category_id: @item.category.id).reject{|i| i[:id] == params[:id]}
     @prev_item = near_items[rand(near_items.length)]
     more_near_items = near_items.reject{|i| i[:id] == @prev_item[:id] }
     @next_item = more_near_items[rand(more_near_items.length)]
@@ -69,7 +51,20 @@ class ItemsController < ApplicationController
   end
 
   private
+
   def item_params
-    params.permit(:id)
+    params.require(:item_form).permit(
+      :name,
+      :description,
+      :category_id,
+      :brand_id,
+      :status,
+      :delivery_fee,
+      :delivery_method,
+      :prefecture_id,
+      :delivery_date,
+      :price,
+       { :images => [] }
+      ).merge(user_id:current_user.id)
   end
 end
