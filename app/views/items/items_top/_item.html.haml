@@ -1,7 +1,7 @@
 .items-box
-  = link_to item_path(item), data: {"turbolinks"=>false} do
+  = link_to root_path do
     .top-photo
-      = image_tag('https://static.mercdn.net/thumb/photos/m78614571849_1.jpg?1553704033',class: 'lazyloaded is-higher-width')
+      = image_tag("sample1.jpg",class: "lazyloaded is-higher-width")
     .items-box-body
       %h3.items-box-body__name
         =item.name
@@ -9,5 +9,5 @@
         .items-box-price ¥#{item.price}
         .items-box-likes
           %i.fa.fa-heart
-          %span.items-box-likes__count #{item.likes.length}
+          %span.items-box-likes__count 1
         %p.items-box-tax (税込)

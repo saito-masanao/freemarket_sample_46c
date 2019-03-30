@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  # belongs_to_active_hash :prefecture
   belongs_to :category
   belongs_to :brand
   belongs_to :user
@@ -58,4 +57,7 @@ class Item < ApplicationRecord
                 four_XL: 8,
                 FREE_SIZE: 9
   }
+
+
+validates :name, presence: true
 end

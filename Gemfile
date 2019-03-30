@@ -47,8 +47,11 @@ gem 'active_hash'
 gem 'enum_help'
 gem 'faker'
 gem 'rails-i18n', '~> 5.1'
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'gretel'
 gem 'dotenv-rails'
+gem 'fog-aws'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
