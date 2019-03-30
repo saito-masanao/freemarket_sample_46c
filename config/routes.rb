@@ -3,16 +3,11 @@ Rails.application.routes.draw do
     omniauth_callbacks: "omniauth_callbacks",
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-<<<<<<< HEAD
   resources :items,only: [:new, :create, :show] do
     resources :likes, only: [:create]
     resources :comments, only: [:create]
   end
-  root 'users#sign_up'
-=======
-  resources :items,only: [:new, :create]
   root 'items#top'
->>>>>>> YKKISKW/master
   get 'users/new'
   post 'users/create'
   get 'top', to: 'items#top'

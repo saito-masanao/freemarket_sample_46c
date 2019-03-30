@@ -1,5 +1,5 @@
 .items-box
-  = link_to root_path do
+  = link_to item_path(item), data: {"turbolinks"=>false} do
     .top-photo
       = image_tag("sample1.jpg",class: "lazyloaded is-higher-width")
     .items-box-body
@@ -9,5 +9,5 @@
         .items-box-price ¥#{item.price}
         .items-box-likes
           %i.fa.fa-heart
-          %span.items-box-likes__count 1
+          %span.items-box-likes__count #{item.likes.length}
         %p.items-box-tax (税込)
