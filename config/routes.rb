@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get 'creditregistration', to: 'users#creditregistration'
   get 'itemconfirm', to: 'users#itemconfirm'
   get 'sign_up', to: 'users#sign_up'
+  get 'itemsell', to: 'users#itemsell'
 end
