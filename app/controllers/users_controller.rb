@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   end
 
   def top
+    @categories = Category.all.includes([middle_categories: :lower_categories])
+    
   end
 
   def mypage
