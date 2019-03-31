@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:omniauthable
   has_many :social_profiles, dependent: :destroy
+  has_many :items
+  has_many :likes
+  has_many :like_items, through: :likes, source: :item
+  has_many :comments
   validates :nickname, presence: true,length: { maximum: 20 }
 
   def social_profile(provider)
