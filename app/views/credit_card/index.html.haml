@@ -1,0 +1,27 @@
+= render 'users/top-header'
+.um-default
+  = render 'users/bread-crumbs'
+  .um-container
+    .credit-right-content
+      .credit-right-content__wrapper
+        %h2.credit-title 支払い方法
+        %h3.credit-title クレジットカード一覧
+      .credit-right-content__adder
+
+      -# [@ToDo]ビューの調整必要
+      - if @card_info
+        -# [@ToDo]Myページから遷移時に削除ボタン追加必要。
+        %p.ib-content__payment-inner__info
+          = "************#{@card_info[:last4]}"
+          %br
+          = "#{@card_info[:exp_month]} / #{@card_info[:exp_year]}"
+        .ib-content__payment-inner__visa
+          = get_credit_log(@card_info[:brand])
+      - else
+        =link_to new_credit_card_path, class: 'um-mypage-nav-list-item' do
+          = fa_icon 'credit-card', class: 'icon'
+          クレジットカードを追加する。
+
+    =render 'devise/shared/side_bar'
+= render 'users/camera-btn'
+= render 'users/top-footer'
