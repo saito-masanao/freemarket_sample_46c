@@ -32,7 +32,11 @@ class CreditCardController < ApplicationController
 
   # カード情報削除画面
   def destroy
-    # binding.pry #[@kari]
+    _credit_record = Credit.find_by(get_user_id())
+    Credit.destroy_CardInfo(_credit_record)
+    _credit_record.destroy
+
+    binding.pry #[@kari]
   end
 
   # [@ToDo]今のところ使う予定なし

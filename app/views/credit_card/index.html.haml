@@ -17,6 +17,8 @@
           = "#{@card_info[:exp_month]} / #{@card_info[:exp_year]}"
         .ib-content__payment-inner__visa
           = get_credit_log(@card_info[:brand])
+        =link_to "credit_card/:id", method: :delete, class: 'um-mypage-nav-list-item' do
+          削除する
       - else
         =link_to new_credit_card_path, class: 'um-mypage-nav-list-item' do
           = fa_icon 'credit-card', class: 'icon'

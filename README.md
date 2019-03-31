@@ -192,7 +192,8 @@
 | Column      | Type    | Options                        |
 |-------------|---------|--------------------------------|
 | user_id     | integer | null: false, foreign_key: true |
-| customer_id | string  | null: false, unique: true      |
+| customer_id | string  | null: false,                   |
+| card_id     | string  | null: false                    |
 
 ### Association
 - belongs_to :user
