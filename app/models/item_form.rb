@@ -1,6 +1,18 @@
 class ItemForm
     include ActiveModel::Model
 
+  validates :name, presence: true,length: { maximum: 40 }
+  validates :description, presence: true,length: { maximum: 1000 }
+  validates :category_id, presence: true
+  validates :brand_id, presence: true
+  validates :status, presence: true
+  validates :delivery_fee, presence: true
+  validates :delivery_date, presence: true
+  validates :delivery_method, presence: true
+  validates :prefecture_id, presence: true
+  validates :price, presence: true
+
+
   attr_accessor       :name,
                       :description,
                       :category_id,

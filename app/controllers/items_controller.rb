@@ -20,7 +20,50 @@ class ItemsController < ApplicationController
     if @item_form.save
         redirect_to root_path
       else
-        redirect_to 'new'
+        case @item_form.errors[:name][0]
+          when "は40文字以内で入力してください"
+            @name_error = "40 文字以下で入力してください"
+          when "を入力してください"
+            @name_error = "入力してください"
+        end
+
+        if @item_form.errors[:description][0]
+          @description_error = "選択してください"
+        end
+
+        if @item_form.errors[:category_id][0]
+          @category_error = "選択してください"
+        end
+
+        if @item_form.errors[:brand_id][0]
+          @brand_error = "選択してください"
+        end
+
+        if @item_form.errors[:status][0]
+          @status_error = "選択してください"
+        end
+
+        if @item_form.errors[:delivery_fee][0]
+          @delivery_fee_error = "選択してください"
+        end
+
+        if @item_form.errors[:delivery_date][0]
+          @delivery_date_error = "選択してください"
+        end
+
+        if @item_form.errors[:delivery_method][0]
+          @delivery_method_error = "選択してください"
+        end
+
+        if @item_form.errors[:prefecture_id][0]
+          @prefecture_id_error = "選択してください"
+        end
+
+        if @item_form.errors[:prefecture_id][0]
+          @prefecture_id_error = "選択してください"
+        end
+
+        render :new
     end
   end
 

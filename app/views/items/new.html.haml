@@ -21,11 +21,15 @@
                 .is-add-up
                   = f.file_field :images,id: "is-img-0",multiple: true,data: {id: 0},class: "is-upload-box-container__box--file is-up-img"
                   %pre.is-upload-box-container__box--text ドラッグアンドドロップまたはクリックしてファイルをアップロード
+            %ul.is-error-message
           .is-sell-content
             .is-form-group
               = f.label :name ,:商品名,class: "is-form-group__label"
               %span.is-form-group__span 必須
               = f.text_field :name, autofocus: true, placeholder: "商品名（必須 40文字まで)", class: "is-form-group__field"
+              %ul.is-error-message
+                %li.is-error-message__li
+                  = @name_error
             .is-form-group
               = f.label :description ,:商品の説明,class: "is-form-group__label"
               %span.is-form-group__span 必須
@@ -37,17 +41,17 @@
                 = f.label :category_id ,:カテゴリー,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
-                  = f.select :category_id,Category.all.map{|k| [k.name, k.id]}, {}, {class: "is-form-group__select"}
+                  = f.select :category_id,Category.all.map{|k| [k.name, k.id]}, {include_blank: true}, {class: "is-form-group__select"}
               .is-form-group
                 = f.label :brand_id ,:ブランド,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
-                  = f.select :brand_id,Brand.all.map{|k| [k.name, k.id]}, {}, {class: "is-form-group__select"}
+                  = f.select :brand_id,Brand.all.map{|k| [k.name, k.id]}, {include_blank: true}, {class: "is-form-group__select"}
               .is-form-group
                 = f.label :status ,:商品の状態,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
-                  = f.select :status,Item.statuses.keys.map {|k| [t("enums.item.status.#{k}"), k]},{}, {class: "is-form-group__select"}
+                  = f.select :status,Item.statuses.keys.map {|k| [t("enums.item.status.#{k}"), k]},{include_blank: true}, {class: "is-form-group__select"}
           .is-sell-content.clearfix
             %h3.is-sell-sub-head 配送について
             .is-sell-form-box
@@ -55,12 +59,13 @@
                 = f.label :delivery_fee ,:配送料の負担 ,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
-                  = f.select :delivery_fee,Item.delivery_fees.keys.map{|k| [t("enums.item.delivery_fee.#{k}"), k]}, {}, {class: "is-form-group__select"}
+                  = f.select :delivery_fee,Item.delivery_fees.keys.map{|k| [t("enums.item.delivery_fee.#{k}"), k]},{include_blank: true}, {class: "is-form-group__select"}
               .is-form-group
-                = f.label :delivery_method ,:配送料の方法 ,class: "is-form-group__label"
-                %span.is-form-group__span 必須
-                .is-select-wrap
-                  = f.select :delivery_method,Item.delivery_methods.keys.map{|k| [t("enums.item.delivery_method.#{k}"), k]}, {}, {class: "is-form-group__select"}
+                = f.label :delivery_method ,:配送料の方法 ,class: "is-form-group__label-hiden",id: "is-delivery_method"
+                %span#is-delivery_method-span.is-form-group__span.is-form-group__hiden 必須
+                .is-select-wrap#is-select-wrap-dm
+                  = f.select :delivery_method,Item.delivery_methods.keys.map{|k| [t("enums.item.delivery_method.#{k}"), k]}, {include_blank: true}, {class: "is-form-group__select is-form-group__hiden",id: "item_form_delivery_method-include"}
+                  = f.select :delivery_method,Item.delivery_methods.slice(:undecided,:postal_mail,:kuroneko_yamato,:yu_pack).keys.map{|k| [t("enums.item.delivery_method.#{k}"), k]}, {include_blank: true}, {class: "is-form-group__select is-form-group__hiden",id: "item_form_delivery_method-exclude"}
               .is-form-group
                 = f.label :prefecture_id,:発送元の地域,class: "is-form-group__label"
                 %span.is-form-group__span 必須
@@ -70,7 +75,7 @@
                 = f.label :delivery_date,:発送までの日数,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
-                  = f.select :delivery_date,Item.delivery_dates.keys.map {|k| [t("enums.item.delivery_date.#{k}"), k]}, {}, {class: "is-form-group__select"}
+                  = f.select :delivery_date,Item.delivery_dates.keys.map {|k| [t("enums.item.delivery_date.#{k}"), k]}, {include_blank: true}, {class: "is-form-group__select"}
           .is-sell-content.clearfix
             %h3.is-sell-sub-head 販売価格(300〜9,999,999)
             .is-sell-form-box
@@ -84,9 +89,13 @@
                 %li.clearfix.is-sell-price__li
                   .is-left
                     販売手数料(10%)
+                  .is-right.is-sell-price__li--small#is-commission
+                    -
                 %li.clearfix.bold.is-sell-price__li
                   .is-left.is-bold
                     販売利益
+                  .is-right.is-sell-price__li--large#is-profit
+                    -
           .is-sell-content
             %p.is-sell-content__p 禁止されている出品、行為を必ずご確認ください。
             %p.is-sell-content__p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。

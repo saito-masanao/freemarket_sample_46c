@@ -5,6 +5,16 @@
   clear: both;
 }
 
+.is-error-message{
+  color: #ea352d;
+  line-height: 1.5;
+  font-size: 14px;
+  &__li{
+    margin: 8px 0 0;
+  }
+}
+
+
 .is-left{
     float: left;
   }
@@ -227,6 +237,13 @@
               padding: 24px 0;
               border-top: 1px solid #ccc;
               box-sizing:border-box;
+              &--small{
+                font-size: 14px;
+              }
+              &--large{
+                font-size: 34px;
+                font-weight: bold;
+              }
             }
             &__li:first-of-type{
                   padding: 0 0 24px;
@@ -241,6 +258,9 @@
             position: relative;
             background: #fff;
             }
+          &__hiden{
+            display: none;
+          }
           &__select{
             width: 100%;
             position: relative;
@@ -257,6 +277,10 @@
           &__label{
             font-weight: 600;
             display: inline-block;
+          }
+          &__label-hiden{
+            font-weight: 600;
+            display: none;
           }
           &__span{
             background: #ea352d;

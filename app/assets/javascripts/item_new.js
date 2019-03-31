@@ -88,7 +88,12 @@ $(document).on('turbolinks:load', function(){
         break;
     }
   }
-
+//
+    var errorMessage = $(".is-error-message")
+    function appendErrorMessage(){
+      var html = `<li class = "is-error-message__li">ファイル形式はjpeg、またはpngが使用できます</li>`;
+      errorMessage.append(html);
+    }
 
 // 未アップロード時のラベルのforを取得する
      isLabelFor = $(".is-upload-box-container").find("#is-add").attr("for");
@@ -97,7 +102,7 @@ $(document).on('turbolinks:load', function(){
 
      imgCount = 0
 //
-// ラベルのforと同じIDのファイルアップローダーが開いた時に発火する///////////////////////
+////ラベルのforと同じIDのファイルアップローダーが開いた時に発火する///////////////////////
   $(".is-upload-box-container").change(`#${isLabelFor}`,function(e){
     e.preventDefault();
 // アップローダーのdata-idを取得
@@ -107,7 +112,7 @@ $(document).on('turbolinks:load', function(){
 
      var permitType = ['image/jpeg', 'image/png', 'image/gif'];
             if (file && permitType.indexOf(file.type) == -1) {
-                alert('この形式のファイルはアップロードできません');
+                appendErrorMessage();//エラ-
                 $(this).find(`#${isLabelFor}`).val('');
                 return
               }
@@ -162,5 +167,79 @@ $(document).on('turbolinks:load', function(){
     $(".is-add-up").find(`#${imgId}`).remove();
   })
 //////////////////////////////////////////////////////////////////////////////////
-
+//
+removeInclude = ""
+removeExclude = ""
+////配送方法の選択//////////////////////////////////////////////////////////////////
+  $("#item_form_delivery_fee").change(function(){
+    // let removeInclude
+    // let removeExclude
+    $("#is-delivery_method").removeClass("is-form-group__label-hiden").addClass("is-form-group__label")
+    $("#is-delivery_method-span").removeClass("is-form-group__hiden");
+    var selectContent = $("#item_form_delivery_fee").val();
+    switch (selectContent){
+      case "":
+        $("#item_form_delivery_method-exclude").addClass("is-form-group__hiden");
+        $("#item_form_delivery_method-include").addClass("is-form-group__hiden");
+        $("#is-delivery_method").removeClass("is-form-group__label").addClass("is-form-group__label-hiden");
+        $("#is-delivery_method-span").addClass("is-form-group__hiden");
+        break;
+      case "include":
+        if ($("#item_form_delivery_method-exclude").length == 1){
+          removeExclude = $("#item_form_delivery_method-exclude").remove();
+        }
+        if (removeInclude !== ""){
+          removeInclude.removeClass("is-form-group__hiden");
+          $("#is-select-wrap-dm").append(removeInclude);
+        } else{
+          $("#item_form_delivery_method-include").removeClass("is-form-group__hiden");
+        }
+        break;
+      case "exclude":
+        if ($("#item_form_delivery_method-include").length == 1){
+          removeInclude = $("#item_form_delivery_method-include").remove();
+        }
+        if (removeExclude !== ""){
+          removeExclude.removeClass("is-form-group__hiden");
+          $("#is-select-wrap-dm").append(removeExclude);
+        } else{
+          $("#item_form_delivery_method-exclude").removeClass("is-form-group__hiden");
+        }
+        break;
+    }
+  });
+//////////////////////////////////////////////////////////////////////////////////
+//
+////価格の計算/////////////////////////////////////////////////////////////////////
+      var stack = []
+  $("#item_form_price").keyup(function(){
+    var input = ""
+    stack.push(1);
+    setTimeout(function() {
+    stack.pop();
+    //取り出したstackの中身がなければ処理をする
+    //stackの中身がなくなるのは、一番最後の入力から0.3秒後になる
+    //なので、一番最後の入力から0.3秒後に以下の処理が走る
+    if (stack.length == 0) {
+      //最後キー入力後に処理したいイベント
+      //数値型に変換
+      input = Number($("#item_form_price").val());
+      //数値型判定
+      result = $.isNumeric(input)
+      if (result == true && input >= 300 && input < 10000000 ){
+        var commission = input * 0.1;
+        var profit = input * 0.9;
+        $("#is-commission").text("");
+        $("#is-profit").text("");
+        $("#is-commission").append(`¥${commission}`);
+        $("#is-profit").append(`¥${profit}`);
+      } else {
+        $("#is-commission").text("-");
+        $("#is-profit").text("-");
+      }
+      stack = [];//stackを初期化
+    }
+  }, 500);
+   });
+/////////////////////////////////////////////////////////////////////////////////
 });
