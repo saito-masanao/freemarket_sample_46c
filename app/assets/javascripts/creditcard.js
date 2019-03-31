@@ -1,5 +1,4 @@
-$(function() {
-// $(document).on('turbolinks:load', function(){ /* [@kari] 開発時用 */
+$(document).on('turbolinks:load', function() {
   const PAYJP_PUBLIC_KEY="pk_test_336046173393efb07571501f";
   const TEST_CARD = [
     {

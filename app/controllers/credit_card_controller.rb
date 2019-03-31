@@ -1,16 +1,13 @@
 class CreditCardController < ApplicationController
-  # before_action :get_token, only: [:create]
-
   # 支払い方法確認画面
   def index
     # binding.pry #[@kari]
     _credit_record = Credit.find_by(get_user_id())
-    if _credit_record
+    if _credit_record && _credit_record.card_id
       @card_info = Credit.get_CardInfo(_credit_record)
     else
       @card_info = nil
     end
-    # binding.pry
   end
 
   # 支払い方法入力画面
@@ -22,29 +19,27 @@ class CreditCardController < ApplicationController
 
   # カード情報登録処理
   def create
-    # binding.pry #[@kari]
+    _token = params.require(:card_token)
 
-    _record = Credit.create_CreditRecord(params.require(:card_token))
-    credit_record = Credit.new(_record)
-    credit_record.save
-    render 'index'
+    @credit_record = Credit.find_by(get_user_id())
+
+    # 初めてのカード登録処理の場合はレコードを作成する
+    @credit_record = Credit.new unless @credit_record
+
+    Credit.regist_CardInfo(@credit_record, _token)
+    @credit_record.save
+
+    redirect_to credit_card_index_path
   end
 
   # カード情報削除画面
   def destroy
     _credit_record = Credit.find_by(get_user_id())
-    Credit.destroy_CardInfo(_credit_record)
-    _credit_record.destroy
-
-    binding.pry #[@kari]
-  end
-
-  # [@ToDo]今のところ使う予定なし
-  def edit
-  end
-  def show
-  end
-  def update
+    if _credit_record
+      Credit.destroy_CardInfo(_credit_record)
+      _credit_record.save
+    end
+    redirect_to credit_card_index_path
   end
 
   private

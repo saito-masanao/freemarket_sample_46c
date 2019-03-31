@@ -1,32 +1,29 @@
 class Credit < ApplicationRecord
   belongs_to :user
 
-  def self.create_CreditRecord(_token)
-    #APIキーの設定
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
 
-    # トークン情報を元に顧客を作成
-    _customer = Payjp::Customer.create(description: 'test')
+  def self.regist_CardInfo(record, token)
+    set_api_key()
 
-    #顧客のカードを作成
-    _customer_obj = Payjp::Customer.retrieve(_customer[:id])
-    _customer_card = _customer_obj.cards.create(card: _token)
+    # 顧客未作成時は作成する
+    unless record.customer_id
+      record.user_id = 1
+       _work = Payjp::Customer.create(description: 'test')
+       record.customer_id = _work[:id]
+    end
 
-    # 作成した顧客カードからレコード生成
-    return {
-      user_id: 1,
-      customer_id: _customer[:id]
-    }
+    # 顧客オブジェを取得する
+    _customer_obj = Payjp::Customer.retrieve(record.customer_id)
+
+    # 顧客情報とカード情報をリンクさせる
+    record.card_id = _customer_obj.cards.create(card: token)[:id]
   end
 
-  def self.get_CardInfo(credit_record)
-    _customer_id = credit_record.customer_id
-
-    #APIキーの設定
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+  def self.get_CardInfo(record)
+    set_api_key()
 
     #顧客情報の取得
-    _customer = Payjp::Customer.retrieve(_customer_id)
+    _customer = Payjp::Customer.retrieve(record.customer_id)
 
     #顧客のカード情報取得
     _card_info = _customer.cards.retrieve(_customer[:default_card])
@@ -38,6 +35,29 @@ class Credit < ApplicationRecord
       exp_year:  _card_info.exp_year%100, # 2019から19を取り出すため
       last4:     _card_info.last4,
     }
+  end
+
+  def self.destroy_CardInfo(record)
+    set_api_key()
+
+    # 顧客情報を取得する
+    _customer_obj = Payjp::Customer.retrieve(record.customer_id)
+
+    # 顧客に紐づいたカード情報を削除する
+    _card = _customer_obj.cards.retrieve(record.card_id)
+
+    # カード情報の削除に成功したらcard_idカラムを更新する。
+    record.card_id = nil if _card.delete[:deleted]
+  end
+
+  private
+  def self.get_user_id
+    return 1
+  end
+
+  def self.set_api_key
+    #APIキーの設定
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
   end
 
 end
