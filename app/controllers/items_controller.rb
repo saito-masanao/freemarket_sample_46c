@@ -47,8 +47,8 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       split_keyword = params[:keyword].strip.split(/[[:blank:]]+/)#先頭末尾の空白を削除後,空白で分割
+      @items = []
       split_keyword.each do |keyword| #分割したキーワード毎に検索
-        @items = []
         @items = Item.where("name LIKE(?) OR description LIKE(?)", "%#{keyword}%","%#{keyword}%").page(params[:page]).per(48)
         @all_items = Item.order("id DESC")
       end
