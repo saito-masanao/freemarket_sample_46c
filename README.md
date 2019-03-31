@@ -193,7 +193,7 @@
 |-------------|---------|--------------------------------|
 | user_id     | integer | null: false, foreign_key: true |
 | customer_id | string  | null: false,                   |
-| card_id     | string  | null: false                    |
+| card_id     | string  |                                |
 
 ### Association
 - belongs_to :user
