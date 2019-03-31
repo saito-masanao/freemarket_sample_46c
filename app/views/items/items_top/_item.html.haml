@@ -3,9 +3,10 @@
     .top-photo
       = image_tag("sample1.jpg",class: "lazyloaded is-higher-width")
     .items-box-body
-      %h3.items-box-body__name マフラー
+      %h3.items-box-body__name
+        =item.name
       .items-box-num.clearfix
-        .items-box-price ¥ 500
+        .items-box-price ¥#{item.price}
         .items-box-likes
           %i.fa.fa-heart
           %span.items-box-likes__count 1

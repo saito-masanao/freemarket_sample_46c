@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :category do
-    name { "MyString" }
+    name { "レディース" }
+    id   {"1"}
   end
 end
