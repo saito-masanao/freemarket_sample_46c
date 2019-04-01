@@ -1,35 +1,23 @@
 .is-wrapper
-
   = render 'users/top-header'
   = render 'users/bread-crumbs'
 
 
-  %section.is-item
+
+  %section{ class: "#{@item.images.length < 5 ? 'is-item' : 'is-item is-many-photos' }"}
     %h1.is-item__name #{@item.name}
     .is-item__main.clearfix
       .is-item__photos
         .is-slider
-          .is-slider__item
-            = image_tag("https://static.mercdn.net/item/detail/orig/photos/m15574349852_1.jpg?1553737753")
-          .is-slider__item
-            = image_tag("https://static.mercdn.net/item/detail/orig/photos/m15574349852_2.jpg?1553737753")
-          .is-slider__item
-            = image_tag("https://static.mercdn.net/item/detail/orig/photos/m51888120989_3.jpg?1553688994")
-          .is-slider__item
-            = image_tag("https://static.mercdn.net/item/detail/orig/photos/m51888120989_4.jpg?1553688994")
+          - @item.images.each do |img|
+            .is-slider__item
+              = image_tag(img.image.url)
         .is-thumbnails
-          .is-thumbnails__item.current
-            = link_to '' do
-              = image_tag("https://static.mercdn.net/item/detail/orig/photos/m15574349852_1.jpg?1553737753")
-          .is-thumbnails__item
-            = link_to '' do
-              = image_tag("https://static.mercdn.net/item/detail/orig/photos/m15574349852_2.jpg?1553737753")
-          .is-thumbnails__item
-            = link_to '' do
-              = image_tag("https://static.mercdn.net/item/detail/orig/photos/m51888120989_3.jpg?1553688994")
-          .is-thumbnails__item
-            = link_to '' do
-              = image_tag("https://static.mercdn.net/item/detail/orig/photos/m51888120989_4.jpg?1553688994")
+          - @item.images.each do |img|
+            .is-thumbnails__item
+              = link_to '' do
+                = image_tag(img.image.url)
+
       %table.is-item__detail
         %tr
           %th 出品者
@@ -83,16 +71,20 @@
         %tr
           %th 発送日の目安
           %td #{@item.delivery_date_i18n}
+
     .is-item__price
       %span.is-item__price--bold
         = converting_to_jpy(@item.price)
       %span.is-item__price--tax (税込)
       %span.is-item__price--shipping-fee
         = "#{@item.delivery_fee_i18n}".gsub(/\(.+\)/,"")
+
     = link_to "購入画面に進む", itemconfirm_path(@item), class: "is-item__buy-btn"
+
     .is-item__description
       %p.is-item__description--inner
         #{@item.description}
+
     .is-item__btns.clearfix
       .is-item__btns--left
         = render 'likes/like'
@@ -104,6 +96,8 @@
           = fa_icon "lock", class: "is-item__btns--right--safe__icon"
           %span.is-item__btns--right--safe__text あんしん・あんぜんへの取り組み
 
+
+
   .is-item__comment-block
     .is-item__comment__wrapper
       .is-item__comments
@@ -114,6 +108,7 @@
         = form_for [@item, @comment], html:{id: 'comment-form'} do |f|
           = f.text_area :comment, class: 'is-item__comment-form__textarea', placeholder: 'コメントを書いてください'
           = f.submit 'コメントする', class: 'is-item__comment-form__btn'
+
       %ul.is-item__navi.clearfix
         %li.is-item__navi--prev
           = link_to item_path(@prev_item), data: {"turbolinks"=>false}do
@@ -123,6 +118,7 @@
           = link_to item_path(@next_item), data: {"turbolinks"=>false} do
             = @next_item.name
             = fa_icon "angle-right"
+
       .is-item__social-media-box
         .is-item__social-medias-text
         %ul.is-item__social-medias
@@ -135,6 +131,7 @@
           %li
             = link_to '' do
               = fa_icon 'pinterest-square'
+
       .is-item__relation
         - if @user_items.length != 0
           %section.is-item__relation__box
@@ -150,5 +147,7 @@
             .is-item__relation__box__contents.clearfix
               - @category_items.each do |item|
                 = render 'items/items_top/item', item:item
+
+
 
   = render 'users/top-footer'
