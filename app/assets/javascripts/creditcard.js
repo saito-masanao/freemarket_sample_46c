@@ -83,7 +83,7 @@ $(document).on('turbolinks:load', function() {
   $('#submit-button').click(function() {
     (async()=> {
       let card_token;
-      let card_info = get_card_info(false); /* [@kari]最終的にはfalseにする */
+      let card_info = get_card_info(false);
       await get_token(card_info).then(function(v){card_token=v;});
       $('#card_token').attr('value', card_token);
       $('#credit_form').submit();
