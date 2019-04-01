@@ -16,19 +16,19 @@
 
             %ul.card-all
               %li
-                = get_credit_log(:visa)
+                = get_credit_log('visa')
               %li
-                = get_credit_log(:master)
+                = get_credit_log('mastercard')
               %li
-                = get_credit_log(:saison)
+                = get_credit_log('saison')
               %li
-                = get_credit_log(:jcb)
+                = get_credit_log('jcb')
               %li
-                = get_credit_log(:american)
+                = get_credit_log('american express')
               %li
-                = get_credit_log(:dinners)
+                = get_credit_log('diners club')
               %li
-                = get_credit_log(:discover)
+                = get_credit_log('discover')
             .credit-right-content__wrapper__box__form__center__expiration-month
               .h4.expiration-title 有効期限
               %span.form-require 必須

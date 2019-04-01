@@ -1,7 +1,6 @@
 class CreditCardController < ApplicationController
   # 支払い方法確認画面
   def index
-    # binding.pry #[@kari]
     _credit_record = Credit.find_by(get_user_id())
     if _credit_record && _credit_record.card_id
       @card_info = Credit.get_CardInfo(_credit_record)
@@ -12,7 +11,6 @@ class CreditCardController < ApplicationController
 
   # 支払い方法入力画面
   def new
-    # binding.pry #[@kari]
     @credit = Credit.new
     render 'users/creditregistration'
   end

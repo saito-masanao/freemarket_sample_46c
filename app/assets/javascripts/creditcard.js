@@ -37,26 +37,29 @@ $(document).on('turbolinks:load', function() {
   function get_card_info(test_mode) {
     let card_info = {};
     if(test_mode) {
-      // [@ToDo]できたらデバッグモードの時だけカード番号入力した値で反映させる予定
-      // data_num = $('#credit_card_number').val();
       let _test_num = 0
       card_info["number"]    = TEST_CARD[_test_num]["number"];
       card_info["cvc"]       = TEST_CARD[_test_num]["csv"];
       card_info["exp_month"] = TEST_CARD[_test_num]["exp_month"];
       card_info["exp_year"]  = TEST_CARD[_test_num]["exp_year"];
     } else {
+      // 入力情報の取得
       card_info["number"]    = $('#credit_card_number').val();
       card_info["cvc"]       = $('#credit_card_security_code').val();
       card_info["exp_month"] = $('#credit_month option:selected').val();
       card_info["exp_year"]  = "20" + $('#credit_year option:selected').val();
+
+      // 入力情報の削除
+      $('#credit_card_number').val('');
+      $('#credit_card_security_code').val('');
+      $('#credit_month option:selected').val('');
+      $('#credit_year option:selected').val('');
     }
-    console.log(card_info); /* [@kari] デバッグ用 */
     return card_info
   }
 
   /*
   カード情報と紐付くトークンを取得する
-  [@kari] エラーだった時は「""」を返す
   */
   function get_token(card_info) {
     return new Promise(resolve => {
@@ -64,12 +67,12 @@ $(document).on('turbolinks:load', function() {
 
       Payjp.setPublicKey(PAYJP_PUBLIC_KEY);
       Payjp.createToken(card_info, function(status, response) {
-        /* トークン生成成功判定*/
+        /* トークン生成に成功したか */
         if (response.error) {
-          console.log(response.error.message);
+          // [@ToDo]エラー情報をユーザーに教える必要がある。
+          // console.log(response.error.message);
           _response = "";
         } else {
-          console.log('aa %s',response.id);
           _response = response.id;
         }
         return resolve(_response);
@@ -78,10 +81,9 @@ $(document).on('turbolinks:load', function() {
   }
 
   $('#submit-button').click(function() {
-    console.log("クレジットカード制御用のjsファイル作成");
     (async()=> {
       let card_token;
-      let card_info = get_card_info(true); /* [@kari]最終的にはfalseにする */
+      let card_info = get_card_info(false); /* [@kari]最終的にはfalseにする */
       await get_token(card_info).then(function(v){card_token=v;});
       $('#card_token').attr('value', card_token);
       $('#credit_form').submit();

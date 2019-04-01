@@ -30,7 +30,7 @@ class Credit < ApplicationRecord
 
     #戻り値の生成
     return {
-      brand:     _card_info.brand.downcase.to_sym,
+      brand:     _card_info.brand.downcase,
       exp_month: _card_info.exp_month,
       exp_year:  _card_info.exp_year%100, # 2019から19を取り出すため
       last4:     _card_info.last4,
