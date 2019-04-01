@@ -2,7 +2,7 @@ class ItemForm
     include ActiveModel::Model
   validates :images,presence: {message: "画像がありません"}
   validates :name, presence: {message:"40字以内で入力してください"},length: { maximum: 40 ,message: "40字以内で入力してください"}
-  validates :description, presence: {message:"1000字以上で入力してください"},length: { maximum: 1000 ,message: "1000字以上で入力してください"}
+  validates :description, presence: {message:"1000字以内で入力してください"},length: { maximum: 1000 ,message: "1000字以上で入力してください"}
   validates :category_id, presence: {message:"入力してください"}
   validates :brand_id, presence: {message:"入力してください"}
   validates :status, presence: {message:"入力してください"}
