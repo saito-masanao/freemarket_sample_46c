@@ -41,6 +41,11 @@ class ItemsController < ApplicationController
     @category_items = other_items.where(category_id: @item.category.id).limit(6)
   end
 
+  def destroy
+    Item.find(params[:id]).destroy
+    render :index
+  end
+
   private
 
   def item_params
