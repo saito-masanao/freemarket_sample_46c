@@ -14,7 +14,6 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
-
   enum status: {
                   very_good: 0,
                   good:      1,

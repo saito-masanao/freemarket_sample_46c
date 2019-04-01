@@ -20,7 +20,8 @@ class ItemsController < ApplicationController
     if @item_form.save
         redirect_to root_path
       else
-        redirect_to 'new'
+        @errors = @item_form.errors
+        render :new
     end
   end
 
