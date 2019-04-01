@@ -20,18 +20,7 @@ class ItemsController < ApplicationController
     if @item_form.save
         redirect_to root_path
       else
-        errors = @item_form.errors
-        @image_error = errors[:images][0] if errors[:images][0]
-        @name_error = errors[:name][0] if errors[:name][0]
-        @description_error = errors[:description][0]if errors[:description][0]
-        @category_error = errors[:category_id][0] if errors[:category_id][0]
-        @brand_error = errors[:brand_id][0] if errors[:brand_id][0]
-        @status_error = errors[:status][0] if errors[:status][0]
-        @delivery_fee_error = errors[:delivery_fee][0] if errors[:delivery_fee][0]
-        @delivery_date_error = errors[:delivery_date][0] if errors[:delivery_date][0]
-        @delivery_method_error = errors[:delivery_method][0] if errors[:delivery_method][0]
-        @prefecture_id_error = errors[:prefecture_id][0] if errors[:prefecture_id][0]
-        @price_error = errors[:price][0] if errors[:price][0]
+        @errors = @item_form.errors
         render :new
     end
   end
