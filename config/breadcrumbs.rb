@@ -1,10 +1,10 @@
-crumb :root do
-  link "メルカリ", root_path
+crumb :top do
+  link "メルカリ", top_path
 end
 
 crumb :mypage do
   link "マイページ", mypage_path
-  parent :root
+  parent :top
 end
 
 crumb :profile do
@@ -22,6 +22,15 @@ crumb :userlogout do
   parent :mypage
 end
 
+crumb :credit do
+  link "支払い方法", credit_path
+  parent :mypage
+end
+
+crumb :creditregistration do
+  link "クレジットカード情報入力"
+  parent :credit
+end
 # crumb :projects do
 #   link "Projects", projects_path
 # end

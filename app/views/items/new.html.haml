@@ -4,17 +4,23 @@
     %section.is-section
       %h2.is-m-header 商品の情報を入力
       .is-form
-        = form_with model: Item.new  do |f|
+        = form_with model: @item_form, url: items_path do |f|
           .is-upload-box
             .is-upload-box__head
               %h3.is-upload-box__head--text 出品画像
               %span.is-upload-box__head--red 必須
             %p.is-upload-box__head-p 最大10枚までアップロードできます
             .is-upload-box-container.clearfix
-              = f.label :image_id ,class: "is-upload-box-container__box" do
-                = file_field :image,:id,class: "is-upload-box-container__box--file"
-                %pre.is-upload-box-container__box--text ドラッグアンドドロップまたはクリックしてファイルをアップロード
-                = fa_icon ("camera")
+              .is-add-image
+                .is-image-ul.item-0
+                  %ul#is-image-ul-1
+              .is-add-image
+                .is-image-ul.item-0
+                  %ul#is-image-ul-2
+              = f.label :images ,class: "is-upload-box-container__box" ,id: "is-add",for: "is-img-0" do
+                .is-add-up
+                  = f.file_field :images,id: "is-img-0",multiple: true,data: {id: 0},class: "is-upload-box-container__box--file is-up-img"
+                  %pre.is-upload-box-container__box--text ドラッグアンドドロップまたはクリックしてファイルをアップロード
           .is-sell-content
             .is-form-group
               = f.label :name ,:商品名,class: "is-form-group__label"
@@ -31,12 +37,17 @@
                 = f.label :category_id ,:カテゴリー,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
-                  = f.select :category_id,{}, {}, {class: "is-form-group__select"}
+                  = f.select :category_id,Category.all.map{|k| [k.name, k.id]}, {}, {class: "is-form-group__select"}
+              .is-form-group
+                = f.label :brand_id ,:ブランド,class: "is-form-group__label"
+                %span.is-form-group__span 必須
+                .is-select-wrap
+                  = f.select :brand_id,Brand.all.map{|k| [k.name, k.id]}, {}, {class: "is-form-group__select"}
               .is-form-group
                 = f.label :status ,:商品の状態,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
-                  = f.select :status,Item.statuses.keys.map {|k| [t("enums.items.status.#{k}"), k]},{}, {class: "is-form-group__select"}
+                  = f.select :status,Item.statuses.keys.map {|k| [t("enums.item.status.#{k}"), k]},{}, {class: "is-form-group__select"}
           .is-sell-content.clearfix
             %h3.is-sell-sub-head 配送について
             .is-sell-form-box
@@ -44,7 +55,12 @@
                 = f.label :delivery_fee ,:配送料の負担 ,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
-                  = f.select :delivery_fee,Item.dfees.keys.map {|k| [t("enums.items.dfee.#{k}"), k]}, {}, {class: "is-form-group__select"}
+                  = f.select :delivery_fee,Item.delivery_fees.keys.map{|k| [t("enums.item.delivery_fee.#{k}"), k]}, {}, {class: "is-form-group__select"}
+              .is-form-group
+                = f.label :delivery_method ,:配送料の方法 ,class: "is-form-group__label"
+                %span.is-form-group__span 必須
+                .is-select-wrap
+                  = f.select :delivery_method,Item.delivery_methods.keys.map{|k| [t("enums.item.delivery_method.#{k}"), k]}, {}, {class: "is-form-group__select"}
               .is-form-group
                 = f.label :prefecture_id,:発送元の地域,class: "is-form-group__label"
                 %span.is-form-group__span 必須
@@ -54,7 +70,7 @@
                 = f.label :delivery_date,:発送までの日数,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
-                  = f.select :delivery_date,Item.ddates.keys.map {|k| [t("enums.items.ddate.#{k}"), k]}, {}, {class: "is-form-group__select"}
+                  = f.select :delivery_date,Item.delivery_dates.keys.map {|k| [t("enums.item.delivery_date.#{k}"), k]}, {}, {class: "is-form-group__select"}
           .is-sell-content.clearfix
             %h3.is-sell-sub-head 販売価格(300〜9,999,999)
             .is-sell-form-box
