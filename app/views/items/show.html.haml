@@ -142,7 +142,7 @@
               = link_to "#{@item.user.nickname}さんのその他の出品", "", class: "items-box-container__title__topic"
             .is-item__relation__box__contents.clearfix
               - @user_items.each do |item|
-              = render 'items/items_top/item', item:item
+                = render 'items/items_top/item', item:item
         - if @category_items.length != 0
           %section.is-item__relation__box
             %h2.is-item__ralation__box__title
