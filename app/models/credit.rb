@@ -7,7 +7,6 @@ class Credit < ApplicationRecord
 
     # 顧客未作成時は作成する
     unless record.customer_id
-      record.user_id = 1
        _work = Payjp::Customer.create(description: 'test')
        record.customer_id = _work[:id]
     end

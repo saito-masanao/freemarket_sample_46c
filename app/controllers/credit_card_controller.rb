@@ -3,12 +3,13 @@ class CreditCardController < ApplicationController
 
   # 支払い方法確認画面
   def index
-    _credit_record = Credit.find_by(get_user_id())
+    _credit_record = Credit.find_by(user_id: get_user_id())
     if _credit_record && _credit_record.card_id
       @card_info = Credit.get_CardInfo(_credit_record)
     else
       @card_info = nil
     end
+    render 'users/credit'
   end
 
   # 支払い方法入力画面
@@ -21,10 +22,13 @@ class CreditCardController < ApplicationController
   def create
     _token = params.require(:card_token)
 
-    @credit_record = Credit.find_by(get_user_id())
+    @credit_record = Credit.find_by(user_id: get_user_id())
 
     # 初めてのカード登録処理の場合はレコードを作成する
-    @credit_record = Credit.new unless @credit_record
+    unless @credit_record
+      @credit_record = Credit.new
+      @credit_record.user_id = get_user_id()
+    end
 
     Credit.regist_CardInfo(@credit_record, _token)
     @credit_record.save
@@ -34,7 +38,7 @@ class CreditCardController < ApplicationController
 
   # カード情報削除画面
   def destroy
-    _credit_record = Credit.find_by(get_user_id())
+    _credit_record = Credit.find_by(user_id: get_user_id())
     if _credit_record
       Credit.destroy_CardInfo(_credit_record)
       _credit_record.save
@@ -44,7 +48,7 @@ class CreditCardController < ApplicationController
 
   private
   def get_user_id
-    return {user_id: current_user.id}
+    return current_user.id
   end
 
 end
