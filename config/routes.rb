@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :items,only: [:new, :create, :show, :index] do
     resources :likes, only: [:create]
     resources :comments, only: [:create]
+    resources :orders, only:[:new, :create]
   end
   root 'items#index'
   get 'users/new'
