@@ -21,7 +21,9 @@
                 .is-add-up
                   = f.file_field :images,id: "is-img-0",multiple: true,data: {id: 0},class: "is-upload-box-container__box--file is-up-img"
                   %pre.is-upload-box-container__box--text ドラッグアンドドロップまたはクリックしてファイルをアップロード
-            %ul.is-error-message
+              %ul.is-error-message
+                %li.is-error-message__li
+                  = @image_error
           .is-sell-content
             .is-form-group
               = f.label :name ,:商品名,class: "is-form-group__label"
@@ -34,6 +36,9 @@
               = f.label :description ,:商品の説明,class: "is-form-group__label"
               %span.is-form-group__span 必須
               = f.text_area :description,row: 5,placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "is-form-group__area"
+              %ul.is-error-message
+                %li.is-error-message__li
+                  = @description_error
           .is-sell-content.clearfix
             %h3.is-sell-sub-head 商品の詳細
             .is-sell-form-box
@@ -42,16 +47,25 @@
                 %span.is-form-group__span 必須
                 .is-select-wrap
                   = f.select :category_id,Category.all.map{|k| [k.name, k.id]}, {include_blank: true}, {class: "is-form-group__select"}
+                %ul.is-error-message
+                  %li.is-error-message__li
+                    = @category_error
               .is-form-group
                 = f.label :brand_id ,:ブランド,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
                   = f.select :brand_id,Brand.all.map{|k| [k.name, k.id]}, {include_blank: true}, {class: "is-form-group__select"}
+                %ul.is-error-message
+                  %li.is-error-message__li
+                    = @brand_error
               .is-form-group
                 = f.label :status ,:商品の状態,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
                   = f.select :status,Item.statuses.keys.map {|k| [t("enums.item.status.#{k}"), k]},{include_blank: true}, {class: "is-form-group__select"}
+                %ul.is-error-message
+                  %li.is-error-message__li
+                    = @status_error
           .is-sell-content.clearfix
             %h3.is-sell-sub-head 配送について
             .is-sell-form-box
@@ -60,22 +74,34 @@
                 %span.is-form-group__span 必須
                 .is-select-wrap
                   = f.select :delivery_fee,Item.delivery_fees.keys.map{|k| [t("enums.item.delivery_fee.#{k}"), k]},{include_blank: true}, {class: "is-form-group__select"}
+                %ul.is-error-message
+                  %li.is-error-message__li
+                    = @delivery_fee_error
               .is-form-group
                 = f.label :delivery_method ,:配送料の方法 ,class: "is-form-group__label-hiden",id: "is-delivery_method"
                 %span#is-delivery_method-span.is-form-group__span.is-form-group__hiden 必須
                 .is-select-wrap#is-select-wrap-dm
                   = f.select :delivery_method,Item.delivery_methods.keys.map{|k| [t("enums.item.delivery_method.#{k}"), k]}, {include_blank: true}, {class: "is-form-group__select is-form-group__hiden",id: "item_form_delivery_method-include"}
                   = f.select :delivery_method,Item.delivery_methods.slice(:undecided,:postal_mail,:kuroneko_yamato,:yu_pack).keys.map{|k| [t("enums.item.delivery_method.#{k}"), k]}, {include_blank: true}, {class: "is-form-group__select is-form-group__hiden",id: "item_form_delivery_method-exclude"}
+                %ul.is-error-message
+                  %li#is-dm-error.is-error-message__li.is-form-group__hiden
+                    = @delivery_method_error
               .is-form-group
                 = f.label :prefecture_id,:発送元の地域,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
                   = f.collection_select :prefecture_id, Prefecture.all, :id, :name,{prompt: ""},{class: "is-form-group__select"}
+                %ul.is-error-message
+                  %li.is-error-message__li
+                    = @prefecture_id_error
               .is-form-group
                 = f.label :delivery_date,:発送までの日数,class: "is-form-group__label"
                 %span.is-form-group__span 必須
                 .is-select-wrap
                   = f.select :delivery_date,Item.delivery_dates.keys.map {|k| [t("enums.item.delivery_date.#{k}"), k]}, {include_blank: true}, {class: "is-form-group__select"}
+                %ul.is-error-message
+                  %li.is-error-message__li
+                    = @delivery_date_error
           .is-sell-content.clearfix
             %h3.is-sell-sub-head 販売価格(300〜9,999,999)
             .is-sell-form-box
@@ -86,6 +112,9 @@
                     %span.is-form-group__span 必須
                     .is-sell-price__input.is-right
                       = f.text_field :price, autofocus: true, placeholder: "例）300", class: "is-form-group__field is-sell-price__input--text"
+                  %ul.is-error-message
+                    %li.is-error-message__li
+                      = @price_error
                 %li.clearfix.is-sell-price__li
                   .is-left
                     販売手数料(10%)

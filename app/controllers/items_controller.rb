@@ -20,49 +20,18 @@ class ItemsController < ApplicationController
     if @item_form.save
         redirect_to root_path
       else
-        case @item_form.errors[:name][0]
-          when "は40文字以内で入力してください"
-            @name_error = "40 文字以下で入力してください"
-          when "を入力してください"
-            @name_error = "入力してください"
-        end
-
-        if @item_form.errors[:description][0]
-          @description_error = "選択してください"
-        end
-
-        if @item_form.errors[:category_id][0]
-          @category_error = "選択してください"
-        end
-
-        if @item_form.errors[:brand_id][0]
-          @brand_error = "選択してください"
-        end
-
-        if @item_form.errors[:status][0]
-          @status_error = "選択してください"
-        end
-
-        if @item_form.errors[:delivery_fee][0]
-          @delivery_fee_error = "選択してください"
-        end
-
-        if @item_form.errors[:delivery_date][0]
-          @delivery_date_error = "選択してください"
-        end
-
-        if @item_form.errors[:delivery_method][0]
-          @delivery_method_error = "選択してください"
-        end
-
-        if @item_form.errors[:prefecture_id][0]
-          @prefecture_id_error = "選択してください"
-        end
-
-        if @item_form.errors[:prefecture_id][0]
-          @prefecture_id_error = "選択してください"
-        end
-
+        errors = @item_form.errors
+        @image_error = errors[:images][0] if errors[:images][0]
+        @name_error = errors[:name][0] if errors[:name][0]
+        @description_error = errors[:description][0]if errors[:description][0]
+        @category_error = errors[:category_id][0] if errors[:category_id][0]
+        @brand_error = errors[:brand_id][0] if errors[:brand_id][0]
+        @status_error = errors[:status][0] if errors[:status][0]
+        @delivery_fee_error = errors[:delivery_fee][0] if errors[:delivery_fee][0]
+        @delivery_date_error = errors[:delivery_date][0] if errors[:delivery_date][0]
+        @delivery_method_error = errors[:delivery_method][0] if errors[:delivery_method][0]
+        @prefecture_id_error = errors[:prefecture_id][0] if errors[:prefecture_id][0]
+        @price_error = errors[:price][0] if errors[:price][0]
         render :new
     end
   end

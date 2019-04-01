@@ -179,12 +179,14 @@ removeExclude = ""
     var selectContent = $("#item_form_delivery_fee").val();
     switch (selectContent){
       case "":
+        $("#is-dm-error").addClass("is-form-group__hiden");
         $("#item_form_delivery_method-exclude").addClass("is-form-group__hiden");
         $("#item_form_delivery_method-include").addClass("is-form-group__hiden");
         $("#is-delivery_method").removeClass("is-form-group__label").addClass("is-form-group__label-hiden");
         $("#is-delivery_method-span").addClass("is-form-group__hiden");
         break;
       case "include":
+        $("#is-dm-error").removeClass("is-form-group__hiden");
         if ($("#item_form_delivery_method-exclude").length == 1){
           removeExclude = $("#item_form_delivery_method-exclude").remove();
         }
@@ -196,6 +198,7 @@ removeExclude = ""
         }
         break;
       case "exclude":
+        $("#is-dm-error").removeClass("is-form-group__hiden");
         if ($("#item_form_delivery_method-include").length == 1){
           removeInclude = $("#item_form_delivery_method-include").remove();
         }
