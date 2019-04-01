@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
 
-  def top
+  def index
     @ladies = Item.where(category_id: 1).order("created_at DESC").limit(4)
-    @mens = Item.where(category_id: 1).order("created_at DESC").limit(4)
+    @mens = Item.where(category_id: 2).order("created_at DESC").limit(4)
     @kids = Item.where(category_id: 3).order("created_at DESC").limit(4)
     @cosmetics = Item.where(category_id: 7).order("created_at DESC").limit(4)
     @chanels = Item.where(brand_id: 1).order("created_at DESC").limit(4)
