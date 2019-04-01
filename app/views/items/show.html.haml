@@ -15,8 +15,7 @@
         .is-thumbnails
           - @item.images.each do |img|
             .is-thumbnails__item
-              = link_to '' do
-                = image_tag(img.image.url)
+              = image_tag(img.image.url)
 
       %table.is-item__detail
         %tr
