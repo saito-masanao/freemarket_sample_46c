@@ -1,4 +1,6 @@
 class CreditCardController < ApplicationController
+  before_action :authenticate_user!
+
   # 支払い方法確認画面
   def index
     _credit_record = Credit.find_by(get_user_id())
@@ -42,7 +44,7 @@ class CreditCardController < ApplicationController
 
   private
   def get_user_id
-    return {user_id:1} #[@kari]最終的にはログインユーザーIDを取得する
+    return {user_id: current_user.id} #[@kari]最終的にはログインユーザーIDを取得する
   end
 
 end

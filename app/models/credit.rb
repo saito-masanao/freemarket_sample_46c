@@ -32,7 +32,7 @@ class Credit < ApplicationRecord
     return {
       brand:     _card_info.brand.downcase,
       exp_month: _card_info.exp_month,
-      exp_year:  _card_info.exp_year%100, # 2019から19を取り出すため
+      exp_year:  _card_info.exp_year%100, # 2019(年)から19を取り出すため
       last4:     _card_info.last4,
     }
   end
@@ -51,10 +51,6 @@ class Credit < ApplicationRecord
   end
 
   private
-  def self.get_user_id
-    return 1
-  end
-
   def self.set_api_key
     #APIキーの設定
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
