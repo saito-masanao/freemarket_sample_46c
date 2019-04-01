@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
 
   def destroy
     Item.find(params[:id]).destroy
-    render :index
+    redirect_to root_path
   end
 
   private
