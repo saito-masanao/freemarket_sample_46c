@@ -41,6 +41,11 @@ class ItemsController < ApplicationController
     @category_items = other_items.where(category_id: @item.category.id).limit(6)
   end
 
+  def destroy
+    Item.find(params[:id]).destroy
+    redirect_to root_path
+  end
+
   private
 
   def item_params
