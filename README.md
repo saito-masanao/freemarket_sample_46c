@@ -9,7 +9,9 @@
 |last_name|string||
 |first_name(kana)|string||
 |last_name(kana)|string||
-|birthday|integer||
+|year|integer||
+|month|integer||
+|day|integer||
 
 ### Association
 - has_many :comments
