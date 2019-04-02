@@ -7,17 +7,18 @@
     .search-container__right
       %section.item-box-container
         %h2.search-result-head
-          - if @items.empty?
+          - if @error
             %h2
               = "検索結果 0件"
-            %p 該当する商品が見当たりません。商品は毎日増えていますので、これからの出品に期待してください。
+            %p
+              = @error
             %h3 新着商品
             .search-result
               .search-result__items
-                = render 'search_items', locals: {items: @all_items}
+                = render 'search_items', locals: {items: @items}
           - else
             %h2
-              = "検索結果 1-#{@items.length}件"
+              = "検索結果 1-#{@items.count}件"
             .search-result
               .search-result__items
                 = render 'search_items', locals: {items: @items}
