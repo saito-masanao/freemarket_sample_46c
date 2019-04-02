@@ -23,7 +23,7 @@
           - if user_signed_in?
 
             %li
-              = link_to 'mypage' do
+              = link_to mypage_path(current_user.id) do
                 = image_tag("sample.jpg", class: "avater-image")
                 %span マイページ
               %ul.mypage-box
