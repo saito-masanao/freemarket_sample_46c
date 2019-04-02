@@ -41,6 +41,11 @@ class ItemsController < ApplicationController
     @category_items = other_items.where(category_id: @item.category.id).limit(6)
   end
 
+  def destroy
+    Item.find(params[:id]).destroy
+    redirect_to root_path
+  end
+
   private
 
   def item_params
@@ -58,7 +63,7 @@ class ItemsController < ApplicationController
        { :images => [] }
       ).merge(user_id:current_user.id)
   end
-
+  
   def search
     result = []
     if params[:keyword].blank?
