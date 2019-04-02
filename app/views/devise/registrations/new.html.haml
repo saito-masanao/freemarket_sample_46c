@@ -57,7 +57,7 @@
               = f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" ,placeholder:"例) アヤ", class: "ur-form-group__field"
             .ur-form-group
               = f.label :"生年月日" , class: "ur-form-group__label"
-              %span.ur-form-group__span 必須
+              %span.ur-form-group__span 任意
               .ur-form-group-birthday
                 .ur-form-group-birthday__wrap
                   = date_select :birthday, '', {order: [ :year, :month, :day ],use_month_numbers: true,start_year: 1900,include_blank:true,end_year:Time.now.year,datetime_separator: '%s'}, {class: "  ur-form-group-birthday__wrap--select"}
