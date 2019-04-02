@@ -20,5 +20,10 @@ Rails.application.routes.draw do
   get 'itemconfirm', to: 'users#itemconfirm'
   get 'sign_up', to: 'users#sign_up'
   get 'itemsell', to: 'users#itemsell'
+
   resources :credit_card, only:[:index, :new, :create, :destroy]
+
+  resources :categories, only: [:index, :show]
+  resources :brands, only: [:index, :show]
+
 end

@@ -13,8 +13,7 @@ class UsersController < ApplicationController
   end
 
   def top
-    @categories = Category.all.includes([middle_categories: :lower_categories])
-    @brands = Brand.all
+
     
   end
 
