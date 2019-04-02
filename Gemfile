@@ -51,6 +51,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'gretel'
 gem 'dotenv-rails'
+gem 'kaminari'
+gem 'ransack'
 gem 'fog-aws'
 gem 'payjp'
 

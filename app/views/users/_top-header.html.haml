@@ -4,9 +4,9 @@
       .top-main-header__wrapper__top__left
         %a{:href => root_path}
           = image_tag("mercari_logo.svg", class: "mercari-image")
-      = form_with url: root_path,local: true ,html: {class: "top-main-header__wrapper__top__form"} do |f|
+      = form_with url: items_search_path, method: :get, local: true ,html: {class: "top-main-header__wrapper__top__form"} do |f|
         .top-main-header__wrapper__top__form__search-field.back-silver
-          = f.text_field :keyword, class: 'top-main-header__wrapper__top__form__search-field__text-field', placeholder: 'キーワードから探す'
+          = f.text_field :keyword, class: 'top-main-header__wrapper__top__form__search-field__text-field', placeholder: 'キーワードから探す', value:''
           = button_tag type: 'submit', class: 'top-main-header__wrapper__top__form__search-field__search-btn' do
             %i.fa.fa-search
     .top-main-header__wrapper__nav-box
