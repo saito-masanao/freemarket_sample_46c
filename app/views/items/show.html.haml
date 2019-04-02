@@ -88,7 +88,7 @@
     .is-item__change-box
       = link_to '商品の編集', '', class: 'btn red'
       %p or
-      = button_to 'この商品を削除する', item_path(@item), method: :delete, class: 'btn'
+      = button_to 'この商品を削除する', item_path(@item), method: :delete, class: 'is-change btn'
 
 
     - if @item.user != current_user
@@ -147,16 +147,12 @@
               %h2.is-item__ralation__box__title
                 = link_to "#{@item.user.nickname}さんのその他の出品", "", class: "items-box-container__title__topic"
               .is-item__relation__box__contents.clearfix
-                - @user_items.each do |item|
-                  = render 'items/items_top/item', item:item
+                = render partial: 'items/items_top/item', collection: @user_items, as: "item"
           - if @category_items.length != 0
             %section.is-item__relation__box
               %h2.is-item__ralation__box__title
                 = link_to "#{@item.category.name} その他の出品", "", class: "items-box-container__title__topic"
               .is-item__relation__box__contents.clearfix
-                - @category_items.each do |item|
-                  = render 'items/items_top/item', item:item
-
-
+                = render partial: 'items/items_top/item', collection: @category_items, as: "item"
 
   = render 'users/top-footer'
