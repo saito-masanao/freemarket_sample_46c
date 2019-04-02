@@ -9,7 +9,8 @@
         = image_tag(@item.images[0].to_s, size:"148x148")
       %p.ib-content__item-inner-name
         = @item.name
-      = form_with url: root_path,local: true ,html: {class: "ib-content__item-inner__form"} do |f|
+      = form_with url:item_orders_path(@item.id), local:true, html: {class: "ib-content__item-inner__form"} do |f|
+
         %p.ib-content__item-inner__form-pay
           = converting_to_jpy(@item.price)
           %span
@@ -23,9 +24,9 @@
             支払い金額
           .ib-content__item-inner__form-payment-price
             = converting_to_jpy(@item.price)
-        -# @ToDo 以下例のようにサーバーへ送るhidden情報を追加する。
-        -#= f.hidden_field :price, value: 666
-        -#= f.hidden_field :buyer_id, value: current_user.id
+
+        = f.hidden_field :item_id, value: @item.id
+        = f.hidden_field :user_id, value: @user[:id]
         = f.submit "購入する", class: "ib-content__item-inner__form-submit"
 
   .ib-content__address
