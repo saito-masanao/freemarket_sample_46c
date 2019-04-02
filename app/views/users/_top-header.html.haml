@@ -18,7 +18,7 @@
               - @categories.each do |category|
                 %li.top-main-header-nav-parent{"data-category-id": category.id}
                   %h3.category__text
-                    = link_to root_path, class: "category_link" do
+                    = link_to categories_path, class: "category_link" do
                       = category.name                     
                   %ul.top-main-header-nav-child-wrap
                     - if category.middle_categories.present?
@@ -43,7 +43,7 @@
               - @brands.each do |brand|
                 %li.top-main-header-nav-brand{"data-brand-id": brand.id}
                   %h3.brand__text
-                    = link_to root_path, class: "brand_link" do
+                    = link_to brands_path, class: "brand_link" do
                       = brand.name                
 
               
