@@ -53,6 +53,7 @@ gem 'gretel'
 gem 'dotenv-rails'
 gem 'kaminari'
 gem 'fog-aws'
+gem 'payjp'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

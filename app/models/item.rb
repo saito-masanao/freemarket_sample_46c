@@ -1,8 +1,19 @@
 class Item < ApplicationRecord
   belongs_to :category
   belongs_to :brand
+  belongs_to :user
+  belongs_to :prefecture
+  has_many :likes, dependent: :destroy
+  has_many :like_users, through: :likes, source: :user
   has_many :images, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
+  def like?(user)
+    like_users.include?(user)
+  end
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
   enum status: {
                   very_good: 0,
                   good:      1,

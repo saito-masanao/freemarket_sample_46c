@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
 
-  def top
+  def index
     @ladies = Item.where(category_id: 1).order("created_at DESC").limit(4)
-    @mens = Item.where(category_id: 1).order("created_at DESC").limit(4)
+    @mens = Item.where(category_id: 2).order("created_at DESC").limit(4)
     @kids = Item.where(category_id: 3).order("created_at DESC").limit(4)
     @cosmetics = Item.where(category_id: 7).order("created_at DESC").limit(4)
     @chanels = Item.where(brand_id: 1).order("created_at DESC").limit(4)
@@ -20,8 +20,25 @@ class ItemsController < ApplicationController
     if @item_form.save
         redirect_to root_path
       else
-        redirect_to 'new'
+        @errors = @item_form.errors
+        render :new
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
+    other_items = Item.where.not(id: params[:id])
+
+    near_items = other_items.where(category_id: @item.category.id)
+    @prev_item = near_items[rand(near_items.length)]
+    more_near_items = near_items.where.not(id: @prev_item.id)
+    @next_item = more_near_items[rand(more_near_items.length)]
+
+    @comment = Comment.new
+    @comments = @item.comments
+
+    @user_items = other_items.where(user_id: @item.user.id).limit(6)
+    @category_items = other_items.where(category_id: @item.category.id).limit(6)
   end
 
   private

@@ -5,10 +5,12 @@ $(function() {
   var $thumbs = $('.is-thumbnails__item');
 
   $slider.slick({
-    arrows: false
+    arrows: false,
   });
 
-  $thumbs.on('click', function(e){
+  $('.is-thumbnails__item:first').addClass('current');
+
+  $thumbs.on('mouseover', function(e){
     e.preventDefault();
     var index = $thumbs.index(this);
     $slider.slick('slickGoTo', index, true);
