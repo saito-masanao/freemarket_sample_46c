@@ -39,8 +39,6 @@ class UsersController < ApplicationController
   def itemsell
   end
 
-  def itemdetail
-  end
 
   def itemconfirm
   end

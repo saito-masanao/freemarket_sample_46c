@@ -162,6 +162,8 @@ LowerCategory.create!(
 #作成するテーブルのレコード数を指定
 USER_TABLE_MAX = 100
 ITEM_TABLE_MAX = 200
+LIKE_TABLE_MAX = 800
+COMMENT_TABLE_MAX = 600
 
 USER_TABLE_MAX.times do |n|
  name = Faker::Pokemon.name
@@ -188,10 +190,29 @@ ITEM_TABLE_MAX.times do |n|
     user_id:          Random.new.rand(1..USER_TABLE_MAX),
     #列挙型で定義したカラム
     status:           Random.new.rand(Item.statuses.size),
-    delivery_fee:     Random.new.rand(Item.dfees.size),
-    delivery_date:    Random.new.rand(Item.ddates.size),
-    delivery_method:  Random.new.rand(Item.demethods.size),
+    delivery_fee:     Random.new.rand(Item.delivery_fees.size),
+    delivery_date:    Random.new.rand(Item.delivery_dates.size),
+    delivery_method:  Random.new.rand(Item.delivery_methods.size),
     size:             Random.new.rand(Item.sizes.size),
   }
   Item.create!(dumy_data)
+end
+
+LIKE_TABLE_MAX.times do |n|
+  dumy_data = {
+    id:               n+1,
+    item_id:          Random.new.rand(1..ITEM_TABLE_MAX),
+    user_id:          Random.new.rand(1..USER_TABLE_MAX)
+  }
+  Like.create!(dumy_data)
+end
+
+COMMENT_TABLE_MAX.times do |n|
+  dumy_data = {
+    id:               n+1,
+    comment:          Faker::JapaneseMedia::OnePiece.quote,
+    item_id:          Random.new.rand(1..ITEM_TABLE_MAX),
+    user_id:          Random.new.rand(1..USER_TABLE_MAX)
+  }
+  Comment.create!(dumy_data)
 end
