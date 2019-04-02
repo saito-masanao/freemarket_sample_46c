@@ -5,7 +5,6 @@
     = "商品購入に#{@MESSAGE}しました。"
   %section.ib-content__item
     .ib-content__item-inner
-      = form_with url:root_path, local:true, html: {class: "ib-content__item-inner__form"} do |f|
-        = f.submit "TOPヘ戻る", class: "ib-content__item-inner__form-submit"
-
+      = link_to root_path do
+        %button.ib-content__item-inner__form-submit TOPヘ戻る
 = render "devise/shared/login-footer"
