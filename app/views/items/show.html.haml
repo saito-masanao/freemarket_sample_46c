@@ -85,7 +85,7 @@
         #{@item.description}
 
   - if @item.user == current_user
-    .is-item__change-box
+    #is-item__change-box
       = link_to '商品の編集', '', class: 'btn red'
       %p or
       = button_to 'この商品を削除する', item_path(@item), method: :delete, class: 'is-change btn'
