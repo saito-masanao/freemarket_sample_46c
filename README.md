@@ -5,13 +5,13 @@
 |nickname|string|null: false|
 |mail_adress|string|null: false, unique:true|
 |password|string|null: false|
-|first_name|string||
-|last_name|string||
-|first_name(kana)|string||
-|last_name(kana)|string||
-|year|integer||
-|month|integer||
-|day|integer||
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name(kana)|string|null: false|
+|last_name(kana)|string|null: false|
+|year|integer|null: false|
+|month|integer|null: false|
+|day|integer|null: false|
 
 ### Association
 - has_many :comments
