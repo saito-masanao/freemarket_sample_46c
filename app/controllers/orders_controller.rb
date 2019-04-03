@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  #商品購入確認画面表示
+  # 商品購入確認画面表示
   def new
     @item = Item.find(params[:item_id])
     @user = get_user_info()
@@ -8,24 +8,30 @@ class OrdersController < ApplicationController
     render '/users/itemconfirm'
   end
 
-  #商品購入処理
+  # 商品購入処理
   def create
     _success_flag = true
     _param = get_order_param()
-
     begin
       ActiveRecord::Base.transaction do
-        #アイテムステータスの更新
+        # アイテムステータスの更新
         _item = Item.find(_param[:item_id])
         _item.update(item_status: get_item_status())
-        #オーダーテーブルの生成
+        # オーダーテーブルの生成
         _order = Order.new(_param)
         _order.save
+        # 決済処理
+        _settlement = Settlement.new
+        _settlement.order_id = _order.id
+        _settlement.charge_id = Credit.deposit_CardInfo(_param[:user_id], _item.price)
+        # [@ToDo]
+        # Settlementにバーリデーションを付ければcharge_idがカラだった時は、
+        # saveで失敗して例外を返してくれるはず。。
+        _settlement.save
       end
     rescue => e
       _success_flag = false
     end
-
     @MESSAGE = (_success_flag) ? "成功": "失敗"
   end
 
