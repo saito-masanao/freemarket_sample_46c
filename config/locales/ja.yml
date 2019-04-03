@@ -50,6 +50,9 @@ ja:
         email: メールアドレス
         first_name_kana: 姓カナ (全角)
         last_name_kana: 名カナ (全角)
+        year: 年
+        month: 月
+        day: 日
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻

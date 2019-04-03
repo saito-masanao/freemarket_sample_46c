@@ -133,6 +133,10 @@
                 margin: 8px 0 0;
                 position: relative;
                 background: #fff;
+                display: flex;
+                line-height: 50px;
+                padding-right: 10px;
+
               &--select{
                   width: 100%;
                   position: relative;
@@ -146,7 +150,8 @@
                   font-size: 16px;
                   line-height: 1.5;
                   cursor: pointer;
-              }
+
+                }
               }
             }
         }
