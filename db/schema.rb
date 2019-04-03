@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_122313) do
+ActiveRecord::Schema.define(version: 2019_04_03_090053) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -90,6 +90,14 @@ ActiveRecord::Schema.define(version: 2019_04_01_122313) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "settlements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "orders_id", null: false
+    t.string "charge_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["orders_id"], name: "index_settlements_on_orders_id"
+  end
+
   create_table "social_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "provider"
@@ -138,5 +146,6 @@ ActiveRecord::Schema.define(version: 2019_04_01_122313) do
   add_foreign_key "likes", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
+  add_foreign_key "settlements", "orders", column: "orders_id"
   add_foreign_key "social_profiles", "users"
 end
