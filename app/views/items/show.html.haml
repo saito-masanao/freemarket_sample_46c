@@ -2,6 +2,19 @@
   = render 'users/top-header'
   = render 'users/bread-crumbs'
 
+  %aside.is-modal
+    .is-modal__inner
+      .is-modal__body
+        %p 確認
+        = "削除すると二度と復活できません。"
+        %br
+        = "削除する代わりに停止することもできます。"
+        %br
+        %br
+        = "本当に削除しますか？"
+      .clearfix
+        .cancel-btn キャンセル
+        = button_to '削除する', item_path(@item), method: :delete, class: 'delete-change cancel-btn', onfocus:"this.blur();"
 
 
   %section{ class: "#{@item.images.length < 5 ? 'is-item' : 'is-item is-many-photos' }"}
@@ -88,7 +101,7 @@
     .is-item__change-box
       = link_to '商品の編集', '#', class: 'btn red'
       %p or
-      = button_to 'この商品を削除する', item_path(@item), method: :delete, class: 'is-change btn'
+      .is-change.btn この商品を削除する
 
 
     - if @item.user != current_user
@@ -154,5 +167,6 @@
                 = link_to "#{@item.category.name} その他の出品", "#", class: "items-box-container__title__topic"
               .is-item__relation__box__contents.clearfix
                 = render partial: 'items/items_top/item', collection: @category_items, as: "item"
+
 
   = render 'users/top-footer'
