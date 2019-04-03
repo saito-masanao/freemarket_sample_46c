@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   def new
     @item = Item.find(params[:item_id])
     @user = get_user_info()
+    @card_info = get_credit_card()
     render '/users/itemconfirm'
   end
 
@@ -58,6 +59,13 @@ class OrdersController < ApplicationController
     _ret[:postal_code]    = "150−0041"
     _ret[:street_address] = "東京都渋谷区神南1丁目12−16アジアビル8F"
 
+    return _ret
+  end
+
+  def get_credit_card()
+    _ret = nil
+    _r = Credit.find_by(user_id: current_user.id)
+    _ret = Credit.get_CardInfo(_r) if _r && _r.card_id
     return _ret
   end
 

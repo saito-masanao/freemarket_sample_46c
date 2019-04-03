@@ -27,7 +27,10 @@
 
         = f.hidden_field :item_id, value: @item.id
         = f.hidden_field :user_id, value: @user[:id]
-        = f.submit "購入する", class: "ib-content__item-inner__form-submit"
+        - if @card_info
+          = f.submit "購入する", class: "ib-content__item-inner__form-submit"
+        - else
+          = f.submit "購入する", class: "ib-content__item-inner__form-submit-disable"
 
   .ib-content__address
     .ib-content__address-inner
@@ -47,12 +50,16 @@
   .ib-content__payment
     .ib-content__payment-inner
       %h3 支払い方法
-      %p.ib-content__payment-inner__info
-        = "************9714"
-        %br
-        = "11 / 21"
-      .ib-content__payment-inner__visa
-        =image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?3112359103", width:49, height:15)
+      - if @card_info
+        %p.ib-content__payment-inner__info
+          = "************#{@card_info[:last4]}"
+          %br
+          = "#{@card_info[:exp_month]} / #{@card_info[:exp_year]}"
+        .ib-content__payment-inner__logo
+          = get_credit_log(@card_info[:brand])
+      - else
+        %p.ib-content__payment-inner__info
+          = "/"
       .ib-content__payment-inner__change
         =link_to("#", class:"ib-content__payment-inner__change-link") do
           変更する
