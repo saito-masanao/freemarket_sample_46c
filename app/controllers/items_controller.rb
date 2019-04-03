@@ -20,34 +20,30 @@ class ItemsController < ApplicationController
     if @item_form.save
         redirect_to root_path
       else
-        redirect_to 'new'
+        @errors = @item_form.errors
+        render :new
     end
   end
 
   def show
     @item = Item.find(params[:id])
+    other_items = Item.where.not(id: params[:id])
 
-    near_items = Item.where(category_id: @item.category.id).reject{|i| i[:id] == params[:id]}
+    near_items = other_items.where(category_id: @item.category.id)
     @prev_item = near_items[rand(near_items.length)]
-    more_near_items = near_items.reject{|i| i[:id] == @prev_item[:id] }
+    more_near_items = near_items.where.not(id: @prev_item.id)
     @next_item = more_near_items[rand(more_near_items.length)]
 
     @comment = Comment.new
     @comments = @item.comments
 
-    max_i = Item.where(user_id: @item.user.id).length
-    if max_i < 7
-      @user_items = Item.where(user_id: @item.user.id)
-    else
-      @user_items = Item.where(user_id: @item.user.id)[max_i-6,max_i]
-    end
+    @user_items = other_items.where(user_id: @item.user.id).limit(6)
+    @category_items = other_items.where(category_id: @item.category.id).limit(6)
+  end
 
-    max_c = Item.where(category_id: @item.category.id).length
-    if max_c < 7
-      @category_items = Item.where(category_id: @item.category.id)
-    else
-      @category_items = Item.where(category_id: @item.category.id)[max_c-6,max_c]
-    end
+  def destroy
+    Item.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   private
@@ -66,5 +62,27 @@ class ItemsController < ApplicationController
       :price,
        { :images => [] }
       ).merge(user_id:current_user.id)
+  end
+  
+  def search
+    result = []
+    if params[:keyword].blank?
+      redirect_to root_path
+    else
+      split_keyword = params[:keyword].split(/[[:blank:]]+/)
+      split_keyword.each_with_index do |keyword, index|
+        if index == 0
+          result[index] = Item.where("name LIKE(?) OR description LIKE(?)", "%#{keyword}%","%#{keyword}%")
+        else
+          result[index] = result[index-1].where("name LIKE(?) OR description LIKE(?)", "%#{keyword}%","%#{keyword}%")
+        end
+      end
+        if result[split_keyword.length-1] != []
+          @items = result[split_keyword.length-1].page(params[:page]).per(48)
+        else
+          @items = Item.limit(24).order("id DESC").page(params[:page]).per(48)
+          @error = "該当する商品が見当たりません。商品は毎日増えていますので、これからの出品に期待してください。"
+        end
+    end
   end
 end
