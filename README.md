@@ -28,15 +28,15 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|bigint|foreign_key: true|
-|provider|varchara|unique:true|
-|uid|varchara|unique:true|
-|name|varchara||
-|nickname|varchara||
-|email|varchara||
-|url|varchara||
-|imege_url|varchara||
-|description|varchara||
+|user_id|integer|foreign_key: true|
+|provider|string|unique:true|
+|uid|string|unique:true|
+|name|string||
+|nickname|string||
+|email|string||
+|url|string||
+|imege_url|string||
+|description|string||
 |other|text||
 |credentials|text||
 |raw_info|text||
