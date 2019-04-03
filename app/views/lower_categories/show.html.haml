@@ -3,9 +3,9 @@
 = render 'users/bread-crumbs'
 %secttion.items-list
   %h1.items-list__title
-    #{@brand.name}の商品一覧
+    #{@category.name}の商品一覧
   - if @items.length > 0
-    .items-list__item-container
+    .products-list__item-container.clearfix
       = render partial: 'items/items_top/item', collection: @items
   - else
     商品がありません

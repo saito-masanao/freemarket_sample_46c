@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: "omniauth_callbacks",
   }
+  resources :categories, only: [:index, :show]
+  resources :middle_categories, only: [:index, :show]
+  resources :lower_categories, only: [:index, :show]
+  resources :brands, only: [:index, :show]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :items,only: [:new, :create, :show, :index, :destroy] do
     resources :likes, only: [:create]
@@ -23,8 +28,4 @@ Rails.application.routes.draw do
   get 'items/search', to: 'items#search'
 
   resources :credit_card, only:[:index, :new, :create, :destroy]
-
-  resources :categories, only: [:index, :show]
-  resources :brands, only: [:index, :show]
-
 end

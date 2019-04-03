@@ -1,0 +1,2 @@
+module LowerCategoriesHelper
+end
