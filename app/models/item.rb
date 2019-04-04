@@ -57,7 +57,10 @@ class Item < ApplicationRecord
                 four_XL: 8,
                 FREE_SIZE: 9
   }
-
+  enum item_status: {
+                  on_sale:  0,
+                  sold_out:  1
+  }
 
 validates :name, presence: true
 end

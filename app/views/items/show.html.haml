@@ -21,7 +21,7 @@
     %h1.is-item__name #{@item.name}
     .is-item__main.clearfix
       .is-item__photos
-        - if @item.item_status != 0
+        - if @item.item_status == "sold_out"
           .is-soldout-badge
             .is-sold SOLD
         .is-slider
@@ -94,7 +94,7 @@
       %span.is-item__price--shipping-fee
         = "#{@item.delivery_fee_i18n}".gsub(/\(.+\)/,"")
     - if @item.user != current_user
-      - if @item.item_status == 0
+      - if @item.item_status == "on_sale"
         = link_to "購入画面に進む", new_item_order_path(@item), class: "is-item__buy-btn"
       - else
         .is-gray.is-item__buy-btn 売り切れました
@@ -134,7 +134,7 @@
         %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         = form_for [@item, @comment], html:{id: 'comment-form'} do |f|
           = f.text_area :comment, class: 'is-item__comment-form__textarea', placeholder: 'コメントを書いてください'
-          - if @item.item_status == 0
+          - if @item.item_status == "on_sale"
             = f.submit 'コメントする', class: 'is-item__comment-form__btn'
           - else
             .is-item__comment-form__btn.is-gray 売り切れのためコメントできません
