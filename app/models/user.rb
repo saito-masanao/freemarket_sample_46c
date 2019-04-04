@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :like_items, through: :likes, source: :item
   has_many :comments
+  has_many :orders
   validates :nickname, presence: true,length: { maximum: 20 }
   validates :first_name, presence: true
   validates :last_name, presence: true

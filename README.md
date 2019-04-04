@@ -165,7 +165,7 @@
 - belongs_to :item
 - belongs_to :user
 - has_one :review
-
+- has_many :settlement
 
 ## likesテーブル
 |Column|Type|Options|
@@ -201,6 +201,14 @@
 ### Association
 - belongs_to :user
 
+## Settlement
+|Column|Type|Options|
+|------|----|-------|
+| order_id |integer|null: false, foreign_key: true|
+| charge_id|integer|null: false|
+
+### Association
+- belongs_to :order
 
 ## sns_credentialsテーブル
 |Column|Type|Options|

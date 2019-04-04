@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get :search, on: :collection
     resources :likes, only: [:create]
     resources :comments, only: [:create]
+    resources :orders, only:[:new, :create]
   end
   root 'items#index'
   get 'users/new'

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_04_01_065638) do
+ActiveRecord::Schema.define(version: 2019_04_03_090053) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -82,6 +81,22 @@ ActiveRecord::Schema.define(version: 2019_04_01_065638) do
     t.index ["user_id"], name: "fk_rails_1e09b5dabf"
   end
 
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_orders_on_item_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "settlements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.string "charge_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_settlements_on_order_id"
+
   create_table "lower_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -145,6 +160,9 @@ ActiveRecord::Schema.define(version: 2019_04_01_065638) do
   add_foreign_key "items", "users"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
+  add_foreign_key "orders", "items"
+  add_foreign_key "orders", "users"
+  add_foreign_key "settlements", "orders"
   add_foreign_key "middle_categories", "categories"
   add_foreign_key "social_profiles", "users"
 end
