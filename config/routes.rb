@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'itemconfirm', to: 'users#itemconfirm'
   get 'sign_up', to: 'users#sign_up'
   get 'itemsell', to: 'users#itemsell'
+  get 'items/search', to: 'items#search'
 
   resources :credit_card, only:[:index, :new, :create, :destroy]
 
