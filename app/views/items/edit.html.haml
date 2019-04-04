@@ -15,12 +15,12 @@
                 .is-image-ul.item-0
                   %ul#is-image-ul-1
                     / 既存の画像があるときはプレビューを表示させる
-                    = render :partial => "image", :collection => Item.find(@item_form.id).images,:as => "image"
+                    = render :partial => "image", :collection => @item_form.images,:as => "image"
               .is-add-image
                 .is-image-ul.item-0
                   %ul#is-image-ul-2
-              - if Item.find(@item_form.id).images
-                - count = Item.find(@item_form.id).images.count
+              - if @item_form.images
+                - count = @item_form.images.count
                 - label_for = "is-img-#{count}"
               = f.label :images ,class: "is-upload-box-container__box is-item-#{count}" ,id: "is-add",for: "#{label_for}" do
                 .is-add-up

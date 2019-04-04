@@ -29,24 +29,22 @@ class ItemForm
                       :id
 
   def initialize(attr = {})
-    if attr[:id]
-       @item = Item.find(attr[:id])
-        self.id = attr[:id].nil? ? @item.name : attr[:id]
-        self.name = attr[:name].nil? ? @item.name : attr[:name]
-        self.description = attr[:description].nil? ? @item.description : attr[:description]
-        self.category_id = attr[:category_id].nil? ? @item.category_id : attr[:category_id]
-        self.brand_id = attr[:brand_id].nil? ? @item.brand_id : attr[:brand_id]
-        self.status = attr[:status].nil? ? @item.status : attr[:status]
-        self.delivery_fee = attr[:delivery_fee].nil? ? @item.delivery_fee : attr[:delivery_fee]
-        self.delivery_method = attr[:delivery_method].nil? ? @item.delivery_method : attr[:delivery_method]
-        self.prefecture_id = attr[:prefecture_id].nil? ? @item.prefecture_id : attr[:prefecture_id]
-        self.delivery_date = attr[:delivery_date].nil? ? @item.delivery_date : attr[:delivery_date]
-        self.price = attr[:price].nil? ? @item.price : attr[:price]
-        self.images = attr[:images].nil? ? nil : attr[:images]
-        self.remove_images = attr[:remove_images].nil? ? nil : attr[:remove_images]
-        self.user_id = attr[:user_id].nil? ? @item.user_id : attr[:user_id]
-     else
-        super(attr)
+    if attr[:id] #商品のIDがある時(edit or update)
+      if attr[:name] #updateの時
+            binding.pry
+        attr.each do |k,v|
+          self.send("#{k}=", v)
+        end
+      else #editの時
+        @item = Item.find(attr[:id])
+        item_params = @item.attributes.except('created_at','updated_at','size','item_status')
+        item_params.each do |k,v|
+          self.send("#{k}=", v)
+        end
+        self.images = @item.images
+      end
+    else
+      super(attr)
     end
   end
 
@@ -60,7 +58,6 @@ class ItemForm
   end
 
   def update
-    return false if invalid?
     @item = Item.find(id)
     @item.update(name: name,description: description,category_id: category_id,brand_id: brand_id,status: status,delivery_fee: delivery_fee,delivery_method: delivery_method,prefecture_id: prefecture_id,delivery_date: delivery_date,price: price,user_id:user_id)
     if remove_images
