@@ -51,8 +51,8 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item_form = ItemForm.new(item_params.merge(id:params[:id]))
-    @item_form.update
+    @item_form = ItemForm.new(id:params[:id])
+    @item_form.update(item_params)
     redirect_to root_path
   end
 
