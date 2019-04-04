@@ -89,10 +89,11 @@ ActiveRecord::Schema.define(version: 2019_04_01_065638) do
   end
 
   create_table "middle_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.integer "category_id"
+    t.index ["category_id"], name: "index_middle_categories_on_category_id"
   end
 
   create_table "social_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -141,5 +142,6 @@ ActiveRecord::Schema.define(version: 2019_04_01_065638) do
   add_foreign_key "items", "users"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
+  add_foreign_key "middle_categories", "categories"
   add_foreign_key "social_profiles", "users"
 end
