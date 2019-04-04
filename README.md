@@ -163,7 +163,7 @@
 - belongs_to :item
 - belongs_to :user
 - has_one :review
-- has_many :Settlement
+- has_many :settlement
 
 ## likesテーブル
 |Column|Type|Options|

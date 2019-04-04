@@ -59,10 +59,10 @@ class OrdersController < ApplicationController
     elsif _w[:nickname]
       _ret[:name] = _w[:nickname]
     else
-      _ret[:name] = "真子就有"
+      _ret[:name] = "真子 就有"
     end
     _ret[:id]             = _w[:id]
-    _ret[:postal_code]    = "150−0041"
+    _ret[:postal_code]    = "〒" + "150−0041"
     _ret[:street_address] = "東京都渋谷区神南1丁目12−16アジアビル8F"
 
     return _ret

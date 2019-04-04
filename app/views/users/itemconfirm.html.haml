@@ -37,7 +37,7 @@
       %h3 配送先
       %address
         .ib-content__address-innerr__text
-          = "〒" + @user[:postal_code]
+          = @user[:postal_code]
           %br
           = @user[:street_address]
           %br
