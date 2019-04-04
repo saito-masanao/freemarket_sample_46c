@@ -7,7 +7,8 @@ class MiddleCategoriesController < ApplicationController
 
   def show
     
-    @category = MiddleCategory.find(params[:id])
+    @middle_category = MiddleCategory.find(params[:id])
     @items = Item.where(category_id: params[:id]).order(id: "DESC")
+    
   end
 end
