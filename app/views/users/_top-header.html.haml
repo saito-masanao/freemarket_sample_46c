@@ -19,13 +19,8 @@
               - @categories.each do |category|
                 %li.top-main-header-nav-parent{"data-category-id": category.id}
                   %h3.category__text
-<<<<<<< HEAD
                     = link_to category_path(category), class: "category_link" do
                       = category.name                     
-=======
-                    = link_to categories_path, class: "category_link" do
-                      = category.name
->>>>>>> YKKISKW/master
                   %ul.top-main-header-nav-child-wrap
                     - if category.middle_categories.present?
                       - category.middle_categories.each do |middle_category|
@@ -49,18 +44,9 @@
               - @brands.each do |brand|
                 %li.top-main-header-nav-brand{"data-brand-id": brand.id}
                   %h3.brand__text
-<<<<<<< HEAD
                     = link_to brand_path(brand), class: "brand_link" do
-                      = brand.name                
-=======
-                    = link_to brands_path, class: "brand_link" do
-                      = brand.name
-
->>>>>>> YKKISKW/master
-
-
-
-
+                      = brand.name       
+                               
       .top-main-header__wrapper__nav-box__right
         %ul.right
           - if user_signed_in?

@@ -81,6 +81,20 @@ ActiveRecord::Schema.define(version: 2019_04_03_090053) do
     t.index ["user_id"], name: "fk_rails_1e09b5dabf"
   end
 
+  create_table "lower_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "middle_category_id"
+  end
+
+  create_table "middle_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "category_id"
+  end
+
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
     t.bigint "user_id", null: false
@@ -96,20 +110,6 @@ ActiveRecord::Schema.define(version: 2019_04_03_090053) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_settlements_on_order_id"
-
-  create_table "lower_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-    t.integer "middle_category_id"
-  end
-
-  create_table "middle_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.bigint "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_middle_categories_on_category_id"
   end
 
   create_table "social_profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -163,6 +163,5 @@ ActiveRecord::Schema.define(version: 2019_04_03_090053) do
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
   add_foreign_key "settlements", "orders"
-  add_foreign_key "middle_categories", "categories"
   add_foreign_key "social_profiles", "users"
 end

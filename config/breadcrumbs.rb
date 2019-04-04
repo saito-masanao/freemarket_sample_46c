@@ -33,11 +33,7 @@ crumb :creditregistration do
 end
 
 crumb :search do |keyword|
-<<<<<<< HEAD
-  link params[:keyword], items_search_path
-=======
   link params[:keyword], search_items_path
->>>>>>> YKKISKW/master
   parent :root
 end
 
