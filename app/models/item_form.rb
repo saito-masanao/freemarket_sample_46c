@@ -25,7 +25,30 @@ class ItemForm
                       :price,
                       :images,
                       :remove_images,
-                      :user_id
+                      :user_id,
+                      :id
+
+  def initialize(attr = {})
+    if attr[:id]
+       @item = Item.find(attr[:id])
+        self.id = attr[:id].nil? ? @item.name : attr[:id]
+        self.name = attr[:name].nil? ? @item.name : attr[:name]
+        self.description = attr[:description].nil? ? @item.description : attr[:description]
+        self.category_id = attr[:category_id].nil? ? @item.category_id : attr[:category_id]
+        self.brand_id = attr[:brand_id].nil? ? @item.brand_id : attr[:brand_id]
+        self.status = attr[:status].nil? ? @item.status : attr[:status]
+        self.delivery_fee = attr[:delivery_fee].nil? ? @item.delivery_fee : attr[:delivery_fee]
+        self.delivery_method = attr[:delivery_method].nil? ? @item.delivery_method : attr[:delivery_method]
+        self.prefecture_id = attr[:prefecture_id].nil? ? @item.prefecture_id : attr[:prefecture_id]
+        self.delivery_date = attr[:delivery_date].nil? ? @item.delivery_date : attr[:delivery_date]
+        self.price = attr[:price].nil? ? @item.price : attr[:price]
+        self.images = attr[:images].nil? ? nil : attr[:images]
+        self.remove_images = attr[:remove_images].nil? ? nil : attr[:remove_images]
+        self.user_id = attr[:user_id].nil? ? @item.user_id : attr[:user_id]
+     else
+        super(attr)
+    end
+  end
 
   def save
     return false if invalid?
@@ -36,28 +59,19 @@ class ItemForm
     end
   end
 
-  def update(item)
-    # return false if invalid?
-    item.name = name
-    item.description = description
-    item.category_id = category_id
-    item.brand_id = brand_id
-    item.status = status
-    item.delivery_fee = delivery_fee
-    item.delivery_method = delivery_method
-    item.prefecture_id = prefecture_id
-    item.delivery_date = delivery_date
-    item.price = price
-        binding.pry
+  def update
+    return false if invalid?
+    @item = Item.find(id)
+    @item.update(name: name,description: description,category_id: category_id,brand_id: brand_id,status: status,delivery_fee: delivery_fee,delivery_method: delivery_method,prefecture_id: prefecture_id,delivery_date: delivery_date,price: price,user_id:user_id)
     if remove_images
       remove_images.each do |r|
-        item.images.find(r).destroy
+        @item.images.find(r).destroy
       end
     end
     if images
       images.each do |i|
-        item.images.new(image: i)
-        item.save
+        @item.images.new(image: i)
+        @item.save
       end
     end
   end

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit,:update]
+  # before_action :set_item, only: [:edit,:update]
 
   def index
     @ladies = Item.where(category_id: 1).order("created_at DESC").limit(4)
@@ -48,14 +48,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # @images = @item.images.map{|i| i.image.cache!}
-    @item_form = ItemForm.new(name:@item.name,description:@item.description,category_id:@item.category_id,brand_id:@item.brand_id,status:@item.status,delivery_fee:@item.delivery_fee,delivery_method:@item.delivery_method,prefecture_id:@item.prefecture_id,delivery_date:@item.delivery_date,price:@item.price,images:@item.images)
+    @item_form = ItemForm.new(id:params[:id])
   end
 
   def update
-    binding.pry
-    @item_form = ItemForm.new(item_params)
-    @item_form.update(@item)
+    @item_form = ItemForm.new(item_params.merge(id:params[:id]))
+    @item_form.update
     redirect_to root_path
   end
 
