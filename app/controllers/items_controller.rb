@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit,:update]
 
   def index
     @ladies = Item.where(category_id: 1).order("created_at DESC").limit(4)
@@ -46,7 +47,23 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    # @images = @item.images.map{|i| i.image.cache!}
+    @item_form = ItemForm.new(name:@item.name,description:@item.description,category_id:@item.category_id,brand_id:@item.brand_id,status:@item.status,delivery_fee:@item.delivery_fee,delivery_method:@item.delivery_method,prefecture_id:@item.prefecture_id,delivery_date:@item.delivery_date,price:@item.price,images:@item.images)
+  end
+
+  def update
+    binding.pry
+    @item_form = ItemForm.new(item_params)
+    @item_form.update(@item)
+    redirect_to root_path
+  end
+
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item_form).permit(
@@ -60,10 +77,11 @@ class ItemsController < ApplicationController
       :prefecture_id,
       :delivery_date,
       :price,
+       {:remove_images => []},
        { :images => [] }
       ).merge(user_id:current_user.id)
   end
-  
+
   def search
     result = []
     if params[:keyword].blank?

@@ -24,6 +24,7 @@ class ItemForm
                       :delivery_date,
                       :price,
                       :images,
+                      :remove_images,
                       :user_id
 
   def save
@@ -34,6 +35,33 @@ class ItemForm
       item.save
     end
   end
+
+  def update(item)
+    # return false if invalid?
+    item.name = name
+    item.description = description
+    item.category_id = category_id
+    item.brand_id = brand_id
+    item.status = status
+    item.delivery_fee = delivery_fee
+    item.delivery_method = delivery_method
+    item.prefecture_id = prefecture_id
+    item.delivery_date = delivery_date
+    item.price = price
+        binding.pry
+    if remove_images
+      remove_images.each do |r|
+        item.images.find(r).destroy
+      end
+    end
+    if images
+      images.each do |i|
+        item.images.new(image: i)
+        item.save
+      end
+    end
+  end
+
 
 
 end
