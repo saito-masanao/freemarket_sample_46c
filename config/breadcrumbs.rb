@@ -1,10 +1,10 @@
-crumb :top do
-  link "メルカリ", top_path
+crumb :root do
+  link "メルカリ", root_path
 end
 
 crumb :mypage do
   link "マイページ", mypage_path
-  parent :top
+  parent :root
 end
 
 crumb :profile do
@@ -33,6 +33,6 @@ crumb :creditregistration do
 end
 
 crumb :search do |keyword|
-  link params[:keyword], items_search_path
-  parent :top
+  link params[:keyword], search_items_path
+  parent :root
 end

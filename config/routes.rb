@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :items,only: [:new, :create, :show, :index, :destroy] do
+      get :search, on: :collection
     resources :likes, only: [:create]
     resources :comments, only: [:create]
+    resources :orders, only:[:new, :create]
   end
   root 'items#index'
   get 'users/new'
@@ -20,7 +22,6 @@ Rails.application.routes.draw do
   get 'itemconfirm', to: 'users#itemconfirm'
   get 'sign_up', to: 'users#sign_up'
   get 'itemsell', to: 'users#itemsell'
-  get 'items/search', to: 'items#search'
 
   resources :credit_card, only:[:index, :new, :create, :destroy]
 
