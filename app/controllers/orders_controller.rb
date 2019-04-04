@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
 
   # 商品購入確認画面表示
   def new
