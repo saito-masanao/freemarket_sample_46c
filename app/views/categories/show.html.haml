@@ -5,7 +5,7 @@
   %h1.items-list__title
     #{@category.name}の商品一覧
   - if @items.length > 0
-    .items-list__item-container.clearfix
+    .items-list__item-container
       = render partial: 'items/items_top/item', collection: @items
   - else
     商品がありません
