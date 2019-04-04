@@ -51,6 +51,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'gretel'
 gem 'dotenv-rails'
+gem 'kaminari'
+gem 'ransack'
 gem 'fog-aws'
 gem 'payjp'
 
@@ -63,12 +65,9 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'pry-rails'
-  gem 'pry-byebug'
-  gem 'pry-doc'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
-  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
 end
 
