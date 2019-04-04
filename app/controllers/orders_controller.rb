@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
     _w = current_user.slice(:id, :last_name, :first_name, :nickname)
     _ret = {}
 
-    if _w[:last_name] && _w[:first_name]
+    if (_w[:last_name] != "") && (_w[:first_name] != "")
       _ret[:name] = "#{_w[:last_name]} #{_w[:first_name]}"
     elsif _w[:nickname]
       _ret[:name] = _w[:nickname]
