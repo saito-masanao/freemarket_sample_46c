@@ -40,82 +40,82 @@ MiddleCategory.create!([
   { id: 1,
     name: 'トップス',
     category_id: 1,
-    
+
   },
   { id: 2,
     name: 'ジャケット',
     category_id: 1,
-   
+
   },
   { id: 3,
     name: 'パンツ',
     category_id: 1,
-    
+
   },
   { id: 4,
     name: 'トップス',
     category_id: 2,
-   
+
   },
   { id: 5,
     name: 'ジャケット/アウター',
     category_id: 2,
-  
+
   },
   { id: 6,
     name: 'パンツ',
     category_id: 2,
-   
+
   },
   { id: 7,
     name: 'ベビー服(女の子用)',
     category_id: 3,
-    
+
   },
   { id: 8,
     name: 'ベビー服(男の子用)',
     category_id: 3,
-   
+
   },
   { id: 9,
     name: 'ベビー服(男女兼用)',
     category_id: 3,
-    
+
   },
   { id: 10,
     name: 'キッチン/食器',
     category_id: 4,
-    
+
   },
   { id: 11,
     name: 'ベット/マットレス',
     category_id: 4,
-    
+
   },
   { id: 12,
     name: 'ソファ/ソファベッド',
     category_id: 4,
-    
+
   },
   { id: 13,
     name: '本',
     category_id: 5,
-    
+
   },
   { id: 14,
     name: '漫画',
     category_id: 5,
-    
+
   },
   { id: 15,
     name: 'おもちゃ',
     category_id: 6,
-    
+
   },
   { id: 16,
     name: 'タレントグッズ',
     category_id: 6,
-   
+
   },
 
 
