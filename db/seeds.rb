@@ -169,12 +169,10 @@ USER_TABLE_MAX.times do |n|
  name = Faker::Pokemon.name
  email = Faker::Internet.email
  password = "password"
- birthday =Faker::Time.between(40.years.ago, 18.years.ago, :all).to_s[0, 10]
  User.create!(id: n+1,
               nickname: name,
               email: email,
               password: password,
-              birthday: birthday
              )
 end
 
@@ -216,3 +214,13 @@ COMMENT_TABLE_MAX.times do |n|
   }
   Comment.create!(dumy_data)
 end
+
+200.times do |n|
+  dumy_data = {
+    id:               n+1,
+    image:            open("#{Rails.root}/app/assets/images/sample.jpg"),
+    item_id:          n+1,
+  }
+  Image.create!(dumy_data)
+end
+
