@@ -46,6 +46,7 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+
   def edit
     @item_form = ItemForm.new(id:params[:id])
   end
@@ -90,11 +91,30 @@ class ItemsController < ApplicationController
         end
       end
         if result[split_keyword.length-1] != []
-          @items = result[split_keyword.length-1].page(params[:page]).per(48)
+          @items = result[split_keyword.length-1].order("id DESC").page(params[:page]).per(48)
         else
           @items = Item.limit(24).order("id DESC").page(params[:page]).per(48)
           @error = "該当する商品が見当たりません。商品は毎日増えていますので、これからの出品に期待してください。"
         end
     end
   end
+
+  private
+
+  def item_params
+    params.require(:item_form).permit(
+      :name,
+      :description,
+      :category_id,
+      :brand_id,
+      :status,
+      :delivery_fee,
+      :delivery_method,
+      :prefecture_id,
+      :delivery_date,
+      :price,
+       { :images => [] }
+      ).merge(user_id:current_user.id)
+  end
+
 end
