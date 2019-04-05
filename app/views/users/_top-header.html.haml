@@ -20,7 +20,7 @@
                 %li.top-main-header-nav-parent{"data-category-id": category.id}
                   %h3.category__text
                     = link_to category_path(category), class: "category_link" do
-                      = category.name                     
+                      = category.name
                   %ul.top-main-header-nav-child-wrap
                     - if category.middle_categories.present?
                       - category.middle_categories.each do |middle_category|
@@ -45,8 +45,7 @@
                 %li.top-main-header-nav-brand{"data-brand-id": brand.id}
                   %h3.brand__text
                     = link_to brand_path(brand), class: "brand_link" do
-                      = brand.name       
-                               
+                      = brand.name
       .top-main-header__wrapper__nav-box__right
         %ul.right
           - if user_signed_in?

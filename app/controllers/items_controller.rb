@@ -57,25 +57,6 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-  private
-
-
-  def item_params
-    params.require(:item_form).permit(
-      :name,
-      :description,
-      :category_id,
-      :brand_id,
-      :status,
-      :delivery_fee,
-      :delivery_method,
-      :prefecture_id,
-      :delivery_date,
-      :price,
-       {:remove_images => []},
-       { :images => [] }
-      ).merge(user_id:current_user.id)
-  end
 
   def search
     result = []
@@ -113,6 +94,7 @@ class ItemsController < ApplicationController
       :prefecture_id,
       :delivery_date,
       :price,
+       {:remove_images => []},
        { :images => [] }
       ).merge(user_id:current_user.id)
   end
