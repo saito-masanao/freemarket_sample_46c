@@ -24,7 +24,27 @@ class ItemForm
                       :delivery_date,
                       :price,
                       :images,
-                      :user_id
+                      :remove_images,
+                      :user_id,
+                      :id
+
+  def initialize(attr = {})
+    if attr[:id] #商品のIDがある時(edit or update)
+      if attr[:name] #updateの時
+        attr.each do |k,v|
+          self.send("#{k}=", v)
+        end
+      else #editの時
+        @item = Item.find(attr[:id])
+        item_params = @item.attributes
+        item_params.each do |k,v|
+          self.send("#{k}=", v) if self.methods.include?(k.to_sym)
+        end
+      end
+    else
+      super(attr)
+    end
+  end
 
   def save
     return false if invalid?
@@ -34,6 +54,22 @@ class ItemForm
       item.save
     end
   end
+
+  def update(params)
+    @item.update(params)
+    if remove_images
+      remove_images.each do |r|
+        @item.images.find(r).destroy
+      end
+    end
+    if images
+      images.each do |i|
+        @item.images.new(image: i)
+        @item.save
+      end
+    end
+  end
+
 
 
 end

@@ -47,6 +47,36 @@ class ItemsController < ApplicationController
   end
 
 
+  def edit
+    @item_form = ItemForm.new(id:params[:id])
+  end
+
+  def update
+    @item_form = ItemForm.new(id:params[:id])
+    @item_form.update(item_params)
+    redirect_to root_path
+  end
+
+  private
+
+
+  def item_params
+    params.require(:item_form).permit(
+      :name,
+      :description,
+      :category_id,
+      :brand_id,
+      :status,
+      :delivery_fee,
+      :delivery_method,
+      :prefecture_id,
+      :delivery_date,
+      :price,
+       {:remove_images => []},
+       { :images => [] }
+      ).merge(user_id:current_user.id)
+  end
+
   def search
     result = []
     if params[:keyword].blank?

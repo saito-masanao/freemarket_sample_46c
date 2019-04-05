@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :brands, only: [:index, :show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :items,only: [:new, :create, :show, :index, :destroy] do
+  resources :items do
       get :search, on: :collection
     resources :likes, only: [:create]
     resources :comments, only: [:create]
