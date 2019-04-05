@@ -56,7 +56,6 @@ class ItemForm
   end
 
   def update(params)
-    @item = Item.find(id)
     @item.update(params)
     if remove_images
       remove_images.each do |r|
