@@ -6,7 +6,7 @@
   %section.ib-content__item
     .ib-content__item-inner
       .ib-content__item-inner__image
-        = image_tag(@item.images[0].to_s, size:"148x148")
+        = image_tag(@item.images[0].image.to_s, size:"148x148")
       %p.ib-content__item-inner-name
         = @item.name
       = form_with url:item_orders_path(@item.id), local:true, html: {class: "ib-content__item-inner__form"} do |f|

@@ -14,8 +14,6 @@ class UsersController < ApplicationController
   end
 
   def top
-    
-    
   end
 
   def mypage
