@@ -39,7 +39,6 @@ ja:
         four_XL:              4XL(5L)以上
         FREE_SIZE:            FREE SIZE
 
-ja:
   activerecord:
     attributes:
       user:
