@@ -61,32 +61,51 @@ $(document).on('turbolinks:load', function() {
   /*
   カード情報と紐付くトークンを取得する
   */
-  function get_token(card_info) {
-    return new Promise(resolve => {
-      let _response;
+  // function get_token(card_info) {
+  //   return new Promise(resolve => {
+  //     let _response;
+  //
+  //     Payjp.setPublicKey(PAYJP_PUBLIC_KEY);
+  //     Payjp.createToken(card_info, function(status, response) {
+  //       /* トークン生成に成功したか */
+  //       if (response.error) {
+  //         // [@ToDo]エラー情報をユーザーに教える必要がある。
+  //         // console.log(response.error.message);
+  //         _response = "";
+  //       } else {
+  //         _response = response.id;
+  //       }
+  //       return resolve(_response);
+  //     });
+  //   });
+  // }
 
-      Payjp.setPublicKey(PAYJP_PUBLIC_KEY);
-      Payjp.createToken(card_info, function(status, response) {
-        /* トークン生成に成功したか */
-        if (response.error) {
-          // [@ToDo]エラー情報をユーザーに教える必要がある。
-          // console.log(response.error.message);
-          _response = "";
-        } else {
-          _response = response.id;
-        }
-        return resolve(_response);
-      });
+  $('#submit-button').click(function(e) {
+    e.preventDefault();
+    // (async()=> {
+    //   let card_token;
+    //   let card_info = get_card_info(false);
+    //   await get_token(card_info).then(function(v){card_token=v;});
+    //   $('#card_token').attr('value', card_token);
+    //   $('#credit_form').submit();
+    // })();
+
+    // 入力情報の取得
+    let card_info = get_card_info(false);
+    // card_info["number"]    = $('#credit_card_number').val();
+    // card_info["cvc"]       = $('#credit_card_security_code').val();
+    // card_info["exp_month"] = $('#credit_month option:selected').val();
+    // card_info["exp_year"]  = "20" + $('#credit_year option:selected').val();
+
+    Payjp.setPublicKey("pk_test_336046173393efb07571501f");
+    Payjp.createToken(card_info, function(status, response) {
+      /* トークン生成に成功したか */
+      if (response.error) {
+        console.log(response.error.message);
+      } else {
+        $('#card_token').attr('value', response.id);
+        $('#credit_form').submit();
+      }
     });
-  }
-
-  $('#submit-button').click(function() {
-    (async()=> {
-      let card_token;
-      let card_info = get_card_info(false);
-      await get_token(card_info).then(function(v){card_token=v;});
-      $('#card_token').attr('value', card_token);
-      $('#credit_form').submit();
-    })();
   });
 });
