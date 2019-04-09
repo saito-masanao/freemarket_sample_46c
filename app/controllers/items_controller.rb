@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show,:search]
 
   def index
     @ladies = Item.where(category_id: 1).order("created_at DESC").limit(4)
@@ -47,6 +48,21 @@ class ItemsController < ApplicationController
   end
 
 
+  def edit
+    @item_form = ItemForm.new(id:params[:id])
+  end
+
+  def update
+    @item_form = ItemForm.new(item_params.merge(id:params[:id]))
+    if @item_form.update
+        redirect_to root_path
+      else
+        @errors = @item_form.errors
+        render :edit
+    end
+  end
+
+
   def search
     result = []
     if params[:keyword].blank?
@@ -83,6 +99,7 @@ class ItemsController < ApplicationController
       :prefecture_id,
       :delivery_date,
       :price,
+       {:remove_images => []},
        { :images => [] }
       ).merge(user_id:current_user.id)
   end

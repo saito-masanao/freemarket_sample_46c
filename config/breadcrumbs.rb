@@ -36,3 +36,26 @@ crumb :search do |keyword|
   link params[:keyword], search_items_path
   parent :root
 end
+
+crumb :category do |category|
+  link category.name, category_path
+  parent :root
+end
+
+crumb :middle_category do |middle_category|
+  link middle_category.name, middle_category_path
+  parent :category,middle_category.category
+end
+
+crumb :lower_category do |lower_category|
+  link lower_category.name, lower_category_path
+  parent :middle_category,lower_category.middle_category
+end
+
+
+
+crumb :brand do |brand|
+  link brand.name, brand_path
+  parent :root
+end
+
